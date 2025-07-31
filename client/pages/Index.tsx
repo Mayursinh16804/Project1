@@ -49,6 +49,9 @@ export default function Index() {
                 <Badge variant="secondary" className="w-fit bg-accent/10 text-accent border-accent/30">
                   Professional AC Solutions
                 </Badge>
+                <div className="text-accent font-semibold text-xl lg:text-2xl mb-4">
+                  MAYUR AIRCON
+                </div>
                 <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-primary">
                   Stay Cool,{" "}
                   <span className="text-accent">Stay Comfortable</span>
