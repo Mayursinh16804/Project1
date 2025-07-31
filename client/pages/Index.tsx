@@ -315,78 +315,161 @@ export default function Index() {
               Our Products
             </Badge>
             <h2 className="text-3xl lg:text-5xl font-bold text-primary">
-              Premium Air Conditioning Systems
+              Professional Cooling Solutions
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              High-quality AC units from leading brands for residential and commercial applications
+              Advanced cooling systems from leading manufacturers for data centers, commercial spaces, and industrial applications
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="group hover:shadow-lg transition-all duration-300">
-              <div className="aspect-square bg-gradient-to-br from-blue-50 to-cyan-50 rounded-t-lg flex items-center justify-center">
-                <Snowflake className="w-16 h-16 text-accent" />
+
+          {/* Featured Data Center Installation */}
+          <div className="mb-16">
+            <Card className="overflow-hidden">
+              <div className="aspect-video">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F0af59e38f28d4c17acf85a7427147cd6?format=webp&width=800"
+                  alt="Data Center Cooling Installation"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <CardHeader>
-                <CardTitle>Split AC Units</CardTitle>
-                <CardDescription>
-                  Energy-efficient split AC systems perfect for homes and small offices with inverter technology
+                <CardTitle className="text-2xl">Data Center Cooling Solutions</CardTitle>
+                <CardDescription className="text-lg">
+                  Complete HVAC infrastructure for large-scale data center operations with precision cooling and optimal airflow management
                 </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+            {/* Liebert SRC - Small Room Cooling */}
+            <Card className="group hover:shadow-lg transition-all duration-300">
+              <div className="aspect-video">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F54d635349e304904bdc36d45fdc35e4e?format=webp&width=800"
+                  alt="Liebert SRC Small Room Cooling"
+                  className="w-full h-full object-cover rounded-t-lg"
+                />
+              </div>
+              <CardHeader>
+                <CardTitle>Liebert SRC - Small Room Cooling</CardTitle>
+                <CardDescription>
+                  Designed for high air quantity to match equipment sensible load application. Features energy-efficient components with advanced control systems.
+                </CardDescription>
+                <div className="mt-4 space-y-2">
+                  <div className="text-sm"><strong>Models:</strong> SRC003ES, SRC045, SRC07ES</div>
+                  <div className="text-sm"><strong>Capacity:</strong> 2.8 kW - 7.0 kW</div>
+                  <div className="text-sm"><strong>Airflow:</strong> 750 CMH - 1900 CMH</div>
+                </div>
                 <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
-                  View Details
+                  View Specifications
                 </Button>
               </CardHeader>
             </Card>
 
+            {/* Vertiv Liebert PCW */}
             <Card className="group hover:shadow-lg transition-all duration-300">
-              <div className="aspect-square bg-gradient-to-br from-blue-50 to-cyan-50 rounded-t-lg flex items-center justify-center">
-                <Building className="w-16 h-16 text-accent" />
+              <div className="aspect-video">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F7cfe6fb1d2f04b55a4bebe7be3c91b67?format=webp&width=800"
+                  alt="Vertiv Liebert PCW"
+                  className="w-full h-full object-cover rounded-t-lg"
+                />
               </div>
               <CardHeader>
-                <CardTitle>Commercial Ducted Systems</CardTitle>
+                <CardTitle>Vertiv Liebert PCW - Chilled Water Units</CardTitle>
                 <CardDescription>
-                  Heavy-duty ducted AC systems designed for large commercial spaces and industrial applications
+                  Ideal chilled water cooling unit providing efficient solution for data center and server room air conditioning.
                 </CardDescription>
+                <div className="mt-4 space-y-2">
+                  <div className="text-sm"><strong>Models:</strong> PH170, PH046, PH081, PH066, PH136, PH111, PH091</div>
+                  <div className="text-sm"><strong>Capacity:</strong> 44.9 kW - 171.5 kW</div>
+                  <div className="text-sm"><strong>Airflow:</strong> 11500 CMH - 40700 CMH</div>
+                </div>
                 <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
-                  View Details
+                  View Specifications
                 </Button>
               </CardHeader>
             </Card>
 
+            {/* Liebert XDU Coolant Distribution */}
             <Card className="group hover:shadow-lg transition-all duration-300">
-              <div className="aspect-square bg-gradient-to-br from-blue-50 to-cyan-50 rounded-t-lg flex items-center justify-center">
-                <ThermometerSun className="w-16 h-16 text-accent" />
+              <div className="aspect-video">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fe7680bc71e1e494aa2661602289c92b7?format=webp&width=800"
+                  alt="Liebert XDU Coolant Distribution"
+                  className="w-full h-full object-cover rounded-t-lg"
+                />
               </div>
               <CardHeader>
-                <CardTitle>Cassette Air Conditioners</CardTitle>
+                <CardTitle>Liebert XDU Coolant Distribution Units</CardTitle>
                 <CardDescription>
-                  Ceiling-mounted cassette units for even air distribution in offices and commercial spaces
+                  Designed to support fluid cooling within high density environments, suitable for chip & rear door cooling applications.
                 </CardDescription>
+                <div className="mt-4 space-y-2">
+                  <div className="text-sm"><strong>Model:</strong> XDU450 Coolant Distribution Unit</div>
+                  <div className="text-sm"><strong>Capacity:</strong> 453 kW at 7.2 °F (4.0 °C)</div>
+                  <div className="text-sm"><strong>Dimensions:</strong> 1900mm H × 600mm W × 1043mm D</div>
+                </div>
                 <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
-                  View Details
+                  View Specifications
                 </Button>
               </CardHeader>
             </Card>
 
+            {/* Vertiv Liebert EFC */}
             <Card className="group hover:shadow-lg transition-all duration-300">
-              <div className="aspect-square bg-gradient-to-br from-blue-50 to-cyan-50 rounded-t-lg flex items-center justify-center">
-                <Settings className="w-16 h-16 text-accent" />
+              <div className="aspect-video">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F94f046c3c7164239a825e0964bff9cff?format=webp&width=800"
+                  alt="Vertiv Liebert EFC"
+                  className="w-full h-full object-cover rounded-t-lg"
+                />
               </div>
               <CardHeader>
-                <CardTitle>Inverter Air Conditioners</CardTitle>
+                <CardTitle>Vertiv Liebert EFC - Low-GWP Evaporative</CardTitle>
                 <CardDescription>
-                  Advanced inverter technology ACs that adjust cooling capacity for maximum energy efficiency
+                  Next generation indirect evaporative free cooling unit with low-GWP refrigerant designed for data center applications.
                 </CardDescription>
+                <div className="mt-4 space-y-2">
+                  <div className="text-sm"><strong>Range:</strong> 100 to 450 kW</div>
+                  <div className="text-sm"><strong>Technology:</strong> Indirect evaporative cooling with air-to-air heat exchanger</div>
+                  <div className="text-sm"><strong>Efficiency:</strong> Advanced energy efficiency with future-ready refrigerant</div>
+                </div>
                 <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
-                  View Details
+                  View Specifications
                 </Button>
               </CardHeader>
             </Card>
           </div>
-          
-          <div className="text-center mt-12">
+
+          {/* Product Categories */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
+              <Snowflake className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <h3 className="font-semibold mb-2">Precision Cooling</h3>
+              <p className="text-sm text-muted-foreground">Small room and rack cooling solutions</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
+              <Building className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <h3 className="font-semibold mb-2">Data Center HVAC</h3>
+              <p className="text-sm text-muted-foreground">Large-scale facility cooling systems</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
+              <ThermometerSun className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <h3 className="font-semibold mb-2">Chilled Water</h3>
+              <p className="text-sm text-muted-foreground">Efficient water-based cooling solutions</p>
+            </Card>
+            <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
+              <Settings className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <h3 className="font-semibold mb-2">Coolant Distribution</h3>
+              <p className="text-sm text-muted-foreground">Specialized liquid cooling systems</p>
+            </Card>
+          </div>
+
+          <div className="text-center">
             <Button size="lg" className="bg-accent hover:bg-accent/90">
-              View All Products
+              Download Product Catalog
             </Button>
           </div>
         </div>
