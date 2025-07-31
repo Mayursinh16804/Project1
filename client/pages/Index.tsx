@@ -335,6 +335,37 @@ export default function Index() {
               </div>
             </div>
           </div>
+
+          {/* CEO Section */}
+          <div className="mt-20 text-center">
+            <div className="space-y-4 mb-12">
+              <Badge variant="secondary" className="w-fit mx-auto">
+                Leadership
+              </Badge>
+              <h3 className="text-2xl lg:text-4xl font-bold text-primary">
+                Meet Our CEO
+              </h3>
+            </div>
+
+            <Card className="max-w-md mx-auto">
+              <div className="p-8 text-center">
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-accent/20">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fe44870ba918145f797458d5d8ff14dff?format=webp&width=800"
+                    alt="Mayursinh Padhiyar - CEO"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-xl font-bold text-primary">Mayursinh Padhiyar</h4>
+                  <p className="text-accent font-semibold">Chief Executive Officer</p>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Leading MAYUR AIRCON with over two decades of expertise in commercial and residential air conditioning solutions, committed to delivering excellence in every project.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
         </div>
       </section>
 
