@@ -335,8 +335,6 @@ export default function Index() {
               </div>
             </div>
           </div>
-
-
         </div>
       </section>
 
@@ -1130,14 +1128,18 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="text-center space-y-8">
             <div className="space-y-4">
-              <Badge variant="secondary" className="w-fit mx-auto bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
+              <Badge
+                variant="secondary"
+                className="w-fit mx-auto bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20"
+              >
                 Company Founder
               </Badge>
               <h2 className="text-3xl lg:text-5xl font-bold">
                 Meet Our Founder
               </h2>
               <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
-                The visionary behind MAYUR AIRCON's success and commitment to excellence
+                The visionary behind MAYUR AIRCON's success and commitment to
+                excellence
               </p>
             </div>
 
@@ -1151,38 +1153,58 @@ export default function Index() {
                   />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-bold text-primary-foreground">Mayursinh Padhiyar</h3>
-                  <p className="text-accent font-semibold text-xl">Founder & Chief Executive Officer</p>
+                  <h3 className="text-3xl font-bold text-primary-foreground">
+                    Mayursinh Padhiyar
+                  </h3>
+                  <p className="text-accent font-semibold text-xl">
+                    Founder & Chief Executive Officer
+                  </p>
                   <div className="text-primary-foreground/90 text-lg leading-relaxed space-y-4">
                     <p>
-                      With over two decades of unwavering dedication to the air conditioning industry,
-                      Mayursinh Padhiyar founded MAYUR AIRCON with a vision to revolutionize cooling solutions
+                      With over two decades of unwavering dedication to the air
+                      conditioning industry, Mayursinh Padhiyar founded MAYUR
+                      AIRCON with a vision to revolutionize cooling solutions
                       for both residential and commercial sectors.
                     </p>
                     <p>
-                      His commitment to excellence, innovative approach, and customer-first philosophy
-                      have made MAYUR AIRCON a trusted name in precision air conditioning systems.
-                      Under his leadership, the company has successfully completed over 5000 installations
-                      and continues to set new standards in the industry.
+                      His commitment to excellence, innovative approach, and
+                      customer-first philosophy have made MAYUR AIRCON a trusted
+                      name in precision air conditioning systems. Under his
+                      leadership, the company has successfully completed over
+                      5000 installations and continues to set new standards in
+                      the industry.
                     </p>
                     <p>
-                      Mayursinh's expertise spans across commercial PAC systems, data center cooling solutions,
-                      and cutting-edge HVAC technologies, making him a respected leader in the field.
+                      Mayursinh's expertise spans across commercial PAC systems,
+                      data center cooling solutions, and cutting-edge HVAC
+                      technologies, making him a respected leader in the field.
                     </p>
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-primary-foreground/20">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-accent mb-1">20+</div>
-                      <div className="text-sm text-primary-foreground/80">Years of Experience</div>
+                      <div className="text-2xl font-bold text-accent mb-1">
+                        20+
+                      </div>
+                      <div className="text-sm text-primary-foreground/80">
+                        Years of Experience
+                      </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-accent mb-1">5000+</div>
-                      <div className="text-sm text-primary-foreground/80">Projects Completed</div>
+                      <div className="text-2xl font-bold text-accent mb-1">
+                        5000+
+                      </div>
+                      <div className="text-sm text-primary-foreground/80">
+                        Projects Completed
+                      </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-accent mb-1">100%</div>
-                      <div className="text-sm text-primary-foreground/80">Customer Satisfaction</div>
+                      <div className="text-2xl font-bold text-accent mb-1">
+                        100%
+                      </div>
+                      <div className="text-sm text-primary-foreground/80">
+                        Customer Satisfaction
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1191,9 +1213,12 @@ export default function Index() {
 
             <div className="text-center">
               <p className="text-lg text-primary-foreground/80 italic">
-                "Excellence in air conditioning is not just our business - it's our passion and commitment to every client."
+                "Excellence in air conditioning is not just our business - it's
+                our passion and commitment to every client."
               </p>
-              <p className="text-accent font-semibold mt-2">- Mayursinh Padhiyar</p>
+              <p className="text-accent font-semibold mt-2">
+                - Mayursinh Padhiyar
+              </p>
             </div>
           </div>
         </div>
