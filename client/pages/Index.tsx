@@ -882,7 +882,7 @@ export default function Index() {
                 className="h-8 w-auto brightness-0 invert"
               />
               <p className="text-primary-foreground/80">
-                Professional air conditioning solutions with over 20 years of experience in residential and commercial cooling.
+                <strong>MAYUR AIRCON</strong> - Professional air conditioning solutions with over 20 years of experience in residential and commercial cooling.
               </p>
               <div className="flex space-x-4">
                 <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
