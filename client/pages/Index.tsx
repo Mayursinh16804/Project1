@@ -873,15 +873,11 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
-                  <Snowflake className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-lg font-bold">Prisize</h1>
-                  <p className="text-xs opacity-80">Air Conditioning</p>
-                </div>
-              </div>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fb62909aa440046ef82b1eff0e7532fc5?format=webp&width=800"
+                alt="Mayur Aircon"
+                className="h-8 w-auto brightness-0 invert"
+              />
               <p className="text-primary-foreground/80">
                 Professional air conditioning solutions with over 20 years of experience in residential and commercial cooling.
               </p>
