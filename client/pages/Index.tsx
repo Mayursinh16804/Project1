@@ -929,7 +929,7 @@ export default function Index() {
           </div>
           
           <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-primary-foreground/60">
-            <p>&copy; 2025 Prisize Air Conditioning. All rights reserved. Expert AC Solutions for Every Space.</p>
+            <p>&copy; 2025 MAYUR AIRCON. All rights reserved. Expert AC Solutions for Every Space.</p>
           </div>
         </div>
       </footer>
