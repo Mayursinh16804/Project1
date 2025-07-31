@@ -161,13 +161,13 @@ export default function Index() {
             <div className="space-y-6">
               <div className="space-y-4">
                 <Badge variant="secondary" className="w-fit">
-                  About Prisize Air Conditioning
+                  About MAYUR AIRCON
                 </Badge>
                 <h2 className="text-3xl lg:text-5xl font-bold text-primary">
                   Trusted AC Experts with 20+ Years of Experience
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Prisize Air Conditioning has been providing reliable air conditioning solutions for over two decades. 
+                  MAYUR AIRCON has been providing reliable air conditioning solutions for over two decades. 
                   We specialize in residential, commercial, and industrial AC solutions for homes, offices, industries, 
                   malls, hospitals, and schools.
                 </p>
