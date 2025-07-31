@@ -1,7 +1,30 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Phone, Mail, MapPin, Clock, Wrench, Shield, Snowflake, Settings, Star, Users, Award, CheckCircle, ThermometerSun, Wind, Building, Home } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Wrench,
+  Shield,
+  Snowflake,
+  Settings,
+  Star,
+  Users,
+  Award,
+  CheckCircle,
+  ThermometerSun,
+  Wind,
+  Building,
+  Home,
+} from "lucide-react";
 
 export default function Index() {
   return (
@@ -18,13 +41,48 @@ export default function Index() {
               />
             </div>
             <nav className="hidden lg:flex items-center space-x-8">
-              <a href="#home" className="text-foreground hover:text-accent transition-colors font-medium">Home</a>
-              <a href="#about" className="text-foreground hover:text-accent transition-colors font-medium">About Us</a>
-              <a href="#services" className="text-foreground hover:text-accent transition-colors font-medium">Services</a>
-              <a href="#safety" className="text-foreground hover:text-accent transition-colors font-medium">Safety</a>
-              <a href="#products" className="text-foreground hover:text-accent transition-colors font-medium">Products</a>
-              <a href="#clients" className="text-foreground hover:text-accent transition-colors font-medium">Clients</a>
-              <a href="#contact" className="text-foreground hover:text-accent transition-colors font-medium">Contact</a>
+              <a
+                href="#home"
+                className="text-foreground hover:text-accent transition-colors font-medium"
+              >
+                Home
+              </a>
+              <a
+                href="#about"
+                className="text-foreground hover:text-accent transition-colors font-medium"
+              >
+                About Us
+              </a>
+              <a
+                href="#services"
+                className="text-foreground hover:text-accent transition-colors font-medium"
+              >
+                Services
+              </a>
+              <a
+                href="#safety"
+                className="text-foreground hover:text-accent transition-colors font-medium"
+              >
+                Safety
+              </a>
+              <a
+                href="#products"
+                className="text-foreground hover:text-accent transition-colors font-medium"
+              >
+                Products
+              </a>
+              <a
+                href="#clients"
+                className="text-foreground hover:text-accent transition-colors font-medium"
+              >
+                Clients
+              </a>
+              <a
+                href="#contact"
+                className="text-foreground hover:text-accent transition-colors font-medium"
+              >
+                Contact
+              </a>
             </nav>
             <Button className="bg-accent hover:bg-accent/90">
               Request a Quote
@@ -34,19 +92,26 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50">
+      <section
+        id="home"
+        className="relative min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50"
+      >
         <div className="absolute inset-0 bg-white/40"></div>
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
           style={{
-            backgroundImage: "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJhYyIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPgogICAgICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTcyYSIvPgogICAgICA8Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIxMiIgZmlsbD0iIzBkYzJmZiIgb3BhY2l0eT0iMC4zIi8+CiAgICAgIDxyZWN0IHg9IjYwIiB5PSI2MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIGZpbGw9IiMwZGMyZmYiIG9wYWNpdHk9IjAuNCIvPgogICAgICA8Y2lyY2xlIGN4PSI3NSIgY3k9IjIwIiByPSI4IiBmaWxsPSIjMGRjMmZmIiBvcGFjaXR5PSIwLjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNhYykiLz4KPC9zdmc+Cg==')"
+            backgroundImage:
+              "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJhYyIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiPgogICAgICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBmMTcyYSIvPgogICAgICA8Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIxMiIgZmlsbD0iIzBkYzJmZiIgb3BhY2l0eT0iMC4zIi8+CiAgICAgIDxyZWN0IHg9IjYwIiB5PSI2MCIgd2lkdGg9IjMwIiBoZWlnaHQ9IjYiIGZpbGw9IiMwZGMyZmYiIG9wYWNpdHk9IjAuNCIvPgogICAgICA8Y2lyY2xlIGN4PSI3NSIgY3k9IjIwIiByPSI4IiBmaWxsPSIjMGRjMmZmIiBvcGFjaXR5PSIwLjIiLz4KICAgIDwvcGF0dGVybj4KICA8L2RlZnM+CiAgPHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNhYykiLz4KPC9zdmc+Cg==')",
           }}
         ></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
               <div className="space-y-6">
-                <Badge variant="secondary" className="w-fit bg-accent/10 text-accent border-accent/30">
+                <Badge
+                  variant="secondary"
+                  className="w-fit bg-accent/10 text-accent border-accent/30"
+                >
                   Professional AC Solutions
                 </Badge>
                 <div className="text-accent font-semibold text-xl lg:text-2xl mb-4">
@@ -61,10 +126,17 @@ export default function Index() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="text-lg px-8 bg-accent hover:bg-accent/90">
+                <Button
+                  size="lg"
+                  className="text-lg px-8 bg-accent hover:bg-accent/90"
+                >
                   Explore Our Services
                 </Button>
-                <Button variant="outline" size="lg" className="text-lg px-8 border-accent text-accent hover:bg-accent hover:text-white">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-lg px-8 border-accent text-accent hover:bg-accent hover:text-white"
+                >
                   <Phone className="w-5 h-5 mr-2" />
                   Call +91 95587 19344
                 </Button>
@@ -99,14 +171,20 @@ export default function Index() {
                 <Card className="bg-white/80 backdrop-blur border-accent/20">
                   <CardContent className="p-6 text-center">
                     <Award className="w-12 h-12 mx-auto mb-4 text-accent" />
-                    <div className="text-3xl font-bold text-primary">Energy</div>
-                    <div className="text-sm text-muted-foreground">Efficient</div>
+                    <div className="text-3xl font-bold text-primary">
+                      Energy
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      Efficient
+                    </div>
                   </CardContent>
                 </Card>
                 <Card className="bg-white/80 backdrop-blur border-accent/20">
                   <CardContent className="p-6 text-center">
                     <CheckCircle className="w-12 h-12 mx-auto mb-4 text-accent" />
-                    <div className="text-3xl font-bold text-primary">Trusted</div>
+                    <div className="text-3xl font-bold text-primary">
+                      Trusted
+                    </div>
                     <div className="text-sm text-muted-foreground">Service</div>
                   </CardContent>
                 </Card>
@@ -146,8 +224,13 @@ export default function Index() {
                 </video>
               </div>
               <div className="text-center mt-6">
-                <p className="text-lg font-semibold text-primary mb-2">Professional AC Installation & Service</p>
-                <p className="text-muted-foreground">Watch our certified technicians demonstrate professional installation techniques and maintenance procedures</p>
+                <p className="text-lg font-semibold text-primary mb-2">
+                  Professional AC Installation & Service
+                </p>
+                <p className="text-muted-foreground">
+                  Watch our certified technicians demonstrate professional
+                  installation techniques and maintenance procedures
+                </p>
               </div>
             </div>
           </div>
@@ -167,60 +250,85 @@ export default function Index() {
                   Trusted AC Experts with 20+ Years of Experience
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  MAYUR AIRCON has been providing reliable air conditioning solutions for over two decades. 
-                  We specialize in residential, commercial, and industrial AC solutions for homes, offices, industries, 
-                  malls, hospitals, and schools.
+                  MAYUR AIRCON has been providing reliable air conditioning
+                  solutions for over two decades. We specialize in residential,
+                  commercial, and industrial AC solutions for homes, offices,
+                  industries, malls, hospitals, and schools.
                 </p>
               </div>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
                   <div>
                     <h3 className="font-semibold">Energy-efficient Systems</h3>
-                    <p className="text-muted-foreground">Advanced AC solutions that reduce energy consumption</p>
+                    <p className="text-muted-foreground">
+                      Advanced AC solutions that reduce energy consumption
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
                   <div>
                     <h3 className="font-semibold">Branded Products</h3>
-                    <p className="text-muted-foreground">Premium brands like Daikin, Voltas, LG, Blue Star</p>
+                    <p className="text-muted-foreground">
+                      Premium brands like Daikin, Voltas, LG, Blue Star
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
                   <div>
-                    <h3 className="font-semibold">Reliable After-sales Support</h3>
-                    <p className="text-muted-foreground">Comprehensive maintenance and 24/7 service support</p>
+                    <h3 className="font-semibold">
+                      Reliable After-sales Support
+                    </h3>
+                    <p className="text-muted-foreground">
+                      Comprehensive maintenance and 24/7 service support
+                    </p>
                   </div>
                 </div>
               </div>
-              
+
               <Button size="lg" className="mt-6 bg-accent hover:bg-accent/90">
                 Learn More About Us
               </Button>
             </div>
-            
+
             <div className="relative">
               <div className="aspect-square bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 flex items-center justify-center">
                 <div className="text-center space-y-8">
                   <div className="grid grid-cols-2 gap-6">
                     <Card className="text-center p-4">
-                      <div className="text-2xl font-bold text-accent mb-1">20+</div>
-                      <div className="text-sm text-muted-foreground">Years Experience</div>
+                      <div className="text-2xl font-bold text-accent mb-1">
+                        20+
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Years Experience
+                      </div>
                     </Card>
                     <Card className="text-center p-4">
-                      <div className="text-2xl font-bold text-accent mb-1">5000+</div>
-                      <div className="text-sm text-muted-foreground">Installations</div>
+                      <div className="text-2xl font-bold text-accent mb-1">
+                        5000+
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Installations
+                      </div>
                     </Card>
                     <Card className="text-center p-4">
-                      <div className="text-2xl font-bold text-accent mb-1">24/7</div>
-                      <div className="text-sm text-muted-foreground">Support</div>
+                      <div className="text-2xl font-bold text-accent mb-1">
+                        24/7
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Support
+                      </div>
                     </Card>
                     <Card className="text-center p-4">
-                      <div className="text-2xl font-bold text-accent mb-1">100%</div>
-                      <div className="text-sm text-muted-foreground">Satisfaction</div>
+                      <div className="text-2xl font-bold text-accent mb-1">
+                        100%
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Satisfaction
+                      </div>
                     </Card>
                   </div>
                 </div>
@@ -241,10 +349,11 @@ export default function Index() {
               Complete AC Solutions for Every Need
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From installation to maintenance, we provide comprehensive air conditioning services
+              From installation to maintenance, we provide comprehensive air
+              conditioning services
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="group hover:shadow-lg transition-all duration-300 text-center">
               <CardHeader className="pb-4">
@@ -253,7 +362,8 @@ export default function Index() {
                 </div>
                 <CardTitle className="text-xl">AC Installation</CardTitle>
                 <CardDescription className="text-center">
-                  Professional installation of Split, Cassette, VRV/VRF systems with optimal placement and efficiency
+                  Professional installation of Split, Cassette, VRV/VRF systems
+                  with optimal placement and efficiency
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -263,9 +373,12 @@ export default function Index() {
                 <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-accent" />
                 </div>
-                <CardTitle className="text-xl">AMC (Annual Maintenance)</CardTitle>
+                <CardTitle className="text-xl">
+                  AMC (Annual Maintenance)
+                </CardTitle>
                 <CardDescription className="text-center">
-                  Comprehensive annual maintenance contracts to ensure optimal performance and longevity
+                  Comprehensive annual maintenance contracts to ensure optimal
+                  performance and longevity
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -277,7 +390,8 @@ export default function Index() {
                 </div>
                 <CardTitle className="text-xl">AC Repair & Servicing</CardTitle>
                 <CardDescription className="text-center">
-                  Fast and reliable repair services to restore your AC to optimal working condition
+                  Fast and reliable repair services to restore your AC to
+                  optimal working condition
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -287,9 +401,12 @@ export default function Index() {
                 <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Wind className="w-8 h-8 text-accent" />
                 </div>
-                <CardTitle className="text-xl">Duct Cleaning & Filter Replacement</CardTitle>
+                <CardTitle className="text-xl">
+                  Duct Cleaning & Filter Replacement
+                </CardTitle>
                 <CardDescription className="text-center">
-                  Professional duct cleaning and filter replacement for improved air quality and efficiency
+                  Professional duct cleaning and filter replacement for improved
+                  air quality and efficiency
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -301,7 +418,8 @@ export default function Index() {
                 </div>
                 <CardTitle className="text-xl">HVAC System Setup</CardTitle>
                 <CardDescription className="text-center">
-                  Complete HVAC system design and installation for large buildings and commercial spaces
+                  Complete HVAC system design and installation for large
+                  buildings and commercial spaces
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -320,16 +438,21 @@ export default function Index() {
               Professional Safety Standards
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Our certified technicians follow strict safety protocols for every installation and service call
+              Our certified technicians follow strict safety protocols for every
+              installation and service call
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="space-y-6">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-primary">Certified Safety Protocols</h3>
+                <h3 className="text-2xl font-bold text-primary">
+                  Certified Safety Protocols
+                </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Every member of our team is trained in the latest safety standards and uses professional-grade protective equipment for all installations and maintenance work.
+                  Every member of our team is trained in the latest safety
+                  standards and uses professional-grade protective equipment for
+                  all installations and maintenance work.
                 </p>
               </div>
 
@@ -337,22 +460,37 @@ export default function Index() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
                   <div>
-                    <h4 className="font-semibold">High-Visibility Safety Gear</h4>
-                    <p className="text-muted-foreground">All technicians wear certified hi-vis clothing and protective equipment</p>
+                    <h4 className="font-semibold">
+                      High-Visibility Safety Gear
+                    </h4>
+                    <p className="text-muted-foreground">
+                      All technicians wear certified hi-vis clothing and
+                      protective equipment
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
                   <div>
-                    <h4 className="font-semibold">Rooftop Installation Safety</h4>
-                    <p className="text-muted-foreground">Specialized training for commercial rooftop HVAC installations</p>
+                    <h4 className="font-semibold">
+                      Rooftop Installation Safety
+                    </h4>
+                    <p className="text-muted-foreground">
+                      Specialized training for commercial rooftop HVAC
+                      installations
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
                   <div>
-                    <h4 className="font-semibold">Indoor Installation Protocols</h4>
-                    <p className="text-muted-foreground">Safe and clean indoor installation practices protecting your property</p>
+                    <h4 className="font-semibold">
+                      Indoor Installation Protocols
+                    </h4>
+                    <p className="text-muted-foreground">
+                      Safe and clean indoor installation practices protecting
+                      your property
+                    </p>
                   </div>
                 </div>
               </div>
@@ -378,9 +516,13 @@ export default function Index() {
 
             <div className="space-y-6 order-1 lg:order-2">
               <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-primary">Professional Installation Standards</h3>
+                <h3 className="text-2xl font-bold text-primary">
+                  Professional Installation Standards
+                </h3>
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  Our indoor installation team maintains the highest standards of professionalism, cleanliness, and safety for residential and commercial properties.
+                  Our indoor installation team maintains the highest standards
+                  of professionalism, cleanliness, and safety for residential
+                  and commercial properties.
                 </p>
               </div>
 
@@ -389,21 +531,30 @@ export default function Index() {
                   <Shield className="w-6 h-6 text-accent mt-0.5" />
                   <div>
                     <h4 className="font-semibold">Property Protection</h4>
-                    <p className="text-muted-foreground">Floor coverings and protective measures for all indoor work</p>
+                    <p className="text-muted-foreground">
+                      Floor coverings and protective measures for all indoor
+                      work
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Users className="w-6 h-6 text-accent mt-0.5" />
                   <div>
                     <h4 className="font-semibold">Trained Professionals</h4>
-                    <p className="text-muted-foreground">Certified technicians with ongoing safety and technical training</p>
+                    <p className="text-muted-foreground">
+                      Certified technicians with ongoing safety and technical
+                      training
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Award className="w-6 h-6 text-accent mt-0.5" />
                   <div>
                     <h4 className="font-semibold">Quality Assurance</h4>
-                    <p className="text-muted-foreground">Every installation is inspected and tested for safety and performance</p>
+                    <p className="text-muted-foreground">
+                      Every installation is inspected and tested for safety and
+                      performance
+                    </p>
                   </div>
                 </div>
               </div>
@@ -424,7 +575,9 @@ export default function Index() {
             </Card>
             <Card className="text-center p-6">
               <Award className="w-12 h-12 mx-auto mb-4 text-accent" />
-              <div className="text-3xl font-bold text-accent mb-2">Certified</div>
+              <div className="text-3xl font-bold text-accent mb-2">
+                Certified
+              </div>
               <div className="text-muted-foreground">Technicians</div>
             </Card>
             <Card className="text-center p-6">
@@ -447,7 +600,8 @@ export default function Index() {
               Professional Cooling Solutions
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Advanced cooling systems from leading manufacturers for data centers, commercial spaces, and industrial applications
+              Advanced cooling systems from leading manufacturers for data
+              centers, commercial spaces, and industrial applications
             </p>
           </div>
 
@@ -462,9 +616,13 @@ export default function Index() {
                 />
               </div>
               <CardHeader>
-                <CardTitle className="text-2xl">Data Center Cooling Solutions</CardTitle>
+                <CardTitle className="text-2xl">
+                  Data Center Cooling Solutions
+                </CardTitle>
                 <CardDescription className="text-lg">
-                  Complete HVAC infrastructure for large-scale data center operations with precision cooling and optimal airflow management
+                  Complete HVAC infrastructure for large-scale data center
+                  operations with precision cooling and optimal airflow
+                  management
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -483,14 +641,25 @@ export default function Index() {
               <CardHeader>
                 <CardTitle>Liebert SRC - Small Room Cooling</CardTitle>
                 <CardDescription>
-                  Designed for high air quantity to match equipment sensible load application. Features energy-efficient components with advanced control systems.
+                  Designed for high air quantity to match equipment sensible
+                  load application. Features energy-efficient components with
+                  advanced control systems.
                 </CardDescription>
                 <div className="mt-4 space-y-2">
-                  <div className="text-sm"><strong>Models:</strong> SRC003ES, SRC045, SRC07ES</div>
-                  <div className="text-sm"><strong>Capacity:</strong> 2.8 kW - 7.0 kW</div>
-                  <div className="text-sm"><strong>Airflow:</strong> 750 CMH - 1900 CMH</div>
+                  <div className="text-sm">
+                    <strong>Models:</strong> SRC003ES, SRC045, SRC07ES
+                  </div>
+                  <div className="text-sm">
+                    <strong>Capacity:</strong> 2.8 kW - 7.0 kW
+                  </div>
+                  <div className="text-sm">
+                    <strong>Airflow:</strong> 750 CMH - 1900 CMH
+                  </div>
                 </div>
-                <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
+                <Button
+                  variant="outline"
+                  className="mt-4 border-accent text-accent hover:bg-accent hover:text-white"
+                >
                   View Specifications
                 </Button>
               </CardHeader>
@@ -508,14 +677,25 @@ export default function Index() {
               <CardHeader>
                 <CardTitle>Vertiv Liebert PCW - Chilled Water Units</CardTitle>
                 <CardDescription>
-                  Ideal chilled water cooling unit providing efficient solution for data center and server room air conditioning.
+                  Ideal chilled water cooling unit providing efficient solution
+                  for data center and server room air conditioning.
                 </CardDescription>
                 <div className="mt-4 space-y-2">
-                  <div className="text-sm"><strong>Models:</strong> PH170, PH046, PH081, PH066, PH136, PH111, PH091</div>
-                  <div className="text-sm"><strong>Capacity:</strong> 44.9 kW - 171.5 kW</div>
-                  <div className="text-sm"><strong>Airflow:</strong> 11500 CMH - 40700 CMH</div>
+                  <div className="text-sm">
+                    <strong>Models:</strong> PH170, PH046, PH081, PH066, PH136,
+                    PH111, PH091
+                  </div>
+                  <div className="text-sm">
+                    <strong>Capacity:</strong> 44.9 kW - 171.5 kW
+                  </div>
+                  <div className="text-sm">
+                    <strong>Airflow:</strong> 11500 CMH - 40700 CMH
+                  </div>
                 </div>
-                <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
+                <Button
+                  variant="outline"
+                  className="mt-4 border-accent text-accent hover:bg-accent hover:text-white"
+                >
                   View Specifications
                 </Button>
               </CardHeader>
@@ -533,14 +713,25 @@ export default function Index() {
               <CardHeader>
                 <CardTitle>Liebert XDU Coolant Distribution Units</CardTitle>
                 <CardDescription>
-                  Designed to support fluid cooling within high density environments, suitable for chip & rear door cooling applications.
+                  Designed to support fluid cooling within high density
+                  environments, suitable for chip & rear door cooling
+                  applications.
                 </CardDescription>
                 <div className="mt-4 space-y-2">
-                  <div className="text-sm"><strong>Model:</strong> XDU450 Coolant Distribution Unit</div>
-                  <div className="text-sm"><strong>Capacity:</strong> 453 kW at 7.2 °F (4.0 °C)</div>
-                  <div className="text-sm"><strong>Dimensions:</strong> 1900mm H × 600mm W × 1043mm D</div>
+                  <div className="text-sm">
+                    <strong>Model:</strong> XDU450 Coolant Distribution Unit
+                  </div>
+                  <div className="text-sm">
+                    <strong>Capacity:</strong> 453 kW at 7.2 °F (4.0 °C)
+                  </div>
+                  <div className="text-sm">
+                    <strong>Dimensions:</strong> 1900mm H × 600mm W × 1043mm D
+                  </div>
                 </div>
-                <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
+                <Button
+                  variant="outline"
+                  className="mt-4 border-accent text-accent hover:bg-accent hover:text-white"
+                >
                   View Specifications
                 </Button>
               </CardHeader>
@@ -558,14 +749,26 @@ export default function Index() {
               <CardHeader>
                 <CardTitle>Vertiv Liebert EFC - Low-GWP Evaporative</CardTitle>
                 <CardDescription>
-                  Next generation indirect evaporative free cooling unit with low-GWP refrigerant designed for data center applications.
+                  Next generation indirect evaporative free cooling unit with
+                  low-GWP refrigerant designed for data center applications.
                 </CardDescription>
                 <div className="mt-4 space-y-2">
-                  <div className="text-sm"><strong>Range:</strong> 100 to 450 kW</div>
-                  <div className="text-sm"><strong>Technology:</strong> Indirect evaporative cooling with air-to-air heat exchanger</div>
-                  <div className="text-sm"><strong>Efficiency:</strong> Advanced energy efficiency with future-ready refrigerant</div>
+                  <div className="text-sm">
+                    <strong>Range:</strong> 100 to 450 kW
+                  </div>
+                  <div className="text-sm">
+                    <strong>Technology:</strong> Indirect evaporative cooling
+                    with air-to-air heat exchanger
+                  </div>
+                  <div className="text-sm">
+                    <strong>Efficiency:</strong> Advanced energy efficiency with
+                    future-ready refrigerant
+                  </div>
                 </div>
-                <Button variant="outline" className="mt-4 border-accent text-accent hover:bg-accent hover:text-white">
+                <Button
+                  variant="outline"
+                  className="mt-4 border-accent text-accent hover:bg-accent hover:text-white"
+                >
                   View Specifications
                 </Button>
               </CardHeader>
@@ -577,22 +780,30 @@ export default function Index() {
             <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
               <Snowflake className="w-12 h-12 mx-auto mb-4 text-accent" />
               <h3 className="font-semibold mb-2">Precision Cooling</h3>
-              <p className="text-sm text-muted-foreground">Small room and rack cooling solutions</p>
+              <p className="text-sm text-muted-foreground">
+                Small room and rack cooling solutions
+              </p>
             </Card>
             <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
               <Building className="w-12 h-12 mx-auto mb-4 text-accent" />
               <h3 className="font-semibold mb-2">Data Center HVAC</h3>
-              <p className="text-sm text-muted-foreground">Large-scale facility cooling systems</p>
+              <p className="text-sm text-muted-foreground">
+                Large-scale facility cooling systems
+              </p>
             </Card>
             <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
               <ThermometerSun className="w-12 h-12 mx-auto mb-4 text-accent" />
               <h3 className="font-semibold mb-2">Chilled Water</h3>
-              <p className="text-sm text-muted-foreground">Efficient water-based cooling solutions</p>
+              <p className="text-sm text-muted-foreground">
+                Efficient water-based cooling solutions
+              </p>
             </Card>
             <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
               <Settings className="w-12 h-12 mx-auto mb-4 text-accent" />
               <h3 className="font-semibold mb-2">Coolant Distribution</h3>
-              <p className="text-sm text-muted-foreground">Specialized liquid cooling systems</p>
+              <p className="text-sm text-muted-foreground">
+                Specialized liquid cooling systems
+              </p>
             </Card>
           </div>
 
@@ -615,25 +826,34 @@ export default function Index() {
               Why Choose <span className="text-accent">MAYUR AIRCON</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Experience the difference of working with AC specialists who care about your comfort
+              Experience the difference of working with AC specialists who care
+              about your comfort
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center space-y-4">
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
                 <Users className="w-8 h-8 text-accent" />
               </div>
               <h3 className="text-xl font-semibold">Expert Technicians</h3>
-              <p className="text-muted-foreground">Certified professionals with 20+ years of AC installation and service experience</p>
+              <p className="text-muted-foreground">
+                Certified professionals with 20+ years of AC installation and
+                service experience
+              </p>
             </div>
 
             <div className="text-center space-y-4">
               <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto">
                 <Clock className="w-8 h-8 text-accent" />
               </div>
-              <h3 className="text-xl font-semibold">Prompt Service & Support</h3>
-              <p className="text-muted-foreground">Quick response times and 24/7 emergency support for all your AC needs</p>
+              <h3 className="text-xl font-semibold">
+                Prompt Service & Support
+              </h3>
+              <p className="text-muted-foreground">
+                Quick response times and 24/7 emergency support for all your AC
+                needs
+              </p>
             </div>
 
             <div className="text-center space-y-4">
@@ -641,7 +861,10 @@ export default function Index() {
                 <CheckCircle className="w-8 h-8 text-accent" />
               </div>
               <h3 className="text-xl font-semibold">Competitive Pricing</h3>
-              <p className="text-muted-foreground">Affordable rates without compromising on quality or service standards</p>
+              <p className="text-muted-foreground">
+                Affordable rates without compromising on quality or service
+                standards
+              </p>
             </div>
 
             <div className="text-center space-y-4">
@@ -649,7 +872,10 @@ export default function Index() {
                 <Award className="w-8 h-8 text-accent" />
               </div>
               <h3 className="text-xl font-semibold">Branded Products</h3>
-              <p className="text-muted-foreground">Premium AC brands: Daikin, Voltas, LG, Blue Star and more trusted names</p>
+              <p className="text-muted-foreground">
+                Premium AC brands: Daikin, Voltas, LG, Blue Star and more
+                trusted names
+              </p>
             </div>
           </div>
         </div>
@@ -666,10 +892,11 @@ export default function Index() {
               What Our Clients Say
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Trusted by homeowners and businesses across residential, commercial, and industrial sectors
+              Trusted by homeowners and businesses across residential,
+              commercial, and industrial sectors
             </p>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="p-6">
               <div className="space-y-4">
@@ -679,7 +906,9 @@ export default function Index() {
                   ))}
                 </div>
                 <p className="text-muted-foreground">
-                  "Excellent service! Our home AC installation was completed professionally and the cooling is amazing. Highly recommend Prisize."
+                  "Excellent service! Our home AC installation was completed
+                  professionally and the cooling is amazing. Highly recommend
+                  Prisize."
                 </p>
                 <div className="pt-4 border-t">
                   <p className="font-semibold">Rajesh Kumar</p>
@@ -696,11 +925,15 @@ export default function Index() {
                   ))}
                 </div>
                 <p className="text-muted-foreground">
-                  "Professional team, quality products, and reliable AMC service. Our office AC systems have been running perfectly for 3 years."
+                  "Professional team, quality products, and reliable AMC
+                  service. Our office AC systems have been running perfectly for
+                  3 years."
                 </p>
                 <div className="pt-4 border-t">
                   <p className="font-semibold">Priya Sharma</p>
-                  <p className="text-sm text-muted-foreground">Office Manager</p>
+                  <p className="text-sm text-muted-foreground">
+                    Office Manager
+                  </p>
                 </div>
               </div>
             </Card>
@@ -713,11 +946,15 @@ export default function Index() {
                   ))}
                 </div>
                 <p className="text-muted-foreground">
-                  "Quick response for emergency repairs and excellent maintenance service. Trust Prisize for all our hospital AC needs."
+                  "Quick response for emergency repairs and excellent
+                  maintenance service. Trust Prisize for all our hospital AC
+                  needs."
                 </p>
                 <div className="pt-4 border-t">
                   <p className="font-semibold">Dr. Anil Patel</p>
-                  <p className="text-sm text-muted-foreground">Hospital Administrator</p>
+                  <p className="text-sm text-muted-foreground">
+                    Hospital Administrator
+                  </p>
                 </div>
               </div>
             </Card>
@@ -769,31 +1006,34 @@ export default function Index() {
               Get Your Free AC Quote Today
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Ready for cool comfort? Contact us for a free consultation and competitive quote.
+              Ready for cool comfort? Contact us for a free consultation and
+              competitive quote.
             </p>
           </div>
-          
+
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <Card className="p-8">
               <CardHeader className="px-0 pt-0">
                 <CardTitle>Request Your Quote</CardTitle>
-                <CardDescription>Fill out the form and we'll get back to you within 24 hours</CardDescription>
+                <CardDescription>
+                  Fill out the form and we'll get back to you within 24 hours
+                </CardDescription>
               </CardHeader>
               <CardContent className="px-0 space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       placeholder="Your Name"
                       className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                     />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium">Phone</label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       placeholder="+91 XXXXX XXXXX"
                       className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                     />
@@ -801,15 +1041,15 @@ export default function Index() {
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Email</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     placeholder="your@email.com"
                     className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                   />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Message</label>
-                  <textarea 
+                  <textarea
                     placeholder="Tell us about your AC requirements (type, space size, etc.)..."
                     rows={4}
                     className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
@@ -828,8 +1068,12 @@ export default function Index() {
                   <Phone className="w-8 h-8 text-accent mt-1" />
                   <div>
                     <h3 className="font-semibold mb-2">Phone</h3>
-                    <p className="text-muted-foreground mb-2">Available for calls and emergencies</p>
-                    <p className="text-lg font-semibold text-accent">+91 95587 19344</p>
+                    <p className="text-muted-foreground mb-2">
+                      Available for calls and emergencies
+                    </p>
+                    <p className="text-lg font-semibold text-accent">
+                      +91 95587 19344
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -839,8 +1083,12 @@ export default function Index() {
                   <Mail className="w-8 h-8 text-accent mt-1" />
                   <div>
                     <h3 className="font-semibold mb-2">Email</h3>
-                    <p className="text-muted-foreground mb-2">Send us your AC requirements</p>
-                    <p className="text-lg font-semibold text-accent">mayuraircon1684@gmail.com</p>
+                    <p className="text-muted-foreground mb-2">
+                      Send us your AC requirements
+                    </p>
+                    <p className="text-lg font-semibold text-accent">
+                      mayuraircon1684@gmail.com
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -850,7 +1098,9 @@ export default function Index() {
                   <Clock className="w-8 h-8 text-accent mt-1" />
                   <div>
                     <h3 className="font-semibold mb-2">Service Hours</h3>
-                    <p className="text-muted-foreground">Mon-Sat: 9:00 AM - 7:00 PM</p>
+                    <p className="text-muted-foreground">
+                      Mon-Sat: 9:00 AM - 7:00 PM
+                    </p>
                     <p className="text-muted-foreground">Emergency: 24/7</p>
                   </div>
                 </div>
@@ -862,7 +1112,9 @@ export default function Index() {
                   <div className="text-center">
                     <MapPin className="w-12 h-12 mx-auto mb-2 text-accent" />
                     <p className="font-semibold">Service Coverage</p>
-                    <p className="text-sm text-muted-foreground">Homes, Offices, Industries, Malls, Hospitals, Schools</p>
+                    <p className="text-sm text-muted-foreground">
+                      Homes, Offices, Industries, Malls, Hospitals, Schools
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -882,31 +1134,73 @@ export default function Index() {
                 className="h-8 w-auto brightness-0 invert"
               />
               <p className="text-primary-foreground/80">
-                <strong>MAYUR AIRCON</strong> - Professional air conditioning solutions with over 20 years of experience in residential and commercial cooling.
+                <strong>MAYUR AIRCON</strong> - Professional air conditioning
+                solutions with over 20 years of experience in residential and
+                commercial cooling.
               </p>
               <div className="flex space-x-4">
-                <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-primary-foreground hover:bg-primary-foreground/10"
+                >
                   WhatsApp
                 </Button>
-                <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-primary-foreground hover:bg-primary-foreground/10"
+                >
                   Facebook
                 </Button>
-                <Button variant="ghost" size="sm" className="text-primary-foreground hover:bg-primary-foreground/10">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="text-primary-foreground hover:bg-primary-foreground/10"
+                >
                   Instagram
                 </Button>
               </div>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#home" className="hover:text-primary-foreground transition-colors">Home</a></li>
-                <li><a href="#products" className="hover:text-primary-foreground transition-colors">Products</a></li>
-                <li><a href="#services" className="hover:text-primary-foreground transition-colors">Services</a></li>
-                <li><a href="#contact" className="hover:text-primary-foreground transition-colors">Contact</a></li>
+                <li>
+                  <a
+                    href="#home"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#products"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    Contact
+                  </a>
+                </li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-primary-foreground/80">
@@ -916,7 +1210,7 @@ export default function Index() {
                 <li>HVAC Systems</li>
               </ul>
             </div>
-            
+
             <div>
               <h3 className="font-semibold mb-4">Contact Info</h3>
               <ul className="space-y-2 text-primary-foreground/80">
@@ -927,9 +1221,12 @@ export default function Index() {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-primary-foreground/20 mt-12 pt-8 text-center text-primary-foreground/60">
-            <p>&copy; 2025 MAYUR AIRCON. All rights reserved. Expert AC Solutions for Every Space.</p>
+            <p>
+              &copy; 2025 MAYUR AIRCON. All rights reserved. Expert AC Solutions
+              for Every Space.
+            </p>
           </div>
         </div>
       </footer>
