@@ -129,7 +129,7 @@ export default function Index() {
                 Watch How We Bring Cool Comfort to Every Space
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                See our expert technicians installing and servicing AC units with precision and care
+                How AC work
               </p>
             </div>
             <div className="relative max-w-4xl mx-auto">
