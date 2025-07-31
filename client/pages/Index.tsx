@@ -307,8 +307,135 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Safety Section */}
+      <section id="safety" className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4 mb-16">
+            <Badge variant="secondary" className="w-fit mx-auto">
+              Safety First
+            </Badge>
+            <h2 className="text-3xl lg:text-5xl font-bold text-primary">
+              Professional Safety Standards
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Our certified technicians follow strict safety protocols for every installation and service call
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="space-y-6">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-primary">Certified Safety Protocols</h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Every member of our team is trained in the latest safety standards and uses professional-grade protective equipment for all installations and maintenance work.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold">High-Visibility Safety Gear</h4>
+                    <p className="text-muted-foreground">All technicians wear certified hi-vis clothing and protective equipment</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold">Rooftop Installation Safety</h4>
+                    <p className="text-muted-foreground">Specialized training for commercial rooftop HVAC installations</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold">Indoor Installation Protocols</h4>
+                    <p className="text-muted-foreground">Safe and clean indoor installation practices protecting your property</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fc030bc1a761e4a4f98db1013603d8469?format=webp&width=800"
+                alt="Technicians in safety gear working on rooftop HVAC installation"
+                className="w-full h-auto rounded-2xl shadow-lg"
+              />
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="relative order-2 lg:order-1">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F5ee692b8a89b4270a42751566f145cbc?format=webp&width=800"
+                alt="Professional technician installing indoor AC unit"
+                className="w-full h-auto rounded-2xl shadow-lg"
+              />
+            </div>
+
+            <div className="space-y-6 order-1 lg:order-2">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-primary">Professional Installation Standards</h3>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Our indoor installation team maintains the highest standards of professionalism, cleanliness, and safety for residential and commercial properties.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Shield className="w-6 h-6 text-accent mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold">Property Protection</h4>
+                    <p className="text-muted-foreground">Floor coverings and protective measures for all indoor work</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Users className="w-6 h-6 text-accent mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold">Trained Professionals</h4>
+                    <p className="text-muted-foreground">Certified technicians with ongoing safety and technical training</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Award className="w-6 h-6 text-accent mt-0.5" />
+                  <div>
+                    <h4 className="font-semibold">Quality Assurance</h4>
+                    <p className="text-muted-foreground">Every installation is inspected and tested for safety and performance</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Safety Stats */}
+          <div className="grid md:grid-cols-4 gap-8 mt-16">
+            <Card className="text-center p-6">
+              <Shield className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <div className="text-3xl font-bold text-accent mb-2">100%</div>
+              <div className="text-muted-foreground">Safety Compliant</div>
+            </Card>
+            <Card className="text-center p-6">
+              <Users className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <div className="text-3xl font-bold text-accent mb-2">0</div>
+              <div className="text-muted-foreground">Safety Incidents</div>
+            </Card>
+            <Card className="text-center p-6">
+              <Award className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <div className="text-3xl font-bold text-accent mb-2">Certified</div>
+              <div className="text-muted-foreground">Technicians</div>
+            </Card>
+            <Card className="text-center p-6">
+              <CheckCircle className="w-12 h-12 mx-auto mb-4 text-accent" />
+              <div className="text-3xl font-bold text-accent mb-2">Insured</div>
+              <div className="text-muted-foreground">& Bonded</div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Products Section */}
-      <section id="products" className="py-20 bg-muted/30">
+      <section id="products" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center space-y-4 mb-16">
             <Badge variant="secondary" className="w-fit mx-auto">
