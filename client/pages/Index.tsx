@@ -24,8 +24,9 @@ export default function Index() {
             <nav className="hidden lg:flex items-center space-x-8">
               <a href="#home" className="text-foreground hover:text-accent transition-colors font-medium">Home</a>
               <a href="#about" className="text-foreground hover:text-accent transition-colors font-medium">About Us</a>
-              <a href="#products" className="text-foreground hover:text-accent transition-colors font-medium">Products</a>
               <a href="#services" className="text-foreground hover:text-accent transition-colors font-medium">Services</a>
+              <a href="#safety" className="text-foreground hover:text-accent transition-colors font-medium">Safety</a>
+              <a href="#products" className="text-foreground hover:text-accent transition-colors font-medium">Products</a>
               <a href="#clients" className="text-foreground hover:text-accent transition-colors font-medium">Clients</a>
               <a href="#contact" className="text-foreground hover:text-accent transition-colors font-medium">Contact</a>
             </nav>
