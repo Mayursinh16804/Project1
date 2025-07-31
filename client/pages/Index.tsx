@@ -133,20 +133,22 @@ export default function Index() {
               </p>
             </div>
             <div className="relative max-w-4xl mx-auto">
-              <div className="aspect-video bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl flex items-center justify-center border-2 border-dashed border-accent/30">
-                <div className="text-center space-y-4">
-                  <div className="w-20 h-20 mx-auto bg-accent/10 rounded-full flex items-center justify-center">
-                    <Snowflake className="w-10 h-10 text-accent" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">Installation Demo Video</h3>
-                    <p className="text-muted-foreground">Technicians installing & servicing AC units</p>
-                  </div>
-                  <Button className="mt-4 bg-accent hover:bg-accent/90">
-                    <Snowflake className="w-4 h-4 mr-2" />
-                    Play Video
-                  </Button>
-                </div>
+              <div className="aspect-video rounded-2xl overflow-hidden shadow-lg">
+                <video
+                  controls
+                  className="w-full h-full object-cover"
+                  poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjI1IiByPSI0MCIgZmlsbD0iIzBkYzJmZiIgb3BhY2l0eT0iMC4zIi8+CiAgPHBvbHlnb24gcG9pbnRzPSIzODAsMjA1IDM4MCwyNDUgNDIwLDIyNSIgZmlsbD0iI2ZmZmZmZiIvPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjc1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2YjczODAiPkluc3RhbGxhdGlvbiBEZW1vIFZpZGVvPC90ZXh0Pgo8L3N2Zz4K"
+                >
+                  <source
+                    src="https://cdn.builder.io/o/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F598752652fa144c6a1671eca2bc7bd97?alt=media&token=8fb9d776-5b78-40c5-a192-fd3c592ffbdb&apiKey=5a8c30a1b7984e9dbaf0e12f1f3a6110"
+                    type="video/mp4"
+                  />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <div className="text-center mt-6">
+                <p className="text-lg font-semibold text-primary mb-2">Professional AC Installation & Service</p>
+                <p className="text-muted-foreground">Watch our certified technicians demonstrate professional installation techniques and maintenance procedures</p>
               </div>
             </div>
           </div>
