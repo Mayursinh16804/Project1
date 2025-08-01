@@ -144,7 +144,7 @@ export default function Index() {
               <div className="flex items-center gap-8 pt-4">
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                  <span className="font-semibold">20+ Years Experience</span>
+                  <span className="font-semibold">2+ Years Experience</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-5 h-5 text-accent" />
