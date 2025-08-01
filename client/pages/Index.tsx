@@ -840,7 +840,7 @@ export default function Index() {
               </div>
               <h3 className="text-xl font-semibold">Expert Technicians</h3>
               <p className="text-muted-foreground">
-                Certified professionals with 20+ years of AC installation and
+                Certified professionals with 2+ years of AC installation and
                 service experience
               </p>
             </div>
