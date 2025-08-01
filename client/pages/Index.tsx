@@ -253,7 +253,7 @@ export default function Index() {
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   MAYUR AIRCON has been providing reliable air conditioning
-                  solutions for over two decades. We specialize in residential,
+                  solutions for over 2 years. We specialize in residential,
                   commercial, and industrial AC solutions for homes, offices,
                   industries, malls, hospitals, and schools.
                 </p>
