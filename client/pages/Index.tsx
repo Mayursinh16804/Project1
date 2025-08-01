@@ -1238,7 +1238,7 @@ export default function Index() {
               />
               <p className="text-primary-foreground/80">
                 <strong>MAYUR AIRCON</strong> - Professional air conditioning
-                solutions with over 20 years of experience in residential and
+                solutions with over 2 years of experience in residential and
                 commercial cooling.
               </p>
               <div className="flex space-x-4">
