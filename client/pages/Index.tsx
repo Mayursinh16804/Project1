@@ -274,7 +274,7 @@ export default function Index() {
                   <div>
                     <h3 className="font-semibold">Branded Products</h3>
                     <p className="text-muted-foreground">
-                      Premium brands like Daikin, Voltas, LG, Blue Star
+                      Premium brands like Vertiv, Daikin, Voltas, LG, Blue Star
                     </p>
                   </div>
                 </div>
