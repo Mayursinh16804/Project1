@@ -1163,7 +1163,7 @@ export default function Index() {
                   </p>
                   <div className="text-primary-foreground/90 text-lg leading-relaxed space-y-4">
                     <p>
-                      With over two decades of unwavering dedication to the air
+                      With over 5 years of unwavering dedication to the air
                       conditioning industry, Mayursinh Padhiyar founded MAYUR
                       AIRCON with a vision to revolutionize cooling solutions
                       for both residential and commercial sectors.
