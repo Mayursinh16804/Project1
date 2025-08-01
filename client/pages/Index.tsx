@@ -215,6 +215,8 @@ export default function Index() {
                   controls
                   className="w-full h-full object-cover"
                   poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmOWZmIi8+CiAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iMjI1IiByPSI0MCIgZmlsbD0iIzBkYzJmZiIgb3BhY2l0eT0iMC4zIi8+CiAgPHBvbHlnb24gcG9pbnRzPSIzODAsMjA1IDM4MCwyNDUgNDIwLDIyNSIgZmlsbD0iI2ZmZmZmZiIvPgogIDx0ZXh0IHg9IjQwMCIgeT0iMjc1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2YjczODAiPkluc3RhbGxhdGlvbiBEZW1vIFZpZGVvPC90ZXh0Pgo8L3N2Zz4K"
+                  onMouseEnter={(e) => e.currentTarget.play()}
+                  onMouseLeave={(e) => e.currentTarget.pause()}
                 >
                   <source
                     src="https://cdn.builder.io/o/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F598752652fa144c6a1671eca2bc7bd97?alt=media&token=8fb9d776-5b78-40c5-a192-fd3c592ffbdb&apiKey=5a8c30a1b7984e9dbaf0e12f1f3a6110"
