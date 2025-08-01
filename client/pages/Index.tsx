@@ -249,7 +249,7 @@ export default function Index() {
                   About MAYUR AIRCON
                 </Badge>
                 <h2 className="text-3xl lg:text-5xl font-bold text-primary">
-                  Trusted AC Experts with 20+ Years of Experience
+                  Trusted AC Experts with 2+ Years of Experience
                 </h2>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   MAYUR AIRCON has been providing reliable air conditioning
