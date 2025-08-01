@@ -1186,7 +1186,7 @@ export default function Index() {
                   <div className="grid md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-primary-foreground/20">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-accent mb-1">
-                        20+
+                        5+
                       </div>
                       <div className="text-sm text-primary-foreground/80">
                         Years of Experience
