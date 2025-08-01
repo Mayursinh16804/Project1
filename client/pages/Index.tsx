@@ -302,7 +302,7 @@ export default function Index() {
                   <div className="grid grid-cols-2 gap-6">
                     <Card className="text-center p-4">
                       <div className="text-2xl font-bold text-accent mb-1">
-                        20+
+                        2+
                       </div>
                       <div className="text-sm text-muted-foreground">
                         Years Experience
