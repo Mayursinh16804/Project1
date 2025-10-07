@@ -25,6 +25,7 @@ import {
   Building,
   Home,
 } from "lucide-react";
+import { SupportChatWidget } from "@/components/support-chat-widget";
 
 export default function Index() {
   return (
@@ -1333,6 +1334,7 @@ export default function Index() {
           </div>
         </div>
       </footer>
+      <SupportChatWidget />
     </div>
   );
 }
