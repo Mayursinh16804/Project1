@@ -91,8 +91,16 @@ const quickPrompts = [
   },
 ];
 
+const generateMessageId = () => {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+
+  return `${Date.now()}-${Math.random().toString(16).slice(2, 10)}`;
+};
+
 const createMessage = (author: ChatMessage["author"], content: string): ChatMessage => ({
-  id: crypto.randomUUID(),
+  id: generateMessageId(),
   author,
   content,
   timestamp: new Date(),
