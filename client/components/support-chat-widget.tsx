@@ -41,26 +41,24 @@ const conversationFlows: ConversationFlow[] = [
     triggers: ["start", "hello", "hi", "hey", "menu", "help", "begin"],
     response:
       "Hello! Welcome to Mayur Aircon – Commercial & Split AC Solutions. How can I help you today?",
-    followUp:
-      "Main menu options:
+    followUp: `Main menu options:
 • HVAC Services
 • Centralized AC
 • Split (Home) AC
 • AMC / Warranty Support
 • Emergency Service
 • Contact Us
-• Special Offer",
+• Special Offer`,
     category: "general",
   },
   {
     id: "hvac-services",
     triggers: ["hvac", "hvac services", "hvac solution"],
-    response:
-      "We provide complete HVAC Solutions:
+    response: `We provide complete HVAC Solutions:
 • Installation
 • AMC (Annual Maintenance Contracts)
 • Warranty Support
-• Repairs & Maintenance",
+• Repairs & Maintenance`,
     followUp:
       "Would you like to book an appointment, request a quotation, or choose Emergency Service?",
     category: "service",
@@ -68,12 +66,11 @@ const conversationFlows: ConversationFlow[] = [
   {
     id: "centralized-ac",
     triggers: ["centralized", "vrf", "vrv", "ductable", "chiller", "industrial"],
-    response:
-      "We specialise in Commercial & Industrial Centralized AC Systems:
+    response: `We specialise in Commercial & Industrial Centralized AC Systems:
 • VRF / VRV Systems
 • Ductable Units
 • Chillers
-• Energy-Saving Solutions",
+• Energy-Saving Solutions`,
     followUp:
       "Would you like to book an appointment, request a quotation, or choose Emergency Service?",
     category: "service",
@@ -81,13 +78,12 @@ const conversationFlows: ConversationFlow[] = [
   {
     id: "split-ac",
     triggers: ["split", "home ac", "residential", "bedroom", "living room"],
-    response:
-      "We provide complete Split AC Services:
+    response: `We provide complete Split AC Services:
 • Installation
 • Servicing & Repairs
 • Gas Refilling
 • AMC Packages
-• Warranty Support",
+• Warranty Support`,
     followUp:
       "Would you like to book an appointment, check AMC plans, or choose Emergency Service?",
     category: "service",
@@ -95,13 +91,12 @@ const conversationFlows: ConversationFlow[] = [
   {
     id: "book-appointment",
     triggers: ["book appointment", "appointment", "schedule", "book service", "book visit"],
-    response:
-      "Great! Please share these details:
+    response: `Great! Please share these details:
 1. Full Name
 2. Contact Number
 3. Address
 4. Service Type (Installation / AMC / Repair / Warranty / Gas Refilling)
-5. Preferred Date & Time (10 AM – 7 PM)",
+5. Preferred Date & Time (10 AM – 7 PM)` ,
     followUp:
       "Once we receive the details we will confirm your booking. Our team will contact you shortly.",
     category: "service",
@@ -126,20 +121,18 @@ const conversationFlows: ConversationFlow[] = [
   {
     id: "amc-support-menu",
     triggers: ["amc support", "warranty support", "support menu", "service issue", "amc warranty"],
-    response:
-      "Please select the type of support you need:
+    response: `Please select the type of support you need:
 • Breakdown
 • Service Issue
 • Operational Problem (Remote Support)
-• Other Issues",
+• Other Issues`,
     followUp: "Let me know which option fits your situation.",
     category: "support",
   },
   {
     id: "breakdown-check",
     triggers: ["breakdown", "ac stopped", "not working", "service down"],
-    response:
-      "We’re here to help. Is your AC covered under AMC or Warranty?",
+    response: "We’re here to help. Is your AC covered under AMC or Warranty?",
     followUp:
       "Reply with YES if it’s under AMC/Warranty, or NO if it is not, and I’ll guide you next.",
     category: "support",
@@ -147,13 +140,12 @@ const conversationFlows: ConversationFlow[] = [
   {
     id: "breakdown-yes",
     triggers: ["yes under amc", "yes under warranty", "covered", "yes it is covered", "yes its covered"],
-    response:
-      "Please share the following so we can assist quickly:
+    response: `Please share the following so we can assist quickly:
 1. Full Name
 2. Contact Number
 3. Location
 4. Type of AC (Centralized / Split / Other)
-5. A brief description of the problem",
+5. A brief description of the problem`,
     followUp: "Our technician team will attend to your issue as per AMC/Warranty terms.",
     category: "support",
   },
@@ -162,7 +154,8 @@ const conversationFlows: ConversationFlow[] = [
     triggers: ["not covered", "no amc", "no warranty", "no its not covered"],
     response:
       "It looks like your system is not under AMC/Warranty. Don’t worry—you can still book a paid service.",
-    followUp: "Let me redirect you to the service menu so you can choose HVAC, Centralized AC, Split AC, or Emergency Service.",
+    followUp:
+      "Let me redirect you to the service menu so you can choose HVAC, Centralized AC, Split AC, or Emergency Service.",
     category: "support",
   },
   {
@@ -170,7 +163,8 @@ const conversationFlows: ConversationFlow[] = [
     triggers: ["operational problem", "remote support", "not cooling", "unusual noise", "remote not working"],
     response:
       "Please describe your issue (for example: AC not cooling, unusual noise, remote not working).",
-    followUp: "We’ll forward the details to our engineer, and you’ll receive a call within business hours (10 AM – 7 PM) for remote assistance.",
+    followUp:
+      "We’ll forward the details to our engineer, and you’ll receive a call within business hours (10 AM – 7 PM) for remote assistance.",
     category: "support",
   },
   {
@@ -193,11 +187,10 @@ const conversationFlows: ConversationFlow[] = [
   {
     id: "contact-us",
     triggers: ["contact", "reach", "phone", "email", "address"],
-    response:
-      "You can reach us at:
+    response: `You can reach us at:
 • Phone: +91 95587 19344
 • Email: support@mayuraircon.com
-• Office: Ahmedabad, Gujarat",
+• Office: Ahmedabad, Gujarat`,
     followUp:
       "Would you like me to connect you with a customer care executive (available 10 AM – 7 PM, Monday to Saturday)?",
     category: "general",
@@ -294,11 +287,7 @@ const formatFlowResponse = (flow: ConversationFlow) =>
 
 const fallbackMenu = formatFlowResponse(conversationFlows[0]);
 
-const fallbackResponse = `${fallbackMenu}\n\nYou can also type:
-• "Book appointment"
-• "AMC support"
-• "Emergency service"
-• "Contact details"`;
+const fallbackResponse = `${fallbackMenu}\n\nYou can also type:\n• "Book appointment"\n• "AMC support"\n• "Emergency service"\n• "Contact details"`;
 
 const createMessage = (author: ChatMessage["author"], content: string): ChatMessage => ({
   id: generateMessageId(),
