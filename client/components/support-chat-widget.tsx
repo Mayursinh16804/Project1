@@ -21,10 +21,15 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-interface KnowledgeEntry {
+interface ResponseTemplate {
+  title: string;
+  body: string;
+  extra?: string;
+}
+
+interface KnowledgeEntry extends ResponseTemplate {
   id: string;
   keywords: string[];
-  response: string;
 }
 
 const knowledgeBase: KnowledgeEntry[] = [
@@ -38,56 +43,113 @@ const knowledgeBase: KnowledgeEntry[] = [
       "split",
       "duct",
       "hvac",
+      "cassette",
+      "vrf",
     ],
-    response:
-      "We provide complete AC installation for homes, offices, industries, malls, hospitals, and schools. A site visit lets our technicians check capacity, placement, and safety. Once scheduled, our certified team installs, tests, and cleans up the space before handover.",
+    title: "Tailored installation planning",
+    body: "Our engineers survey your site to size the load, map ducting, and finalise mounting points. We install split, ductable, VRF, and precision cooling systems for homes, offices, malls, hospitals, schools, and industrial floors across Gujarat.",
+    extra:
+      "Once approved we coordinate delivery, certified installation, live testing, and a spotless handover so your space is cooling the same day.",
   },
   {
     id: "pricing",
-    keywords: ["price", "cost", "quote", "charges", "budget"],
-    response:
-      "Pricing depends on the type of AC and site conditions. Share the room size or cooling requirement and we will prepare a tailored quote within 24 hours. We also offer free consultations and transparent breakdowns of equipment and labour costs.",
+    keywords: ["price", "cost", "quote", "charges", "budget", "estimate"],
+    title: "Transparent pricing & proposals",
+    body: "Costs depend on capacity, ventilation needs, and whether you choose installation, AMC, or retrofit services. Share room sizes or project drawings and we prepare a detailed quotation within 24 hours, including equipment, labour, and warranty coverage.",
+    extra:
+      "Use the Request a Quote button on the homepage or drop a message here with your requirement to start the pricing process.",
   },
   {
     id: "maintenance",
-    keywords: ["amc", "maintenance", "service", "repair", "clean", "filter"],
-    response:
-      "Our annual maintenance contracts include preventive check-ups, deep cleaning, refrigerant level checks, and emergency visits. If you are facing an issue right now, describe the symptoms and we will arrange a priority technician visit.",
+    keywords: ["amc", "maintenance", "service", "repair", "clean", "filter", "tune"],
+    title: "Preventive maintenance & AMC",
+    body: "Choose quarterly or customised AMC plans that cover coil cleaning, refrigerant top-ups, electrical checks, and performance audits. Preventive visits keep energy bills low and extend equipment life.",
+    extra:
+      "If you are facing an issue right now, describe the symptom and we'll assign the nearest technician with priority scheduling.",
   },
   {
     id: "products",
-    keywords: ["product", "model", "brand", "catalog", "equipment", "data center"],
-    response:
-      "We work with leading brands such as Vertiv, Daikin, Voltas, LG, and Blue Star. For precision cooling and data center applications we recommend Vertiv Liebert solutions including SRC, PCW, XDU, and EFC ranges. I can help you compare specifications or schedule a demo.",
+    keywords: ["product", "model", "brand", "catalog", "equipment", "data center", "precision"],
+    title: "Precision cooling portfolio",
+    body: "We partner with Vertiv, Daikin, Voltas, LG, Blue Star, and more. For data centres we recommend Vertiv Liebert SRC, PCW, XDU, and EFC solutions that keep mission-critical rooms stable and energy-efficient.",
+    extra:
+      "Tell us your rack load or server hall size and we will shortlist models, share datasheets, and organise demonstrations.",
   },
   {
     id: "emergency",
-    keywords: ["emergency", "urgent", "24/7", "breakdown", "immediate"],
-    response:
-      "Our support desk is available 24/7 for urgent breakdowns. Call +91 95587 19344 and we will dispatch the on-call technician. For non-critical issues you can also email mayuraircon1684@gmail.com and we will respond promptly.",
+    keywords: ["emergency", "urgent", "24/7", "breakdown", "immediate", "faster"],
+    title: "Rapid-response emergency desk",
+    body: "Our service desk is available day and night. On-call technicians cover Ahmedabad, Gandhinagar, and nearby industrial parks with stocked spares to get critical systems running.",
+    extra:
+      "Call +91 95587 19344 for urgent help or WhatsApp the same number with photos/videos so we can dispatch the right specialist immediately.",
+  },
+  {
+    id: "energy",
+    keywords: ["energy", "efficient", "savings", "green", "inverter", "power"],
+    title: "Energy-efficient recommendations",
+    body: "We prioritise inverter and VRF systems, programmable thermostats, and proper insulation to reduce power consumption. Our AMC checklist covers coil cleaning and refrigerant optimisation to keep units operating at peak efficiency.",
+    extra:
+      "Share your monthly usage or existing tonnage distribution and we will suggest upgrades that can reduce bills by up to 25%.",
+  },
+  {
+    id: "commercial",
+    keywords: ["commercial", "office", "mall", "corporate", "factory", "industrial", "hospital"],
+    title: "Commercial & industrial expertise",
+    body: "With 5000+ installations, we manage turnkey HVAC for corporate offices, retail, clean rooms, hospitals, and manufacturing floors. Our team handles duct design, BMS integration, and compliance documentation.",
+    extra:
+      "We also retrofit legacy systems with modern, energy-efficient units to minimise downtime during upgrades.",
+  },
+  {
+    id: "residential",
+    keywords: ["home", "apartment", "villa", "bedroom", "living"],
+    title: "Comfort-focused home solutions",
+    body: "From single bedrooms to entire villas, we balance aesthetics with airflow using concealed piping, cassette units, and designer grills. We advise on silent operation and smart controls for effortless comfort.",
+    extra:
+      "Let us know the number of rooms and sun exposure so we can suggest the ideal tonnage mix and indoor unit styles.",
+  },
+  {
+    id: "experience",
+    keywords: ["experience", "years", "clients", "projects", "trust"],
+    title: "Proven track record",
+    body: "MAYUR AIRCON brings 2+ years of focused expertise with 5000+ successful projects. Our clientele spans residences, corporates, and data centres that rely on our 24/7 support.",
+    extra:
+      "Customer satisfaction is 100%, backed by repeat AMC renewals and long-term service relationships.",
+  },
+  {
+    id: "contact",
+    keywords: ["contact", "phone", "email", "reach", "call", "whatsapp"],
+    title: "Ways to reach us",
+    body: "You can call +91 95587 19344, email mayuraircon1684@gmail.com, or use the Request a Quote form on the homepage. We're also active on WhatsApp, Facebook, and Instagram for quick updates.",
+    extra:
+      "Office support hours are Monday to Saturday, 9:00 AM – 7:00 PM, with emergency response available 24/7.",
   },
 ];
 
 const quickPrompts = [
   {
-    id: "quick-install",
-    label: "Need AC installation",
-    message: "I need help planning a new AC installation",
+    id: "quick-home",
+    label: "Plan cooling for my home",
+    message: "Can you help me choose the right AC combination for my home?",
   },
   {
-    id: "quick-quote",
-    label: "Request pricing",
-    message: "Can I get a quote for maintenance and service?",
+    id: "quick-office",
+    label: "Office HVAC guidance",
+    message: "I need HVAC recommendations for a new corporate office floor plan.",
+  },
+  {
+    id: "quick-maintenance",
+    label: "Book AMC visit",
+    message: "How do I schedule preventive maintenance for our existing AC units?",
+  },
+  {
+    id: "quick-energy",
+    label: "Cut energy usage",
+    message: "What steps can reduce power consumption without losing cooling?",
   },
   {
     id: "quick-emergency",
-    label: "Emergency support",
-    message: "What should I do for an emergency AC breakdown?",
-  },
-  {
-    id: "quick-products",
-    label: "Product options",
-    message: "Which precision cooling products do you recommend?",
+    label: "Emergency breakdown",
+    message: "My cooling system just failed. What should I do immediately?",
   },
 ];
 
@@ -98,6 +160,59 @@ const generateMessageId = () => {
 
   return `${Date.now()}-${Math.random().toString(16).slice(2, 10)}`;
 };
+
+const chooseRandom = <T,>(items: T[]): T => items[Math.floor(Math.random() * items.length)];
+
+const fallbackResponses: ResponseTemplate[] = [
+  {
+    title: "Complete AC solutions under one roof",
+    body: "We deliver end-to-end cooling support — surveys, design, installation, AMC, and emergency repair — for residential and commercial spaces across Ahmedabad and Gujarat.",
+    extra:
+      "Share your space type, tonnage requirement, or any challenge you're facing and I'll loop in the right specialist from our team.",
+  },
+  {
+    title: "From comfort cooling to data centres",
+    body: "Whether it's a living room, an open-plan office, or a precision-cooled server hall, we deploy the right combination of split units, VRF technology, and Vertiv Liebert systems to keep temperatures stable.",
+    extra:
+      "Let me know the environment you're cooling and I can suggest the next steps or send product comparisons.",
+  },
+  {
+    title: "Here to make cooling effortless",
+    body: "Our process covers consultation, customised proposals, professional installation, and lifelong support. Clients appreciate our punctual service window and transparent communication.",
+    extra:
+      "Ask anything — sizing, maintenance schedules, or upgrade ideas — and I'll guide you to the best answer.",
+  },
+];
+
+const fallbackSpecialCases: Array<{
+  predicate: (text: string) => boolean;
+  template: ResponseTemplate;
+}> = [
+  {
+    predicate: (text) => /(hello|hi|hey|namaste)/.test(text),
+    template: {
+      title: "Welcome to MAYUR AIRCON support",
+      body: "Great to hear from you! I'm here to answer cooling questions, arrange technician visits, or prepare quotes tailored to your project.",
+      extra:
+        "Pick one of the quick help topics or type your question and I'll respond with the best guidance from our specialists.",
+    },
+  },
+  {
+    predicate: (text) => /(thank|thanks|thank you|great)/.test(text),
+    template: {
+      title: "Happy to help",
+      body: "We're glad the information helped. If you need further assistance with installation, AMC scheduling, or emergency support, we're only a message away.",
+      extra:
+        "Let me know if you'd like me to connect you directly with our technical or sales team for the next steps.",
+    },
+  },
+];
+
+const contactFooters = [
+  "Prefer a human conversation? Call +91 95587 19344 or email mayuraircon1684@gmail.com for direct assistance.",
+  "Need a quicker response? Send your requirement on WhatsApp at +91 95587 19344 and our on-duty engineer will reply.",
+  "You can also book a site visit through the Request a Quote button on our homepage or by emailing mayuraircon1684@gmail.com.",
+];
 
 const createMessage = (author: ChatMessage["author"], content: string): ChatMessage => ({
   id: generateMessageId(),
@@ -119,30 +234,48 @@ export function SupportChatWidget() {
   const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
   const typingTimeoutRef = useRef<number>();
 
-  const reachableResponse =
-    "For immediate assistance call +91 95587 19344 or email mayuraircon1684@gmail.com. We're available Monday to Saturday 9:00 AM – 7:00 PM with emergency service 24/7.";
+  const formatTemplate = useCallback((template: ResponseTemplate) => {
+    const sections = [template.title, template.body];
 
-  const matchKnowledge = useCallback((message: string): string => {
-    const normalised = message.toLowerCase();
-
-    const matchedEntry = knowledgeBase.find((entry) =>
-      entry.keywords.some((keyword) => normalised.includes(keyword))
-    );
-
-    if (matchedEntry) {
-      return matchedEntry.response;
+    if (template.extra) {
+      sections.push(template.extra);
     }
 
-    return "Thanks for reaching out! Share your AC requirements, the space size, and any timelines. I'll pass this to our specialists so they can prepare the right solution for you.";
+    return sections.join("\n\n");
   }, []);
+
+  const buildKnowledgeResponse = useCallback(
+    (message: string): string => {
+      const normalized = message.toLowerCase();
+      const matchedEntries = knowledgeBase.filter((entry) =>
+        entry.keywords.some((keyword) => normalized.includes(keyword))
+      );
+
+      if (matchedEntries.length > 0) {
+        return matchedEntries.map((entry) => formatTemplate(entry)).join("\n\n");
+      }
+
+      const specialFallback = fallbackSpecialCases.find((item) => item.predicate(normalized));
+
+      if (specialFallback) {
+        return formatTemplate(specialFallback.template);
+      }
+
+      return formatTemplate(chooseRandom(fallbackResponses));
+    },
+    [formatTemplate],
+  );
 
   const respondToUser = useCallback(
     (userContent: string) => {
       setIsThinking(true);
 
+      const messageBody = buildKnowledgeResponse(userContent);
+      const footer = chooseRandom(contactFooters);
+
       const botMessage = createMessage(
         "bot",
-        `${matchKnowledge(userContent)}\n\n${reachableResponse}`,
+        `${messageBody}\n\n${footer}`,
       );
 
       typingTimeoutRef.current = window.setTimeout(() => {
@@ -150,7 +283,7 @@ export function SupportChatWidget() {
         setIsThinking(false);
       }, 650);
     },
-    [matchKnowledge, reachableResponse],
+    [buildKnowledgeResponse],
   );
 
   const handleSubmit = useCallback(
@@ -199,7 +332,7 @@ export function SupportChatWidget() {
 
   const assistantSummary = useMemo(
     () =>
-      "Over 2 years of experience • 5000+ installations • Trusted 24/7 support",
+      "End-to-end AC design, installation, AMC, and emergency support across Gujarat",
     [],
   );
 
