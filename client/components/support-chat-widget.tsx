@@ -21,137 +21,263 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-interface ResponseTemplate {
-  title: string;
-  body: string;
-  extra?: string;
-}
-
-interface KnowledgeEntry extends ResponseTemplate {
+interface ConversationFlow {
   id: string;
-  keywords: string[];
+  triggers: string[];
+  response: string;
+  followUp?: string;
+  category?: "service" | "support" | "general";
 }
 
-const knowledgeBase: KnowledgeEntry[] = [
+interface QuickPrompt {
+  id: string;
+  label: string;
+  message: string;
+}
+
+const conversationFlows: ConversationFlow[] = [
   {
-    id: "installation",
-    keywords: [
-      "install",
-      "installation",
-      "setup",
-      "new ac",
-      "split",
-      "duct",
-      "hvac",
-      "cassette",
-      "vrf",
-    ],
-    title: "Tailored installation planning",
-    body: "Our engineers survey your site to size the load, map ducting, and finalise mounting points. We install split, ductable, VRF, and precision cooling systems for homes, offices, malls, hospitals, schools, and industrial floors across Gujarat.",
-    extra:
-      "Once approved we coordinate delivery, certified installation, live testing, and a spotless handover so your space is cooling the same day.",
+    id: "main-menu",
+    triggers: ["start", "hello", "hi", "hey", "menu", "help", "begin"],
+    response:
+      "Hello! Welcome to Mayur Aircon – Commercial & Split AC Solutions. How can I help you today?",
+    followUp:
+      "Main menu options:
+• HVAC Services
+• Centralized AC
+• Split (Home) AC
+• AMC / Warranty Support
+• Emergency Service
+• Contact Us
+• Special Offer",
+    category: "general",
   },
   {
-    id: "pricing",
-    keywords: ["price", "cost", "quote", "charges", "budget", "estimate"],
-    title: "Transparent pricing & proposals",
-    body: "Costs depend on capacity, ventilation needs, and whether you choose installation, AMC, or retrofit services. Share room sizes or project drawings and we prepare a detailed quotation within 24 hours, including equipment, labour, and warranty coverage.",
-    extra:
-      "Use the Request a Quote button on the homepage or drop a message here with your requirement to start the pricing process.",
+    id: "hvac-services",
+    triggers: ["hvac", "hvac services", "hvac solution"],
+    response:
+      "We provide complete HVAC Solutions:
+• Installation
+• AMC (Annual Maintenance Contracts)
+• Warranty Support
+• Repairs & Maintenance",
+    followUp:
+      "Would you like to book an appointment, request a quotation, or choose Emergency Service?",
+    category: "service",
   },
   {
-    id: "maintenance",
-    keywords: ["amc", "maintenance", "service", "repair", "clean", "filter", "tune"],
-    title: "Preventive maintenance & AMC",
-    body: "Choose quarterly or customised AMC plans that cover coil cleaning, refrigerant top-ups, electrical checks, and performance audits. Preventive visits keep energy bills low and extend equipment life.",
-    extra:
-      "If you are facing an issue right now, describe the symptom and we'll assign the nearest technician with priority scheduling.",
+    id: "centralized-ac",
+    triggers: ["centralized", "vrf", "vrv", "ductable", "chiller", "industrial"],
+    response:
+      "We specialise in Commercial & Industrial Centralized AC Systems:
+• VRF / VRV Systems
+• Ductable Units
+• Chillers
+• Energy-Saving Solutions",
+    followUp:
+      "Would you like to book an appointment, request a quotation, or choose Emergency Service?",
+    category: "service",
   },
   {
-    id: "products",
-    keywords: ["product", "model", "brand", "catalog", "equipment", "data center", "precision"],
-    title: "Precision cooling portfolio",
-    body: "We partner with Vertiv, Daikin, Voltas, LG, Blue Star, and more. For data centres we recommend Vertiv Liebert SRC, PCW, XDU, and EFC solutions that keep mission-critical rooms stable and energy-efficient.",
-    extra:
-      "Tell us your rack load or server hall size and we will shortlist models, share datasheets, and organise demonstrations.",
+    id: "split-ac",
+    triggers: ["split", "home ac", "residential", "bedroom", "living room"],
+    response:
+      "We provide complete Split AC Services:
+• Installation
+• Servicing & Repairs
+• Gas Refilling
+• AMC Packages
+• Warranty Support",
+    followUp:
+      "Would you like to book an appointment, check AMC plans, or choose Emergency Service?",
+    category: "service",
   },
   {
-    id: "emergency",
-    keywords: ["emergency", "urgent", "24/7", "breakdown", "immediate", "faster"],
-    title: "Rapid-response emergency desk",
-    body: "Our service desk is available day and night. On-call technicians cover Ahmedabad, Gandhinagar, and nearby industrial parks with stocked spares to get critical systems running.",
-    extra:
-      "Call +91 95587 19344 for urgent help or WhatsApp the same number with photos/videos so we can dispatch the right specialist immediately.",
+    id: "book-appointment",
+    triggers: ["book appointment", "appointment", "schedule", "book service", "book visit"],
+    response:
+      "Great! Please share these details:
+1. Full Name
+2. Contact Number
+3. Address
+4. Service Type (Installation / AMC / Repair / Warranty / Gas Refilling)
+5. Preferred Date & Time (10 AM – 7 PM)",
+    followUp:
+      "Once we receive the details we will confirm your booking. Our team will contact you shortly.",
+    category: "service",
   },
   {
-    id: "energy",
-    keywords: ["energy", "efficient", "savings", "green", "inverter", "power"],
-    title: "Energy-efficient recommendations",
-    body: "We prioritise inverter and VRF systems, programmable thermostats, and proper insulation to reduce power consumption. Our AMC checklist covers coil cleaning and refrigerant optimisation to keep units operating at peak efficiency.",
-    extra:
-      "Share your monthly usage or existing tonnage distribution and we will suggest upgrades that can reduce bills by up to 25%.",
+    id: "amc-offer",
+    triggers: ["12 month amc", "12-month amc", "amc special", "amc offer", "annual maintenance"],
+    response:
+      "Special Offer: When you buy a 12-month AMC, you get 1 extra month FREE—13 months of total coverage!",
+    followUp: "Shall I continue with the AMC booking flow for you?",
+    category: "service",
   },
   {
-    id: "commercial",
-    keywords: ["commercial", "office", "mall", "corporate", "factory", "industrial", "hospital"],
-    title: "Commercial & industrial expertise",
-    body: "With 5000+ installations, we manage turnkey HVAC for corporate offices, retail, clean rooms, hospitals, and manufacturing floors. Our team handles duct design, BMS integration, and compliance documentation.",
-    extra:
-      "We also retrofit legacy systems with modern, energy-efficient units to minimise downtime during upgrades.",
+    id: "emergency-service",
+    triggers: ["emergency", "urgent", "breakdown now", "immediate", "24/7"],
+    response:
+      "Emergency Service is available 24/7. Please note: emergency charges are higher than normal services. Do you want to proceed?",
+    followUp:
+      "If yes, share your name, contact number, address, and the problem. Our technician will contact you within 2 hours.",
+    category: "service",
   },
   {
-    id: "residential",
-    keywords: ["home", "apartment", "villa", "bedroom", "living"],
-    title: "Comfort-focused home solutions",
-    body: "From single bedrooms to entire villas, we balance aesthetics with airflow using concealed piping, cassette units, and designer grills. We advise on silent operation and smart controls for effortless comfort.",
-    extra:
-      "Let us know the number of rooms and sun exposure so we can suggest the ideal tonnage mix and indoor unit styles.",
+    id: "amc-support-menu",
+    triggers: ["amc support", "warranty support", "support menu", "service issue", "amc warranty"],
+    response:
+      "Please select the type of support you need:
+• Breakdown
+• Service Issue
+• Operational Problem (Remote Support)
+• Other Issues",
+    followUp: "Let me know which option fits your situation.",
+    category: "support",
   },
   {
-    id: "experience",
-    keywords: ["experience", "years", "clients", "projects", "trust"],
-    title: "Proven track record",
-    body: "MAYUR AIRCON brings 2+ years of focused expertise with 5000+ successful projects. Our clientele spans residences, corporates, and data centres that rely on our 24/7 support.",
-    extra:
-      "Customer satisfaction is 100%, backed by repeat AMC renewals and long-term service relationships.",
+    id: "breakdown-check",
+    triggers: ["breakdown", "ac stopped", "not working", "service down"],
+    response:
+      "We’re here to help. Is your AC covered under AMC or Warranty?",
+    followUp:
+      "Reply with YES if it’s under AMC/Warranty, or NO if it is not, and I’ll guide you next.",
+    category: "support",
   },
   {
-    id: "contact",
-    keywords: ["contact", "phone", "email", "reach", "call", "whatsapp"],
-    title: "Ways to reach us",
-    body: "You can call +91 95587 19344, email mayuraircon1684@gmail.com, or use the Request a Quote form on the homepage. We're also active on WhatsApp, Facebook, and Instagram for quick updates.",
-    extra:
-      "Office support hours are Monday to Saturday, 9:00 AM – 7:00 PM, with emergency response available 24/7.",
+    id: "breakdown-yes",
+    triggers: ["yes under amc", "yes under warranty", "covered", "yes it is covered", "yes its covered"],
+    response:
+      "Please share the following so we can assist quickly:
+1. Full Name
+2. Contact Number
+3. Location
+4. Type of AC (Centralized / Split / Other)
+5. A brief description of the problem",
+    followUp: "Our technician team will attend to your issue as per AMC/Warranty terms.",
+    category: "support",
+  },
+  {
+    id: "breakdown-no",
+    triggers: ["not covered", "no amc", "no warranty", "no its not covered"],
+    response:
+      "It looks like your system is not under AMC/Warranty. Don’t worry—you can still book a paid service.",
+    followUp: "Let me redirect you to the service menu so you can choose HVAC, Centralized AC, Split AC, or Emergency Service.",
+    category: "support",
+  },
+  {
+    id: "operational-problem",
+    triggers: ["operational problem", "remote support", "not cooling", "unusual noise", "remote not working"],
+    response:
+      "Please describe your issue (for example: AC not cooling, unusual noise, remote not working).",
+    followUp: "We’ll forward the details to our engineer, and you’ll receive a call within business hours (10 AM – 7 PM) for remote assistance.",
+    category: "support",
+  },
+  {
+    id: "requires-visit",
+    triggers: ["requires visit", "need visit", "technician visit", "on-site"],
+    response:
+      "This problem requires an on-site visit. Our service team will be assigned to help you.",
+    followUp:
+      "Please share your name, contact number, address, and issue details so we can confirm the appointment.",
+    category: "support",
+  },
+  {
+    id: "after-service",
+    triggers: ["follow up", "after service", "status", "issue resolved"],
+    response: "Was your issue resolved successfully?",
+    followUp:
+      "If yes, I can help with anything else you need. If not, I’ll reopen the case and escalate it for faster resolution.",
+    category: "support",
+  },
+  {
+    id: "contact-us",
+    triggers: ["contact", "reach", "phone", "email", "address"],
+    response:
+      "You can reach us at:
+• Phone: +91 95587 19344
+• Email: support@mayuraircon.com
+• Office: Ahmedabad, Gujarat",
+    followUp:
+      "Would you like me to connect you with a customer care executive (available 10 AM – 7 PM, Monday to Saturday)?",
+    category: "general",
+  },
+  {
+    id: "talk-to-executive",
+    triggers: ["talk to executive", "customer care", "human agent", "speak to representative", "support hours"],
+    response:
+      "I’ll connect you to a customer care executive. Support hours are 10 AM – 7 PM (Mon–Sat).",
+    followUp:
+      "If we’re outside support hours, please leave your contact details and a brief message so the team can reach you.",
+    category: "general",
+  },
+  {
+    id: "feedback",
+    triggers: ["feedback", "rate", "rating", "review"],
+    response:
+      "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
+    followUp: "Thank you for your feedback! We’ll keep improving to serve you better.",
+    category: "general",
   },
 ];
 
-const quickPrompts = [
+const quickPrompts: QuickPrompt[] = [
   {
-    id: "quick-home",
-    label: "Plan cooling for my home",
-    message: "Can you help me choose the right AC combination for my home?",
+    id: "prompt-start",
+    label: "Show service menu",
+    message: "Show me the service menu",
   },
   {
-    id: "quick-office",
-    label: "Office HVAC guidance",
-    message: "I need HVAC recommendations for a new corporate office floor plan.",
+    id: "prompt-hvac",
+    label: "Explore HVAC",
+    message: "Tell me about your HVAC services",
   },
   {
-    id: "quick-maintenance",
-    label: "Book AMC visit",
-    message: "How do I schedule preventive maintenance for our existing AC units?",
+    id: "prompt-central",
+    label: "Centralized AC",
+    message: "Do you handle centralized AC systems?",
   },
   {
-    id: "quick-energy",
-    label: "Cut energy usage",
-    message: "What steps can reduce power consumption without losing cooling?",
+    id: "prompt-split",
+    label: "Split AC help",
+    message: "I need support for a split AC",
   },
   {
-    id: "quick-emergency",
-    label: "Emergency breakdown",
-    message: "My cooling system just failed. What should I do immediately?",
+    id: "prompt-emergency",
+    label: "Emergency help",
+    message: "I need emergency AC service",
+  },
+  {
+    id: "prompt-book",
+    label: "Book appointment",
+    message: "I want to book an appointment",
+  },
+  {
+    id: "prompt-amc",
+    label: "AMC support",
+    message: "I need AMC or warranty assistance",
+  },
+  {
+    id: "prompt-contact",
+    label: "Contact details",
+    message: "How do I contact Mayur Aircon?",
   },
 ];
+
+const contactFooters = [
+  "Prefer to talk to us directly? Call +91 95587 19344 or WhatsApp the same number for quick support.",
+  "Need a personal touch? Email support@mayuraircon.com and our desk will respond during business hours.",
+  "Want a site visit? Use the Request a Quote button on our homepage or share your details here to schedule one.",
+];
+
+const serviceFlowIds = new Set([
+  "hvac-services",
+  "centralized-ac",
+  "split-ac",
+  "book-appointment",
+  "amc-offer",
+  "emergency-service",
+]);
 
 const generateMessageId = () => {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
@@ -163,56 +289,16 @@ const generateMessageId = () => {
 
 const chooseRandom = <T,>(items: T[]): T => items[Math.floor(Math.random() * items.length)];
 
-const fallbackResponses: ResponseTemplate[] = [
-  {
-    title: "Complete AC solutions under one roof",
-    body: "We deliver end-to-end cooling support — surveys, design, installation, AMC, and emergency repair — for residential and commercial spaces across Ahmedabad and Gujarat.",
-    extra:
-      "Share your space type, tonnage requirement, or any challenge you're facing and I'll loop in the right specialist from our team.",
-  },
-  {
-    title: "From comfort cooling to data centres",
-    body: "Whether it's a living room, an open-plan office, or a precision-cooled server hall, we deploy the right combination of split units, VRF technology, and Vertiv Liebert systems to keep temperatures stable.",
-    extra:
-      "Let me know the environment you're cooling and I can suggest the next steps or send product comparisons.",
-  },
-  {
-    title: "Here to make cooling effortless",
-    body: "Our process covers consultation, customised proposals, professional installation, and lifelong support. Clients appreciate our punctual service window and transparent communication.",
-    extra:
-      "Ask anything — sizing, maintenance schedules, or upgrade ideas — and I'll guide you to the best answer.",
-  },
-];
+const formatFlowResponse = (flow: ConversationFlow) =>
+  flow.followUp ? `${flow.response}\n\n${flow.followUp}` : flow.response;
 
-const fallbackSpecialCases: Array<{
-  predicate: (text: string) => boolean;
-  template: ResponseTemplate;
-}> = [
-  {
-    predicate: (text) => /(hello|hi|hey|namaste)/.test(text),
-    template: {
-      title: "Welcome to MAYUR AIRCON support",
-      body: "Great to hear from you! I'm here to answer cooling questions, arrange technician visits, or prepare quotes tailored to your project.",
-      extra:
-        "Pick one of the quick help topics or type your question and I'll respond with the best guidance from our specialists.",
-    },
-  },
-  {
-    predicate: (text) => /(thank|thanks|thank you|great)/.test(text),
-    template: {
-      title: "Happy to help",
-      body: "We're glad the information helped. If you need further assistance with installation, AMC scheduling, or emergency support, we're only a message away.",
-      extra:
-        "Let me know if you'd like me to connect you directly with our technical or sales team for the next steps.",
-    },
-  },
-];
+const fallbackMenu = formatFlowResponse(conversationFlows[0]);
 
-const contactFooters = [
-  "Prefer a human conversation? Call +91 95587 19344 or email mayuraircon1684@gmail.com for direct assistance.",
-  "Need a quicker response? Send your requirement on WhatsApp at +91 95587 19344 and our on-duty engineer will reply.",
-  "You can also book a site visit through the Request a Quote button on our homepage or by emailing mayuraircon1684@gmail.com.",
-];
+const fallbackResponse = `${fallbackMenu}\n\nYou can also type:
+• "Book appointment"
+• "AMC support"
+• "Emergency service"
+• "Contact details"`;
 
 const createMessage = (author: ChatMessage["author"], content: string): ChatMessage => ({
   id: generateMessageId(),
@@ -227,55 +313,49 @@ export function SupportChatWidget() {
   const [messages, setMessages] = useState<ChatMessage[]>(() => [
     createMessage(
       "bot",
-      "Hi! I'm the MAYUR AIRCON support assistant. Ask me about installations, maintenance plans, or product recommendations."
+      formatFlowResponse(conversationFlows[0]),
     ),
   ]);
   const [isThinking, setIsThinking] = useState(false);
+  const [hasShownFirstServiceOffer, setHasShownFirstServiceOffer] = useState(false);
   const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
   const typingTimeoutRef = useRef<number>();
-
-  const formatTemplate = useCallback((template: ResponseTemplate) => {
-    const sections = [template.title, template.body];
-
-    if (template.extra) {
-      sections.push(template.extra);
-    }
-
-    return sections.join("\n\n");
-  }, []);
-
-  const buildKnowledgeResponse = useCallback(
-    (message: string): string => {
-      const normalized = message.toLowerCase();
-      const matchedEntries = knowledgeBase.filter((entry) =>
-        entry.keywords.some((keyword) => normalized.includes(keyword))
-      );
-
-      if (matchedEntries.length > 0) {
-        return matchedEntries.map((entry) => formatTemplate(entry)).join("\n\n");
-      }
-
-      const specialFallback = fallbackSpecialCases.find((item) => item.predicate(normalized));
-
-      if (specialFallback) {
-        return formatTemplate(specialFallback.template);
-      }
-
-      return formatTemplate(chooseRandom(fallbackResponses));
-    },
-    [formatTemplate],
-  );
 
   const respondToUser = useCallback(
     (userContent: string) => {
       setIsThinking(true);
+      const normalized = userContent.toLowerCase();
 
-      const messageBody = buildKnowledgeResponse(userContent);
-      const footer = chooseRandom(contactFooters);
+      const matchedFlows = conversationFlows.filter((flow) =>
+        flow.triggers.some((trigger) => normalized.includes(trigger)),
+      );
+
+      const messageSections: string[] = [];
+
+      if (matchedFlows.length > 0) {
+        matchedFlows.forEach((flow) => {
+          messageSections.push(formatFlowResponse(flow));
+        });
+
+        const includesServiceFlow = matchedFlows.some((flow) =>
+          serviceFlowIds.has(flow.id),
+        );
+
+        if (includesServiceFlow && !hasShownFirstServiceOffer) {
+          messageSections.push(
+            "Great news! Since this is your first booking with Mayur Aircon, you get 10% OFF on your first service bill.",
+          );
+          setHasShownFirstServiceOffer(true);
+        }
+      } else {
+        messageSections.push(fallbackResponse);
+      }
+
+      messageSections.push(chooseRandom(contactFooters));
 
       const botMessage = createMessage(
         "bot",
-        `${messageBody}\n\n${footer}`,
+        messageSections.join("\n\n"),
       );
 
       typingTimeoutRef.current = window.setTimeout(() => {
@@ -283,7 +363,7 @@ export function SupportChatWidget() {
         setIsThinking(false);
       }, 650);
     },
-    [buildKnowledgeResponse],
+    [hasShownFirstServiceOffer],
   );
 
   const handleSubmit = useCallback(
@@ -378,9 +458,7 @@ export function SupportChatWidget() {
                 >
                   <div
                     className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
-                      isBot
-                        ? "bg-white text-primary"
-                        : "bg-accent text-white"
+                      isBot ? "bg-white text-primary" : "bg-accent text-white"
                     }`}
                   >
                     {paragraphs.map((text, index) => (
@@ -388,9 +466,11 @@ export function SupportChatWidget() {
                         {text}
                       </p>
                     ))}
-                    <span className={`mt-2 block text-[10px] uppercase tracking-wide ${
-                      isBot ? "text-muted-foreground" : "text-accent-foreground/80"
-                    }`}>
+                    <span
+                      className={`mt-2 block text-[10px] uppercase tracking-wide ${
+                        isBot ? "text-muted-foreground" : "text-accent-foreground/80"
+                      }`}
+                    >
                       {message.timestamp.toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
