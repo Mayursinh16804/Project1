@@ -320,7 +320,9 @@ export function SupportChatWidget() {
     textarea.style.height = "auto";
 
     const computed = window.getComputedStyle(textarea);
-    const lineHeight = parseFloat(computed.lineHeight || "20");
+    const rawLineHeight = parseFloat(computed.lineHeight);
+    const fontSize = parseFloat(computed.fontSize || "16");
+    const lineHeight = Number.isNaN(rawLineHeight) ? fontSize * 1.4 : rawLineHeight;
     const baseHeight = lineHeight || 20;
     const maxHeight = baseHeight * 4;
     const scrollHeight = textarea.scrollHeight;
