@@ -512,22 +512,29 @@ export function SupportChatWidget() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-2">
-          <Textarea
-            value={inputValue}
-            onChange={(event) => setInputValue(event.target.value)}
-            placeholder="Type your question..."
-            disabled={isThinking}
-            aria-label="Message support"
-            className="min-h-[120px] resize-none"
-          />
-          <Button
-            type="submit"
-            className="w-full bg-accent hover:bg-accent/90"
-            disabled={isThinking}
-          >
-            <Send className="mr-2 h-4 w-4" />
-            Send message
-          </Button>
+          <div className="flex items-end gap-2">
+            <Textarea
+              ref={textareaRef}
+              rows={1}
+              value={inputValue}
+              onChange={(event) => {
+                setInputValue(event.target.value);
+                adjustTextareaHeight();
+              }}
+              placeholder="Type your question..."
+              disabled={isThinking}
+              aria-label="Message support"
+              className="flex-1 resize-none overflow-hidden rounded-2xl border border-border bg-white px-4 py-3 text-sm leading-relaxed shadow-sm focus-visible:ring-accent"
+            />
+            <Button
+              type="submit"
+              className="h-12 w-12 rounded-full bg-accent p-0 hover:bg-accent/90"
+              disabled={isThinking}
+            >
+              <Send className="h-5 w-5" />
+              <span className="sr-only">Send message</span>
+            </Button>
+          </div>
         </form>
 
       </SheetContent>
