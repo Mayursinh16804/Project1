@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { MessageCircle, Send, Sparkles, Loader2 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Sheet,
   SheetContent,
@@ -399,12 +399,6 @@ export function SupportChatWidget() {
     };
   }, []);
 
-  const assistantSummary = useMemo(
-    () =>
-      "End-to-end AC design, installation, AMC, and emergency support across Gujarat",
-    [],
-  );
-
   return (
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>
@@ -423,16 +417,6 @@ export function SupportChatWidget() {
             Ask about quotations, installations, maintenance schedules, or product recommendations.
           </SheetDescription>
         </SheetHeader>
-
-        <div className="flex items-center justify-between rounded-xl border border-accent/30 bg-accent/5 px-4 py-3">
-          <div>
-            <p className="text-sm font-semibold text-primary">We're online</p>
-            <p className="text-xs text-muted-foreground">Typical response time: under 5 minutes</p>
-          </div>
-          <Badge variant="secondary" className="bg-accent/10 text-accent">
-            Live
-          </Badge>
-        </div>
 
         <ScrollArea className="flex-1 rounded-xl border border-border bg-muted/10 p-4">
           <div className="space-y-4">
@@ -503,12 +487,13 @@ export function SupportChatWidget() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-2">
-          <Input
+          <Textarea
             value={inputValue}
             onChange={(event) => setInputValue(event.target.value)}
             placeholder="Type your question..."
             disabled={isThinking}
             aria-label="Message support"
+            className="min-h-[120px] resize-none"
           />
           <Button
             type="submit"
@@ -520,12 +505,6 @@ export function SupportChatWidget() {
           </Button>
         </form>
 
-        <div className="rounded-xl border border-border bg-muted/20 px-4 py-3 text-xs text-muted-foreground">
-          <p>{assistantSummary}</p>
-          <p className="mt-1 text-muted-foreground/80">
-            Visit our contact section for forms, or use WhatsApp and phone support from the footer links.
-          </p>
-        </div>
       </SheetContent>
     </Sheet>
   );
