@@ -524,7 +524,7 @@ export function SupportChatWidget() {
               placeholder="Type your question..."
               disabled={isThinking}
               aria-label="Message support"
-              className="flex-1 resize-none overflow-hidden rounded-2xl border border-border bg-white px-4 py-3 text-sm leading-relaxed shadow-sm focus-visible:ring-accent"
+              className="flex-1 resize-none rounded-2xl border border-border bg-white px-4 py-3 text-sm leading-relaxed shadow-sm focus-visible:ring-accent"
             />
             <Button
               type="submit"
