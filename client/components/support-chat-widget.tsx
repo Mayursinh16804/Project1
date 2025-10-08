@@ -388,8 +388,9 @@ export function SupportChatWidget() {
       setMessages((previous) => [...previous, userMessage]);
       setInputValue("");
       respondToUser(trimmed);
+      adjustTextareaHeight();
     },
-    [inputValue, respondToUser],
+    [adjustTextareaHeight, inputValue, respondToUser],
   );
 
   const handleQuickPrompt = useCallback(
