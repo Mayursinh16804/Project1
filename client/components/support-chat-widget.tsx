@@ -308,6 +308,27 @@ export function SupportChatWidget() {
   const [hasShownFirstServiceOffer, setHasShownFirstServiceOffer] = useState(false);
   const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
   const typingTimeoutRef = useRef<number>();
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+
+  const adjustTextareaHeight = useCallback(() => {
+    const textarea = textareaRef.current;
+
+    if (!textarea || typeof window === "undefined") {
+      return;
+    }
+
+    textarea.style.height = "auto";
+
+    const computed = window.getComputedStyle(textarea);
+    const lineHeight = parseFloat(computed.lineHeight || "20");
+    const baseHeight = lineHeight || 20;
+    const maxHeight = baseHeight * 4;
+    const scrollHeight = textarea.scrollHeight;
+    const clampedHeight = Math.min(Math.max(scrollHeight, baseHeight), maxHeight);
+
+    textarea.style.height = `${clampedHeight}px`;
+    textarea.style.overflowY = scrollHeight > maxHeight ? "auto" : "hidden";
+  }, []);
 
   const respondToUser = useCallback(
     (userContent: string) => {
