@@ -64,7 +64,14 @@ const conversationFlows: ConversationFlow[] = [
   },
   {
     id: "centralized-ac",
-    triggers: ["centralized", "vrf", "vrv", "ductable", "chiller", "industrial"],
+    triggers: [
+      "centralized",
+      "vrf",
+      "vrv",
+      "ductable",
+      "chiller",
+      "industrial",
+    ],
     response: `We specialise in Commercial & Industrial Centralized AC Systems:
 • VRF / VRV Systems
 • Ductable Units
@@ -89,20 +96,32 @@ const conversationFlows: ConversationFlow[] = [
   },
   {
     id: "book-appointment",
-    triggers: ["book appointment", "appointment", "schedule", "book service", "book visit"],
+    triggers: [
+      "book appointment",
+      "appointment",
+      "schedule",
+      "book service",
+      "book visit",
+    ],
     response: `Great! Please share these details:
 1. Full Name
 2. Contact Number
 3. Address
 4. Service Type (Installation / AMC / Repair / Warranty / Gas Refilling)
-5. Preferred Date & Time (10 AM – 7 PM)` ,
+5. Preferred Date & Time (10 AM – 7 PM)`,
     followUp:
       "Once we receive the details we will confirm your booking. Our team will contact you shortly.",
     category: "service",
   },
   {
     id: "amc-offer",
-    triggers: ["12 month amc", "12-month amc", "amc special", "amc offer", "annual maintenance"],
+    triggers: [
+      "12 month amc",
+      "12-month amc",
+      "amc special",
+      "amc offer",
+      "annual maintenance",
+    ],
     response:
       "Special Offer: When you buy a 12-month AMC, you get 1 extra month FREE—13 months of total coverage!",
     followUp: "Shall I continue with the AMC booking flow for you?",
@@ -119,7 +138,13 @@ const conversationFlows: ConversationFlow[] = [
   },
   {
     id: "amc-support-menu",
-    triggers: ["amc support", "warranty support", "support menu", "service issue", "amc warranty"],
+    triggers: [
+      "amc support",
+      "warranty support",
+      "support menu",
+      "service issue",
+      "amc warranty",
+    ],
     response: `Please select the type of support you need:
 • Breakdown
 • Service Issue
@@ -138,14 +163,21 @@ const conversationFlows: ConversationFlow[] = [
   },
   {
     id: "breakdown-yes",
-    triggers: ["yes under amc", "yes under warranty", "covered", "yes it is covered", "yes its covered"],
+    triggers: [
+      "yes under amc",
+      "yes under warranty",
+      "covered",
+      "yes it is covered",
+      "yes its covered",
+    ],
     response: `Please share the following so we can assist quickly:
 1. Full Name
 2. Contact Number
 3. Location
 4. Type of AC (Centralized / Split / Other)
 5. A brief description of the problem`,
-    followUp: "Our technician team will attend to your issue as per AMC/Warranty terms.",
+    followUp:
+      "Our technician team will attend to your issue as per AMC/Warranty terms.",
     category: "support",
   },
   {
@@ -159,7 +191,13 @@ const conversationFlows: ConversationFlow[] = [
   },
   {
     id: "operational-problem",
-    triggers: ["operational problem", "remote support", "not cooling", "unusual noise", "remote not working"],
+    triggers: [
+      "operational problem",
+      "remote support",
+      "not cooling",
+      "unusual noise",
+      "remote not working",
+    ],
     response:
       "Please describe your issue (for example: AC not cooling, unusual noise, remote not working).",
     followUp:
@@ -196,7 +234,13 @@ const conversationFlows: ConversationFlow[] = [
   },
   {
     id: "talk-to-executive",
-    triggers: ["talk to executive", "customer care", "human agent", "speak to representative", "support hours"],
+    triggers: [
+      "talk to executive",
+      "customer care",
+      "human agent",
+      "speak to representative",
+      "support hours",
+    ],
     response:
       "I’ll connect you to a customer care executive. Support hours are 10 AM – 7 PM (Mon–Sat).",
     followUp:
@@ -208,7 +252,8 @@ const conversationFlows: ConversationFlow[] = [
     triggers: ["feedback", "rate", "rating", "review"],
     response:
       "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
-    followUp: "Thank you for your feedback! We’ll keep improving to serve you better.",
+    followUp:
+      "Thank you for your feedback! We’ll keep improving to serve you better.",
     category: "general",
   },
 ];
@@ -272,14 +317,18 @@ const serviceFlowIds = new Set([
 ]);
 
 const generateMessageId = () => {
-  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+  if (
+    typeof crypto !== "undefined" &&
+    typeof crypto.randomUUID === "function"
+  ) {
     return crypto.randomUUID();
   }
 
   return `${Date.now()}-${Math.random().toString(16).slice(2, 10)}`;
 };
 
-const chooseRandom = <T,>(items: T[]): T => items[Math.floor(Math.random() * items.length)];
+const chooseRandom = <T,>(items: T[]): T =>
+  items[Math.floor(Math.random() * items.length)];
 
 const formatFlowResponse = (flow: ConversationFlow) =>
   flow.followUp ? `${flow.response}\n\n${flow.followUp}` : flow.response;
@@ -288,7 +337,10 @@ const fallbackMenu = formatFlowResponse(conversationFlows[0]);
 
 const fallbackResponse = `${fallbackMenu}\n\nYou can also type:\n• "Book appointment"\n• "AMC support"\n• "Emergency service"\n• "Contact details"`;
 
-const createMessage = (author: ChatMessage["author"], content: string): ChatMessage => ({
+const createMessage = (
+  author: ChatMessage["author"],
+  content: string,
+): ChatMessage => ({
   id: generateMessageId(),
   author,
   content,
@@ -299,13 +351,11 @@ export function SupportChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState<ChatMessage[]>(() => [
-    createMessage(
-      "bot",
-      formatFlowResponse(conversationFlows[0]),
-    ),
+    createMessage("bot", formatFlowResponse(conversationFlows[0])),
   ]);
   const [isThinking, setIsThinking] = useState(false);
-  const [hasShownFirstServiceOffer, setHasShownFirstServiceOffer] = useState(false);
+  const [hasShownFirstServiceOffer, setHasShownFirstServiceOffer] =
+    useState(false);
   const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
   const typingTimeoutRef = useRef<number>();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -322,11 +372,16 @@ export function SupportChatWidget() {
     const computed = window.getComputedStyle(textarea);
     const rawLineHeight = parseFloat(computed.lineHeight);
     const fontSize = parseFloat(computed.fontSize || "16");
-    const lineHeight = Number.isNaN(rawLineHeight) ? fontSize * 1.4 : rawLineHeight;
+    const lineHeight = Number.isNaN(rawLineHeight)
+      ? fontSize * 1.4
+      : rawLineHeight;
     const baseHeight = lineHeight || 20;
     const maxHeight = baseHeight * 4;
     const scrollHeight = textarea.scrollHeight;
-    const clampedHeight = Math.min(Math.max(scrollHeight, baseHeight), maxHeight);
+    const clampedHeight = Math.min(
+      Math.max(scrollHeight, baseHeight),
+      maxHeight,
+    );
 
     textarea.style.height = `${clampedHeight}px`;
     textarea.style.overflowY = scrollHeight > maxHeight ? "auto" : "hidden";
@@ -364,10 +419,7 @@ export function SupportChatWidget() {
 
       messageSections.push(chooseRandom(contactFooters));
 
-      const botMessage = createMessage(
-        "bot",
-        messageSections.join("\n\n"),
-      );
+      const botMessage = createMessage("bot", messageSections.join("\n\n"));
 
       typingTimeoutRef.current = window.setTimeout(() => {
         setMessages((previous) => [...previous, botMessage]);
@@ -434,7 +486,10 @@ export function SupportChatWidget() {
           Chat with Support
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="flex h-full w-full flex-col gap-4 sm:max-w-md">
+      <SheetContent
+        side="right"
+        className="flex h-full w-full flex-col gap-4 sm:max-w-md"
+      >
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2 text-xl font-bold text-primary">
             <Sparkles className="h-5 w-5 text-accent" />
@@ -459,13 +514,18 @@ export function SupportChatWidget() {
                     }`}
                   >
                     {paragraphs.map((text, index) => (
-                      <p key={`${message.id}-${index}`} className="whitespace-pre-line">
+                      <p
+                        key={`${message.id}-${index}`}
+                        className="whitespace-pre-line"
+                      >
                         {text}
                       </p>
                     ))}
                     <span
                       className={`mt-2 block text-[10px] uppercase tracking-wide ${
-                        isBot ? "text-muted-foreground" : "text-accent-foreground/80"
+                        isBot
+                          ? "text-muted-foreground"
+                          : "text-accent-foreground/80"
                       }`}
                     >
                       {message.timestamp.toLocaleTimeString([], {
@@ -535,7 +595,6 @@ export function SupportChatWidget() {
             </Button>
           </div>
         </form>
-
       </SheetContent>
     </Sheet>
   );
