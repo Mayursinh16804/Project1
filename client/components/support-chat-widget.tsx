@@ -413,6 +413,10 @@ export function SupportChatWidget() {
   }, [messages, isThinking, isOpen]);
 
   useEffect(() => {
+    adjustTextareaHeight();
+  }, [adjustTextareaHeight, inputValue, isOpen]);
+
+  useEffect(() => {
     return () => {
       if (typingTimeoutRef.current) {
         window.clearTimeout(typingTimeoutRef.current);
