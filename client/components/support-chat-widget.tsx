@@ -440,9 +440,6 @@ export function SupportChatWidget() {
             <Sparkles className="h-5 w-5 text-accent" />
             Customer Support
           </SheetTitle>
-          <SheetDescription className="text-sm text-muted-foreground">
-            Ask about quotations, installations, maintenance schedules, or product recommendations.
-          </SheetDescription>
         </SheetHeader>
 
         <ScrollArea className="flex-1 rounded-xl border border-border bg-muted/10 p-4">
