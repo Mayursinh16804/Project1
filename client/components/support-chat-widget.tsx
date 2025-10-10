@@ -484,14 +484,27 @@ export function SupportChatWidget() {
   return (
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>
-        <Button className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-accent px-5 py-4 text-base font-semibold shadow-lg hover:bg-accent/90">
+        <Button
+          className={cn(
+            "fixed z-50 flex items-center gap-2 rounded-full bg-accent font-semibold shadow-lg transition-opacity duration-200 hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+            isMobile
+              ? "bottom-4 left-4 right-4 justify-center px-4 py-3 text-sm"
+              : "bottom-6 right-6 px-5 py-4 text-base",
+            isOpen ? "pointer-events-none opacity-0" : "opacity-100",
+          )}
+        >
           <MessageCircle className="h-5 w-5" />
           Chat with Support
         </Button>
       </SheetTrigger>
       <SheetContent
-        side="right"
-        className="flex h-full w-full flex-col gap-4 sm:max-w-md"
+        side={isMobile ? "bottom" : "right"}
+        className={cn(
+          "flex w-full flex-col gap-4",
+          isMobile
+            ? "h-[85vh] rounded-t-3xl border-t bg-background px-4 pb-6 pt-4"
+            : "h-full sm:max-w-md",
+        )}
       >
         <SheetHeader>
           <SheetTitle className="flex items-center gap-2 text-xl font-bold text-primary">
