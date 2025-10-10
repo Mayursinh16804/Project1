@@ -1,3 +1,4 @@
+import type { KeyboardEvent, MouseEvent } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,6 +29,41 @@ import {
 import { SupportChatWidget } from "@/components/support-chat-widget";
 
 export default function Index() {
+  const productRedirectUrl =
+    "https://www.vertiv.com/en-in/products-catalog/thermal-management/room-cooling/#/";
+
+  const handleProductNavigation = () => {
+    if (typeof window !== "undefined") {
+      window.location.href = productRedirectUrl;
+    }
+  };
+
+  const handleProductKeyDown = (
+    event: KeyboardEvent<HTMLDivElement>,
+  ) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleProductNavigation();
+    }
+  };
+
+  const handleProductButtonClick = (
+    event: MouseEvent<HTMLButtonElement>,
+  ) => {
+    event.stopPropagation();
+    handleProductNavigation();
+  };
+
+  const productCardProps = {
+    onClick: handleProductNavigation,
+    onKeyDown: handleProductKeyDown,
+    role: "button" as const,
+    tabIndex: 0,
+  };
+
+  const productCardInteractiveClasses =
+    "cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+
   return (
     <div className="min-h-screen bg-background">
       {/* Sticky Header */}
