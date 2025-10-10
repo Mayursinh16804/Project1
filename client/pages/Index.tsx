@@ -835,7 +835,10 @@ export default function Index() {
 
           {/* Product Categories */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
+            <Card
+              {...productCardProps}
+              className={`text-center p-6 hover:shadow-lg transition-all duration-300 ${productCardInteractiveClasses}`}
+            >
               <Snowflake className="w-12 h-12 mx-auto mb-4 text-accent" />
               <h3 className="font-semibold mb-2">Precision Cooling</h3>
               <p className="text-sm text-muted-foreground">
