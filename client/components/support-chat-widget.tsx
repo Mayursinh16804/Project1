@@ -513,7 +513,12 @@ export function SupportChatWidget() {
           </SheetTitle>
         </SheetHeader>
 
-        <ScrollArea className="flex-1 rounded-xl border border-border bg-muted/10 p-4">
+        <ScrollArea
+          className={cn(
+            "flex-1 border border-border bg-muted/10 p-4",
+            isMobile ? "rounded-3xl" : "rounded-xl",
+          )}
+        >
           <div className="space-y-4">
             {messages.map((message) => {
               const isBot = message.author === "bot";
