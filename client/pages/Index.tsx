@@ -712,7 +712,10 @@ export default function Index() {
             </Card>
 
             {/* Vertiv Liebert PCW */}
-            <Card className="group hover:shadow-lg transition-all duration-300">
+            <Card
+              {...productCardProps}
+              className={`group hover:shadow-lg transition-all duration-300 ${productCardInteractiveClasses}`}
+            >
               <div className="aspect-video">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F7cfe6fb1d2f04b55a4bebe7be3c91b67?format=webp&width=800"
