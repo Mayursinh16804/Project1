@@ -646,7 +646,10 @@ export default function Index() {
 
           {/* Featured Data Center Installation */}
           <div className="mb-16">
-            <Card className="overflow-hidden">
+            <Card
+              {...productCardProps}
+              className={`overflow-hidden ${productCardInteractiveClasses}`}
+            >
               <div className="aspect-video">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F0af59e38f28d4c17acf85a7427147cd6?format=webp&width=800"
