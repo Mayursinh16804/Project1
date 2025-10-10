@@ -253,7 +253,7 @@ const conversationFlows: ConversationFlow[] = [
     id: "feedback",
     triggers: ["feedback", "rate", "rating", "review"],
     response:
-      "Before we close, please rate your experience: Poor • Average ��� Good • Very Good • Excellent",
+      "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
     followUp:
       "Thank you for your feedback! We’ll keep improving to serve you better.",
     category: "general",
@@ -534,9 +534,11 @@ export function SupportChatWidget() {
                   className={`flex ${isBot ? "justify-start" : "justify-end"}`}
                 >
                   <div
-                    className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${
-                      isBot ? "bg-white text-primary" : "bg-accent text-white"
-                    }`}
+                    className={cn(
+                      "rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm",
+                      isMobile ? "max-w-[90%]" : "max-w-[75%]",
+                      isBot ? "bg-white text-primary" : "bg-accent text-white",
+                    )}
                   >
                     {paragraphs.map((text, index) => (
                       <p
