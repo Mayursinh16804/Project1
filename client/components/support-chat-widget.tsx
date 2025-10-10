@@ -361,6 +361,7 @@ export function SupportChatWidget() {
   const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
   const typingTimeoutRef = useRef<number>();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const isMobile = useIsMobile();
 
   const adjustTextareaHeight = useCallback(() => {
     const textarea = textareaRef.current;
