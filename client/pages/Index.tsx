@@ -845,7 +845,10 @@ export default function Index() {
                 Small room and rack cooling solutions
               </p>
             </Card>
-            <Card className="text-center p-6 hover:shadow-lg transition-all duration-300">
+            <Card
+              {...productCardProps}
+              className={`text-center p-6 hover:shadow-lg transition-all duration-300 ${productCardInteractiveClasses}`}
+            >
               <Building className="w-12 h-12 mx-auto mb-4 text-accent" />
               <h3 className="font-semibold mb-2">Data Center HVAC</h3>
               <p className="text-sm text-muted-foreground">
