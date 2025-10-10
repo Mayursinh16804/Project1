@@ -575,12 +575,23 @@ export function SupportChatWidget() {
           <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
             Quick help topics
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div
+            className={cn(
+              "flex gap-2",
+              isMobile
+                ? "flex-nowrap overflow-x-auto pb-1 pt-0.5 [-webkit-overflow-scrolling:touch]"
+                : "flex-wrap",
+            )}
+            aria-label="Quick help prompt list"
+          >
             {quickPrompts.map((prompt) => (
               <Button
                 key={prompt.id}
                 variant="outline"
-                className="border-accent/40 text-xs text-accent hover:bg-accent hover:text-white"
+                className={cn(
+                  "border-accent/40 text-xs text-accent hover:bg-accent hover:text-white whitespace-nowrap",
+                  isMobile ? "px-3 py-2 text-sm" : "px-4 py-2",
+                )}
                 onClick={() => handleQuickPrompt(prompt.message)}
                 type="button"
                 disabled={isThinking}
