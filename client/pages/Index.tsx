@@ -672,7 +672,10 @@ export default function Index() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
             {/* Liebert SRC - Small Room Cooling */}
-            <Card className="group hover:shadow-lg transition-all duration-300">
+            <Card
+              {...productCardProps}
+              className={`group hover:shadow-lg transition-all duration-300 ${productCardInteractiveClasses}`}
+            >
               <div className="aspect-video">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F54d635349e304904bdc36d45fdc35e4e?format=webp&width=800"
