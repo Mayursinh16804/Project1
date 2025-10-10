@@ -878,7 +878,11 @@ export default function Index() {
           </div>
 
           <div className="text-center">
-            <Button size="lg" className="bg-accent hover:bg-accent/90">
+            <Button
+              size="lg"
+              className="bg-accent hover:bg-accent/90"
+              onClick={handleProductNavigation}
+            >
               Download Product Catalog
             </Button>
           </div>
