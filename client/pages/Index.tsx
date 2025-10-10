@@ -825,6 +825,7 @@ export default function Index() {
                 <Button
                   variant="outline"
                   className="mt-4 border-accent text-accent hover:bg-accent hover:text-white"
+                  onClick={handleProductButtonClick}
                 >
                   View Specifications
                 </Button>
