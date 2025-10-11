@@ -495,9 +495,10 @@ export function SupportChatWidget() {
 
   useEffect(() => {
     return () => {
-      if (typingTimeoutRef.current) {
-        window.clearTimeout(typingTimeoutRef.current);
-      }
+      typingTimeoutsRef.current.forEach((timeoutId) => {
+        window.clearTimeout(timeoutId);
+      });
+      typingTimeoutsRef.current = [];
     };
   }, []);
 
