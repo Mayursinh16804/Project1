@@ -361,7 +361,6 @@ export function SupportChatWidget() {
   const typingTimeoutsRef = useRef<number[]>([]);
   const pendingResponseCountRef = useRef(0);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const formRef = useRef<HTMLFormElement | null>(null);
   const isMobile = useIsMobile();
 
   const adjustTextareaHeight = useCallback(() => {
