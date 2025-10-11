@@ -393,7 +393,6 @@ export function SupportChatWidget() {
 
   const respondToUser = useCallback(
     (userContent: string) => {
-      setIsThinking(true);
       const normalized = userContent.toLowerCase();
 
       const matchedFlows = conversationFlows.filter((flow) =>
@@ -425,10 +424,26 @@ export function SupportChatWidget() {
 
       const botMessage = createMessage("bot", messageSections.join("\n\n"));
 
-      typingTimeoutRef.current = window.setTimeout(() => {
+      if (pendingResponseCountRef.current === 0) {
+        setIsThinking(true);
+      }
+      pendingResponseCountRef.current += 1;
+
+      const timeoutId = window.setTimeout(() => {
         setMessages((previous) => [...previous, botMessage]);
-        setIsThinking(false);
+        pendingResponseCountRef.current = Math.max(
+          pendingResponseCountRef.current - 1,
+          0,
+        );
+        typingTimeoutsRef.current = typingTimeoutsRef.current.filter(
+          (id) => id !== timeoutId,
+        );
+        if (pendingResponseCountRef.current === 0) {
+          setIsThinking(false);
+        }
       }, 650);
+
+      typingTimeoutsRef.current.push(timeoutId);
     },
     [hasShownFirstServiceOffer],
   );
