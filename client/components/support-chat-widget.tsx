@@ -551,10 +551,10 @@ export function SupportChatWidget() {
   useEffect(() => {
     adjustTextareaHeight();
 
-    if (isOpen && textareaRef.current) {
-      textareaRef.current.focus({ preventScroll: true });
+    if (isOpen) {
+      focusTextarea();
     }
-  }, [adjustTextareaHeight, inputValue, isOpen]);
+  }, [adjustTextareaHeight, focusTextarea, inputValue, isOpen]);
 
   useEffect(() => {
     return () => {
