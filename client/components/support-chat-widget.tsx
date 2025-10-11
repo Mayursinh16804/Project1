@@ -447,31 +447,87 @@ export function SupportChatWidget() {
     [hasShownFirstServiceOffer],
   );
 
+  const focusTextarea = useCallback(() => {
+    if (textareaRef.current) {
+      textareaRef.current.focus({ preventScroll: true });
+    }
+  }, []);
+
+  const pushUserMessage = useCallback(
+    (content: string) => {
+      const trimmedContent = content.trim();
+
+      if (!trimmedContent) {
+        return false;
+      }
+
+      const userMessage = createMessage("user", trimmedContent);
+      setMessages((previous) => [...previous, userMessage]);
+      respondToUser(trimmedContent);
+      return true;
+    },
+    [respondToUser],
+  );
+
+  const sendMessage = useCallback(() => {
+    const trimmed = inputValue.trim();
+
+    if (!trimmed) {
+      return false;
+    }
+
+    const sent = pushUserMessage(trimmed);
+
+    if (!sent) {
+      return false;
+    }
+
+    setInputValue("");
+    adjustTextareaHeight();
+    return true;
+  }, [adjustTextareaHeight, inputValue, pushUserMessage]);
+
   const handleSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      const trimmed = inputValue.trim();
 
-      if (!trimmed) {
+      if (sendMessage()) {
+        focusTextarea();
+      }
+    },
+    [focusTextarea, sendMessage],
+  );
+
+  const handleSendClick = useCallback(() => {
+    if (sendMessage()) {
+      focusTextarea();
+    }
+  }, [focusTextarea, sendMessage]);
+
+  const handleTextareaKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      if (event.nativeEvent.isComposing) {
         return;
       }
 
-      const userMessage = createMessage("user", trimmed);
-      setMessages((previous) => [...previous, userMessage]);
-      setInputValue("");
-      respondToUser(trimmed);
-      adjustTextareaHeight();
+      if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+
+        if (sendMessage()) {
+          focusTextarea();
+        }
+      }
     },
-    [adjustTextareaHeight, inputValue, respondToUser],
+    [focusTextarea, sendMessage],
   );
 
   const handleQuickPrompt = useCallback(
     (prompt: string) => {
-      const userMessage = createMessage("user", prompt);
-      setMessages((previous) => [...previous, userMessage]);
-      respondToUser(prompt);
+      pushUserMessage(prompt);
+      focusTextarea();
+      adjustTextareaHeight();
     },
-    [respondToUser],
+    [adjustTextareaHeight, focusTextarea, pushUserMessage],
   );
 
   const handleOpenChange = useCallback((open: boolean) => {
