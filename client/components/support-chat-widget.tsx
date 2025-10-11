@@ -336,7 +336,7 @@ const formatFlowResponse = (flow: ConversationFlow) =>
 
 const fallbackMenu = formatFlowResponse(conversationFlows[0]);
 
-const fallbackResponse = `${fallbackMenu}\n\nYou can also type:\n• "Book appointment"\n• "AMC support"\n• "Emergency service"\n• "Contact details"`;
+const fallbackResponse = `${fallbackMenu}\n\nYou can also type:\n• "Book appointment"\n�� "AMC support"\n• "Emergency service"\n• "Contact details"`;
 
 const createMessage = (
   author: ChatMessage["author"],
@@ -529,6 +529,8 @@ export function SupportChatWidget() {
     },
     [adjustTextareaHeight, focusTextarea, pushUserMessage],
   );
+
+  const canSendMessage = inputValue.trim().length > 0;
 
   const handleOpenChange = useCallback((open: boolean) => {
     setIsOpen(open);
