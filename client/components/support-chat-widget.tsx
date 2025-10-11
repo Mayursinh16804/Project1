@@ -530,6 +530,7 @@ export function SupportChatWidget() {
   const handleQuickPrompt = useCallback(
     (prompt: string) => {
       pushUserMessage(prompt);
+      setInputValue("");
       focusTextarea();
       adjustTextareaHeight();
     },
