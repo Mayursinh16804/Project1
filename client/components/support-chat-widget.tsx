@@ -252,7 +252,7 @@ const conversationFlows: ConversationFlow[] = [
     id: "feedback",
     triggers: ["feedback", "rate", "rating", "review"],
     response:
-      "Before we close, please rate your experience: Poor �� Average • Good • Very Good • Excellent",
+      "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
     followUp:
       "Thank you for your feedback! We’ll keep improving to serve you better.",
     category: "general",
@@ -692,15 +692,18 @@ export function SupportChatWidget() {
                 setInputValue(event.target.value);
                 adjustTextareaHeight();
               }}
+              onKeyDown={handleTextareaKeyDown}
               placeholder="Type your question..."
-              disabled={isThinking}
               aria-label="Message support"
+              autoComplete="off"
               className="flex-1 resize-none rounded-2xl border border-border bg-white px-4 py-3 text-sm leading-relaxed shadow-sm focus-visible:ring-accent"
             />
             <Button
-              type="submit"
-              className="h-12 w-12 rounded-full bg-accent p-0 hover:bg-accent/90"
-              disabled={isThinking}
+              type="button"
+              onClick={handleSendClick}
+              className="h-12 w-12 rounded-full bg-accent p-0 hover:bg-accent/90 disabled:cursor-not-allowed disabled:bg-accent/60"
+              disabled={!canSendMessage}
+              aria-disabled={!canSendMessage}
             >
               <Send className="h-5 w-5" />
               <span className="sr-only">Send message</span>
