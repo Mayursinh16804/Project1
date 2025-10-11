@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import type { FormEvent, KeyboardEvent } from "react";
 import { MessageCircle, Send, Sparkles, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
