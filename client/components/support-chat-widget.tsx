@@ -260,7 +260,7 @@ const conversationFlows: ConversationFlow[] = [
     response:
       "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
     followUp:
-      "Thank you for your feedback! We’ll keep improving to serve you better.",
+      "Thank you for your feedback! We��ll keep improving to serve you better.",
     category: "general",
   },
 ];
@@ -494,7 +494,7 @@ export function SupportChatWidget() {
   }, [adjustTextareaHeight, inputValue, pushUserMessage]);
 
   const handleSubmit = useCallback(
-    (event: React.FormEvent<HTMLFormElement>) => {
+    (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
       if (sendMessage()) {
