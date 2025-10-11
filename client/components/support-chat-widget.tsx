@@ -252,7 +252,7 @@ const conversationFlows: ConversationFlow[] = [
     id: "feedback",
     triggers: ["feedback", "rate", "rating", "review"],
     response:
-      "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
+      "Before we close, please rate your experience: Poor �� Average • Good • Very Good • Excellent",
     followUp:
       "Thank you for your feedback! We’ll keep improving to serve you better.",
     category: "general",
@@ -336,7 +336,7 @@ const formatFlowResponse = (flow: ConversationFlow) =>
 
 const fallbackMenu = formatFlowResponse(conversationFlows[0]);
 
-const fallbackResponse = `${fallbackMenu}\n\nYou can also type:\n• "Book appointment"\n�� "AMC support"\n• "Emergency service"\n• "Contact details"`;
+const fallbackResponse = `${fallbackMenu}\n\nYou can also type:\n• "Book appointment"\n• "AMC support"\n• "Emergency service"\n• "Contact details"`;
 
 const createMessage = (
   author: ChatMessage["author"],
@@ -451,7 +451,7 @@ export function SupportChatWidget() {
     if (textareaRef.current) {
       textareaRef.current.focus({ preventScroll: true });
     }
-  }, []);
+  }, [textareaRef]);
 
   const pushUserMessage = useCallback(
     (content: string) => {
