@@ -260,7 +260,7 @@ const conversationFlows: ConversationFlow[] = [
     response:
       "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
     followUp:
-      "Thank you for your feedback! We��ll keep improving to serve you better.",
+      "Thank you for your feedback! We’ll keep improving to serve you better.",
     category: "general",
   },
 ];
@@ -511,7 +511,7 @@ export function SupportChatWidget() {
   }, [focusTextarea, sendMessage]);
 
   const handleTextareaKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    (event: KeyboardEvent<HTMLTextAreaElement>) => {
       if (event.nativeEvent.isComposing) {
         return;
       }
