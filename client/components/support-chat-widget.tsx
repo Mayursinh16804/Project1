@@ -358,8 +358,10 @@ export function SupportChatWidget() {
   const [hasShownFirstServiceOffer, setHasShownFirstServiceOffer] =
     useState(false);
   const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
-  const typingTimeoutRef = useRef<number>();
+  const typingTimeoutsRef = useRef<number[]>([]);
+  const pendingResponseCountRef = useRef(0);
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
+  const formRef = useRef<HTMLFormElement | null>(null);
   const isMobile = useIsMobile();
 
   const adjustTextareaHeight = useCallback(() => {
