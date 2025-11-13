@@ -27,8 +27,10 @@ import {
   Home,
 } from "lucide-react";
 import { SupportChatWidget } from "@/components/support-chat-widget";
+import { useBusinessConfig } from "@/context/BusinessContext";
 
 export default function Index() {
+  const businessConfig = useBusinessConfig();
   const productRedirectUrl =
     "https://www.vertiv.com/en-in/products-catalog/thermal-management/room-cooling/#/";
 
