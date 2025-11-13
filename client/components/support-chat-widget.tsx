@@ -19,6 +19,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
+import { useBusinessConfig } from "@/context/BusinessContext";
 
 interface ChatMessage {
   id: string;
@@ -27,407 +28,93 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-interface ConversationFlow {
-  id: string;
-  triggers: string[];
-  response: string;
-  followUp?: string;
-  category?: "service" | "support" | "general";
-}
-
-interface QuickPrompt {
-  id: string;
-  label: string;
-  message: string;
-}
-
-const conversationFlows: ConversationFlow[] = [
-  {
-    id: "main-menu",
-    triggers: ["start", "hello", "hi", "hey", "menu", "help", "begin"],
-    response:
-      "Hello! Welcome to Mayur Aircon – Commercial & Split AC Solutions. How can I help you today?",
-    followUp: `Main menu options:
-• HVAC Services
-• Centralized AC
-• Split (Home) AC
-• AMC / Warranty Support
-• Emergency Service
-• Contact Us
-• Special Offer`,
-    category: "general",
-  },
-  {
-    id: "hvac-services",
-    triggers: ["hvac", "hvac services", "hvac solution"],
-    response: `We provide complete HVAC Solutions:
-• Installation
-• AMC (Annual Maintenance Contracts)
-• Warranty Support
-• Repairs & Maintenance`,
-    followUp:
-      "Would you like to book an appointment, request a quotation, or choose Emergency Service?",
-    category: "service",
-  },
-  {
-    id: "centralized-ac",
-    triggers: [
-      "centralized",
-      "vrf",
-      "vrv",
-      "ductable",
-      "chiller",
-      "industrial",
-    ],
-    response: `We specialise in Commercial & Industrial Centralized AC Systems:
-• VRF / VRV Systems
-• Ductable Units
-• Chillers
-• Energy-Saving Solutions`,
-    followUp:
-      "Would you like to book an appointment, request a quotation, or choose Emergency Service?",
-    category: "service",
-  },
-  {
-    id: "split-ac",
-    triggers: ["split", "home ac", "residential", "bedroom", "living room"],
-    response: `We provide complete Split AC Services:
-• Installation
-• Servicing & Repairs
-• Gas Refilling
-• AMC Packages
-• Warranty Support`,
-    followUp:
-      "Would you like to book an appointment, check AMC plans, or choose Emergency Service?",
-    category: "service",
-  },
-  {
-    id: "book-appointment",
-    triggers: [
-      "book appointment",
-      "appointment",
-      "schedule",
-      "book service",
-      "book visit",
-    ],
-    response: `Great! Please share these details:
-1. Full Name
-2. Contact Number
-3. Address
-4. Service Type (Installation / AMC / Repair / Warranty / Gas Refilling)
-5. Preferred Date & Time (10 AM – 7 PM)`,
-    followUp:
-      "Once we receive the details we will confirm your booking. Our team will contact you shortly.",
-    category: "service",
-  },
-  {
-    id: "amc-offer",
-    triggers: [
-      "12 month amc",
-      "12-month amc",
-      "amc special",
-      "amc offer",
-      "annual maintenance",
-    ],
-    response:
-      "Special Offer: When you buy a 12-month AMC, you get 1 extra month FREE—13 months of total coverage!",
-    followUp: "Shall I continue with the AMC booking flow for you?",
-    category: "service",
-  },
-  {
-    id: "emergency-service",
-    triggers: ["emergency", "urgent", "breakdown now", "immediate", "24/7"],
-    response:
-      "Emergency Service is available 24/7. Please note: emergency charges are higher than normal services. Do you want to proceed?",
-    followUp:
-      "If yes, share your name, contact number, address, and the problem. Our technician will contact you within 2 hours.",
-    category: "service",
-  },
-  {
-    id: "amc-support-menu",
-    triggers: [
-      "amc support",
-      "warranty support",
-      "support menu",
-      "service issue",
-      "amc warranty",
-    ],
-    response: `Please select the type of support you need:
-• Breakdown
-• Service Issue
-• Operational Problem (Remote Support)
-• Other Issues`,
-    followUp: "Let me know which option fits your situation.",
-    category: "support",
-  },
-  {
-    id: "breakdown-check",
-    triggers: ["breakdown", "ac stopped", "not working", "service down"],
-    response: "We’re here to help. Is your AC covered under AMC or Warranty?",
-    followUp:
-      "Reply with YES if it’s under AMC/Warranty, or NO if it is not, and I’ll guide you next.",
-    category: "support",
-  },
-  {
-    id: "breakdown-yes",
-    triggers: [
-      "yes under amc",
-      "yes under warranty",
-      "covered",
-      "yes it is covered",
-      "yes its covered",
-    ],
-    response: `Please share the following so we can assist quickly:
-1. Full Name
-2. Contact Number
-3. Location
-4. Type of AC (Centralized / Split / Other)
-5. A brief description of the problem`,
-    followUp:
-      "Our technician team will attend to your issue as per AMC/Warranty terms.",
-    category: "support",
-  },
-  {
-    id: "breakdown-no",
-    triggers: ["not covered", "no amc", "no warranty", "no its not covered"],
-    response:
-      "It looks like your system is not under AMC/Warranty. Don’t worry—you can still book a paid service.",
-    followUp:
-      "Let me redirect you to the service menu so you can choose HVAC, Centralized AC, Split AC, or Emergency Service.",
-    category: "support",
-  },
-  {
-    id: "operational-problem",
-    triggers: [
-      "operational problem",
-      "remote support",
-      "not cooling",
-      "unusual noise",
-      "remote not working",
-    ],
-    response:
-      "Please describe your issue (for example: AC not cooling, unusual noise, remote not working).",
-    followUp:
-      "We’ll forward the details to our engineer, and you’ll receive a call within business hours (10 AM – 7 PM) for remote assistance.",
-    category: "support",
-  },
-  {
-    id: "requires-visit",
-    triggers: ["requires visit", "need visit", "technician visit", "on-site"],
-    response:
-      "This problem requires an on-site visit. Our service team will be assigned to help you.",
-    followUp:
-      "Please share your name, contact number, address, and issue details so we can confirm the appointment.",
-    category: "support",
-  },
-  {
-    id: "after-service",
-    triggers: ["follow up", "after service", "status", "issue resolved"],
-    response: "Was your issue resolved successfully?",
-    followUp:
-      "If yes, I can help with anything else you need. If not, I’ll reopen the case and escalate it for faster resolution.",
-    category: "support",
-  },
-  {
-    id: "contact-us",
-    triggers: ["contact", "reach", "phone", "email", "address"],
-    response: `You can reach us at:
-• Phone: +91 95587 19344
-• Email: support@mayuraircon.com
-• Office: Ahmedabad, Gujarat`,
-    followUp:
-      "Would you like me to connect you with a customer care executive (available 10 AM – 7 PM, Monday to Saturday)?",
-    category: "general",
-  },
-  {
-    id: "talk-to-executive",
-    triggers: [
-      "talk to executive",
-      "customer care",
-      "human agent",
-      "speak to representative",
-      "support hours",
-    ],
-    response:
-      "I’ll connect you to a customer care executive. Support hours are 10 AM – 7 PM (Mon–Sat).",
-    followUp:
-      "If we’re outside support hours, please leave your contact details and a brief message so the team can reach you.",
-    category: "general",
-  },
-  {
-    id: "feedback",
-    triggers: ["feedback", "rate", "rating", "review"],
-    response:
-      "Before we close, please rate your experience: Poor • Average • Good • Very Good • Excellent",
-    followUp:
-      "Thank you for your feedback! We’ll keep improving to serve you better.",
-    category: "general",
-  },
-];
-
-const quickPrompts: QuickPrompt[] = [
-  {
-    id: "prompt-start",
-    label: "Show service menu",
-    message: "Show me the service menu",
-  },
-  {
-    id: "prompt-hvac",
-    label: "Explore HVAC",
-    message: "Tell me about your HVAC services",
-  },
-  {
-    id: "prompt-central",
-    label: "Centralized AC",
-    message: "Do you handle centralized AC systems?",
-  },
-  {
-    id: "prompt-split",
-    label: "Split AC help",
-    message: "I need support for a split AC",
-  },
-  {
-    id: "prompt-emergency",
-    label: "Emergency help",
-    message: "I need emergency AC service",
-  },
-  {
-    id: "prompt-book",
-    label: "Book appointment",
-    message: "I want to book an appointment",
-  },
-  {
-    id: "prompt-amc",
-    label: "AMC support",
-    message: "I need AMC or warranty assistance",
-  },
-  {
-    id: "prompt-contact",
-    label: "Contact details",
-    message: "How do I contact Mayur Aircon?",
-  },
-];
-
-const contactFooters = [
-  "Prefer to talk to us directly? Call +91 95587 19344 or WhatsApp the same number for quick support.",
-  "Need a personal touch? Email support@mayuraircon.com and our desk will respond during business hours.",
-  "Want a site visit? Use the Request a Quote button on our homepage or share your details here to schedule one.",
-];
-
-const serviceFlowIds = new Set([
-  "hvac-services",
-  "centralized-ac",
-  "split-ac",
-  "book-appointment",
-  "amc-offer",
-  "emergency-service",
-]);
-
-const generateMessageId = () => {
-  if (
-    typeof crypto !== "undefined" &&
-    typeof crypto.randomUUID === "function"
-  ) {
-    return crypto.randomUUID();
-  }
-
-  return `${Date.now()}-${Math.random().toString(16).slice(2, 10)}`;
-};
-
-const chooseRandom = <T,>(items: T[]): T =>
-  items[Math.floor(Math.random() * items.length)];
-
-const formatFlowResponse = (flow: ConversationFlow) =>
-  flow.followUp ? `${flow.response}\n\n${flow.followUp}` : flow.response;
-
-const fallbackMenu = formatFlowResponse(conversationFlows[0]);
-
-const fallbackResponse = `${fallbackMenu}\n\nYou can also type:\n• "Book appointment"\n• "AMC support"\n• "Emergency service"\n• "Contact details"`;
-
 const createMessage = (
-  author: ChatMessage["author"],
+  author: "user" | "bot",
   content: string,
 ): ChatMessage => ({
-  id: generateMessageId(),
+  id: `${author}-${Date.now()}-${Math.random()}`,
   author,
   content,
   timestamp: new Date(),
 });
 
 export function SupportChatWidget() {
+  const businessConfig = useBusinessConfig();
   const [isOpen, setIsOpen] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-  const [messages, setMessages] = useState<ChatMessage[]>(() => [
-    createMessage("bot", formatFlowResponse(conversationFlows[0])),
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    createMessage(
+      "bot",
+      `Welcome to ${businessConfig.name}! 👋\n\nI'm here to help you with your air conditioning needs. Choose an option:\n\n1️⃣ Precision Air Conditioning (PAC) - Vertiv Systems Only\n2️⃣ Regular AC Services (All Brands & Models)\n3️⃣ Request a Callback\n4️⃣ View Our Client List\n5️⃣ Contact Us 📞 +91 ${businessConfig.phone}`,
+    ),
   ]);
+  const [inputValue, setInputValue] = useState("");
   const [isThinking, setIsThinking] = useState(false);
-  const [hasShownFirstServiceOffer, setHasShownFirstServiceOffer] =
-    useState(false);
-  const scrollAnchorRef = useRef<HTMLDivElement | null>(null);
-  const typingTimeoutsRef = useRef<number[]>([]);
+  const [canSendMessage, setCanSendMessage] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const pendingResponseCountRef = useRef(0);
-  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
-  const isMobile = useIsMobile();
+  const typingTimeoutsRef = useRef<number[]>([]);
+  const hasShownFirstServiceOfferRef = useRef(false);
+
+  useEffect(() => {
+    setCanSendMessage(inputValue.trim().length > 0);
+  }, [inputValue]);
 
   const adjustTextareaHeight = useCallback(() => {
     const textarea = textareaRef.current;
-
-    if (!textarea || typeof window === "undefined") {
-      return;
+    if (textarea) {
+      textarea.style.height = "auto";
+      const newHeight = Math.min(textarea.scrollHeight, 120);
+      textarea.style.height = `${newHeight}px`;
     }
-
-    textarea.style.height = "auto";
-
-    const computed = window.getComputedStyle(textarea);
-    const rawLineHeight = parseFloat(computed.lineHeight);
-    const fontSize = parseFloat(computed.fontSize || "16");
-    const lineHeight = Number.isNaN(rawLineHeight)
-      ? fontSize * 1.4
-      : rawLineHeight;
-    const baseHeight = lineHeight || 20;
-    const maxHeight = baseHeight * 4;
-    const scrollHeight = textarea.scrollHeight;
-    const clampedHeight = Math.min(
-      Math.max(scrollHeight, baseHeight),
-      maxHeight,
-    );
-
-    textarea.style.height = `${clampedHeight}px`;
-    textarea.style.overflowY = scrollHeight > maxHeight ? "auto" : "hidden";
   }, []);
 
   const respondToUser = useCallback(
     (userContent: string) => {
-      const normalized = userContent.toLowerCase();
+      const lowerContent = userContent.toLowerCase().trim();
 
-      const matchedFlows = conversationFlows.filter((flow) =>
-        flow.triggers.some((trigger) => normalized.includes(trigger)),
-      );
+      let botResponse = "";
+      let shouldShowMenu = false;
 
-      const messageSections: string[] = [];
-
-      if (matchedFlows.length > 0) {
-        matchedFlows.forEach((flow) => {
-          messageSections.push(formatFlowResponse(flow));
-        });
-
-        const includesServiceFlow = matchedFlows.some((flow) =>
-          serviceFlowIds.has(flow.id),
-        );
-
-        if (includesServiceFlow && !hasShownFirstServiceOffer) {
-          messageSections.push(
-            "Great news! Since this is your first booking with Mayur Aircon, you get 10% OFF on your first service bill.",
-          );
-          setHasShownFirstServiceOffer(true);
-        }
+      if (
+        lowerContent === "1" ||
+        lowerContent.includes("precision") ||
+        lowerContent.includes("pac")
+      ) {
+        botResponse = `🔧 Precision Air Conditioning (PAC) - Vertiv Systems\n\n${businessConfig.name} specializes in Precision Air Conditioning services exclusively for Vertiv systems. We provide:\n\n• Installation & Setup\n• Maintenance & Support\n• Emergency Services\n• Expert Technical Support\n\nOur team maintains over 20 sites across Ahmedabad, Gandhinagar, and Radhanpur.\n\nWould you like to:\n✉️ Request a callback\n📞 Call us: +91 ${businessConfig.phone}\n💬 Chat with us further`;
+      } else if (
+        lowerContent === "2" ||
+        lowerContent.includes("regular") ||
+        lowerContent.includes("all brands")
+      ) {
+        botResponse = `🌡️ Regular AC Services - All Brands & Models\n\nFor all other PAC and AC service needs, ${businessConfig.name} supports every brand and model, including:\n\n• Split AC Systems\n• Window AC Units\n• Central AC Systems\n• Commercial HVAC\n• Installation, Maintenance & Repair\n• Annual Maintenance Contracts (AMC)\n\nOur team has extensive experience serving:\n${businessConfig.trustedClients.slice(0, 4).join(", ")}, and many more!\n\nReady to book a service? Let me know your requirements!`;
+      } else if (lowerContent === "3" || lowerContent.includes("callback")) {
+        botResponse = `📞 Request a Callback\n\nI'd be happy to arrange a callback for you!\n\nPlease share the following details:\n1. Your full name\n2. Contact number\n3. What service are you interested in?\n4. Best time to reach you?\n\nWe'll contact you within 24 hours.`;
+      } else if (
+        lowerContent === "4" ||
+        lowerContent.includes("client") ||
+        lowerContent.includes("trusted")
+      ) {
+        botResponse = `⭐ Our Trusted Clients\n\n${businessConfig.name} is proud to serve industry leaders across various sectors:\n\n${businessConfig.trustedClients.join("\n")}\n\nWe maintain over 20 service sites across:\n${businessConfig.serviceRegions.join(", ")}\n\nour commitment to excellence ensures top-tier AC solutions for businesses of all sizes.`;
+      } else if (
+        lowerContent === "5" ||
+        lowerContent.includes("contact us")
+      ) {
+        botResponse = `📞 Contact ${businessConfig.name}\n\n📱 Phone: +91 ${businessConfig.phone}\n📧 Email: ${businessConfig.email}\n📍 Service Areas: ${businessConfig.serviceRegions.join(", ")}\n\n⏰ Service Hours:\nMonday - Saturday: 9:00 AM - 7:00 PM\nEmergency Service: 24/7 Available\n\nWe're here to help! What can we assist you with today?`;
+        shouldShowMenu = true;
+      } else if (
+        lowerContent.includes("hello") ||
+        lowerContent.includes("hi") ||
+        lowerContent.includes("hey") ||
+        lowerContent.includes("menu")
+      ) {
+        botResponse = `👋 Hi there! Let me show you the main menu again:\n\n1️⃣ Precision Air Conditioning (PAC) - Vertiv Systems Only\n2️⃣ Regular AC Services (All Brands & Models)\n3️⃣ Request a Callback\n4️⃣ View Our Client List\n5️⃣ Contact Us 📞 +91 ${businessConfig.phone}`;
+        shouldShowMenu = false;
       } else {
-        messageSections.push(fallbackResponse);
+        botResponse = `Thanks for your message! To better assist you, please select one of the options from our menu:\n\n1️⃣ Precision Air Conditioning (PAC) - Vertiv Systems Only\n2️⃣ Regular AC Services (All Brands & Models)\n3️⃣ Request a Callback\n4️⃣ View Our Client List\n5️⃣ Contact Us 📞 +91 ${businessConfig.phone}`;
+        shouldShowMenu = true;
       }
 
-      messageSections.push(chooseRandom(contactFooters));
-
-      const botMessage = createMessage("bot", messageSections.join("\n\n"));
+      const botMessage = createMessage("bot", botResponse);
 
       if (pendingResponseCountRef.current === 0) {
         setIsThinking(true);
@@ -450,247 +137,134 @@ export function SupportChatWidget() {
 
       typingTimeoutsRef.current.push(timeoutId);
     },
-    [hasShownFirstServiceOffer],
+    [businessConfig],
   );
 
   const focusTextarea = useCallback(() => {
-    if (textareaRef.current) {
-      textareaRef.current.focus({ preventScroll: true });
-    }
-  }, [textareaRef]);
+    textareaRef.current?.focus();
+  }, []);
 
   const pushUserMessage = useCallback(
     (content: string) => {
-      const trimmedContent = content.trim();
-
-      if (!trimmedContent) {
-        return false;
-      }
-
-      const userMessage = createMessage("user", trimmedContent);
+      const userMessage = createMessage("user", content);
       setMessages((previous) => [...previous, userMessage]);
-      respondToUser(trimmedContent);
-      return true;
     },
-    [respondToUser],
+    [],
   );
 
-  const sendMessage = useCallback(() => {
-    const trimmed = inputValue.trim();
+  const sendMessage = useCallback(
+    (content: string) => {
+      if (!content.trim()) return;
 
-    if (!trimmed) {
-      return false;
-    }
-
-    const sent = pushUserMessage(trimmed);
-
-    if (!sent) {
-      return false;
-    }
-
-    setInputValue("");
-    adjustTextareaHeight();
-    return true;
-  }, [adjustTextareaHeight, inputValue, pushUserMessage]);
-
-  const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-
-      if (sendMessage()) {
-        focusTextarea();
-      }
-    },
-    [focusTextarea, sendMessage],
-  );
-
-  const handleSendClick = useCallback(() => {
-    if (sendMessage()) {
-      focusTextarea();
-    }
-  }, [focusTextarea, sendMessage]);
-
-  const handleTextareaKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLTextAreaElement>) => {
-      if (event.nativeEvent.isComposing) {
-        return;
-      }
-
-      if (event.key === "Enter" && !event.shiftKey) {
-        event.preventDefault();
-
-        if (sendMessage()) {
-          focusTextarea();
-        }
-      }
-    },
-    [focusTextarea, sendMessage],
-  );
-
-  const handleQuickPrompt = useCallback(
-    (prompt: string) => {
-      pushUserMessage(prompt);
+      pushUserMessage(content);
+      respondToUser(content);
       setInputValue("");
-      focusTextarea();
       adjustTextareaHeight();
+
+      if (!hasShownFirstServiceOfferRef.current) {
+        hasShownFirstServiceOfferRef.current = true;
+      }
     },
-    [adjustTextareaHeight, focusTextarea, pushUserMessage],
+    [pushUserMessage, respondToUser, adjustTextareaHeight],
   );
 
-  const canSendMessage = inputValue.trim().length > 0;
+  const handleSendClick = () => {
+    sendMessage(inputValue);
+    focusTextarea();
+  };
 
-  const handleOpenChange = useCallback((open: boolean) => {
-    setIsOpen(open);
-  }, []);
-
-  useEffect(() => {
-    if (scrollAnchorRef.current) {
-      scrollAnchorRef.current.scrollIntoView({ behavior: "smooth" });
+  const handleTextareaKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      sendMessage(inputValue);
+      focusTextarea();
     }
-  }, [messages, isThinking, isOpen]);
+  };
 
   useEffect(() => {
     adjustTextareaHeight();
-
-    if (isOpen) {
-      focusTextarea();
-    }
-  }, [adjustTextareaHeight, focusTextarea, inputValue, isOpen]);
+  }, [adjustTextareaHeight]);
 
   useEffect(() => {
     return () => {
-      typingTimeoutsRef.current.forEach((timeoutId) => {
-        window.clearTimeout(timeoutId);
-      });
-      typingTimeoutsRef.current = [];
+      typingTimeoutsRef.current.forEach(clearTimeout);
     };
   }, []);
 
+  const isMobile = useIsMobile();
+
   return (
-    <Sheet open={isOpen} onOpenChange={handleOpenChange}>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
         <Button
-          className={cn(
-            "fixed z-50 flex items-center gap-2 rounded-full bg-accent font-semibold shadow-lg transition-opacity duration-200 hover:bg-accent/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-            isMobile
-              ? "bottom-4 left-4 right-4 justify-center px-4 py-3 text-sm"
-              : "bottom-6 right-6 px-5 py-4 text-base",
-            isOpen ? "pointer-events-none opacity-0" : "opacity-100",
-          )}
+          className="fixed bottom-6 right-6 h-14 w-14 rounded-full bg-accent hover:bg-accent/90 shadow-lg"
+          size="icon"
         >
-          <MessageCircle className="h-5 w-5" />
-          Chat with Support
+          <MessageCircle className="h-6 w-6" />
+          <span className="sr-only">Open chat support</span>
         </Button>
       </SheetTrigger>
+
       <SheetContent
         side={isMobile ? "bottom" : "right"}
         className={cn(
-          "flex w-full flex-col gap-4",
-          isMobile
-            ? "h-[85vh] rounded-t-3xl border-t bg-background px-4 pb-6 pt-4"
-            : "h-full sm:max-w-md",
+          "flex flex-col p-0",
+          isMobile ? "h-[90vh]" : "w-[400px]",
         )}
       >
-        <SheetHeader>
-          <SheetTitle className="flex items-center gap-2 text-xl font-bold text-primary">
-            <Sparkles className="h-5 w-5 text-accent" />
-            Customer Support
+        <SheetHeader className="border-b border-border px-6 py-4">
+          <SheetTitle className="flex items-center gap-2 text-base">
+            <Sparkles className="h-4 w-4 text-accent" />
+            {businessConfig.name} Support
           </SheetTitle>
         </SheetHeader>
 
-        <ScrollArea
-          className={cn(
-            "flex-1 border border-border bg-muted/10 p-4",
-            isMobile ? "rounded-3xl" : "rounded-xl",
-          )}
-        >
-          <div className="space-y-4">
-            {messages.map((message) => {
-              const isBot = message.author === "bot";
-              const paragraphs = message.content.split("\n").filter(Boolean);
-
-              return (
+        <ScrollArea className="flex-1 overflow-hidden">
+          <div className="space-y-4 p-4">
+            {messages.map((message) => (
+              <div
+                key={message.id}
+                className={cn(
+                  "flex gap-3",
+                  message.author === "user" ? "justify-end" : "justify-start",
+                )}
+              >
                 <div
-                  key={message.id}
-                  className={`flex ${isBot ? "justify-start" : "justify-end"}`}
+                  className={cn(
+                    "max-w-xs lg:max-w-md rounded-2xl px-4 py-3 text-sm leading-relaxed",
+                    message.author === "user"
+                      ? "bg-accent text-accent-foreground"
+                      : "bg-muted text-foreground",
+                  )}
                 >
-                  <div
-                    className={cn(
-                      "rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm",
-                      isMobile ? "max-w-[90%]" : "max-w-[75%]",
-                      isBot ? "bg-white text-primary" : "bg-accent text-white",
-                    )}
-                  >
-                    {paragraphs.map((text, index) => (
-                      <p
-                        key={`${message.id}-${index}`}
-                        className="whitespace-pre-line"
-                      >
-                        {text}
-                      </p>
-                    ))}
-                    <span
-                      className={`mt-2 block text-[10px] uppercase tracking-wide ${
-                        isBot
-                          ? "text-muted-foreground"
-                          : "text-accent-foreground/80"
-                      }`}
-                    >
-                      {message.timestamp.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </span>
-                  </div>
+                  <p className="whitespace-pre-wrap break-words">
+                    {message.content}
+                  </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
 
             {isThinking && (
-              <div className="flex justify-start">
-                <div className="flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm text-primary shadow-sm">
+              <div className="flex gap-3">
+                <div className="flex items-center gap-2 rounded-2xl bg-muted px-4 py-3">
                   <Loader2 className="h-4 w-4 animate-spin text-accent" />
-                  Typing...
+                  <span className="text-sm text-muted-foreground">
+                    Typing...
+                  </span>
                 </div>
               </div>
             )}
-            <div ref={scrollAnchorRef} />
           </div>
         </ScrollArea>
 
-        <div className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-            Quick help topics
-          </p>
-          <div
-            className={cn(
-              "flex gap-2",
-              isMobile
-                ? "flex-nowrap overflow-x-auto pb-1 pt-0.5 [-webkit-overflow-scrolling:touch]"
-                : "flex-wrap",
-            )}
-            aria-label="Quick help prompt list"
+        <div className="border-t border-border bg-background px-4 py-3">
+          <form
+            onSubmit={(e: FormEvent<HTMLFormElement>) => {
+              e.preventDefault();
+              handleSendClick();
+            }}
+            className="flex gap-2"
           >
-            {quickPrompts.map((prompt) => (
-              <Button
-                key={prompt.id}
-                variant="outline"
-                className={cn(
-                  "border-accent/40 text-xs text-accent hover:bg-accent hover:text-white whitespace-nowrap",
-                  isMobile ? "px-3 py-2 text-sm" : "px-4 py-2",
-                )}
-                onClick={() => handleQuickPrompt(prompt.message)}
-                type="button"
-                disabled={isThinking}
-              >
-                {prompt.label}
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-2">
-          <div className="flex items-end gap-2">
             <Textarea
               ref={textareaRef}
               rows={1}
@@ -715,8 +289,8 @@ export function SupportChatWidget() {
               <Send className="h-5 w-5" />
               <span className="sr-only">Send message</span>
             </Button>
-          </div>
-        </form>
+          </form>
+        </div>
       </SheetContent>
     </Sheet>
   );
