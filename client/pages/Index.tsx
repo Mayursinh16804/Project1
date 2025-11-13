@@ -269,8 +269,7 @@ export default function Index() {
                   Professional AC Installation & Service
                 </p>
                 <p className="text-muted-foreground">
-                  Watch our certified technicians demonstrate professional
-                  installation techniques and maintenance procedures
+                  Mayur Aircon provides PAC (Precision Air Conditioning) services only for Vertiv systems. For all other PAC and AC service needs, we support every brand and model.
                 </p>
               </div>
             </div>
