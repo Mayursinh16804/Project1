@@ -336,10 +336,23 @@ export default function Index() {
                     </p>
                   </div>
                 </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold">Trusted by Industry Leaders</h3>
+                    <p className="text-muted-foreground">
+                      Serving TATA, Vodafone, Airtel, GNFC, News18, ABP News, Stock Exchange Ahmedabad and many more
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <Button size="lg" className="mt-6 bg-accent hover:bg-accent/90">
-                Learn More About Us
+              <Button
+                size="lg"
+                className="mt-6 bg-accent hover:bg-accent/90"
+                onClick={() => document.getElementById('clients')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Our Trusted Clients
               </Button>
             </div>
 
