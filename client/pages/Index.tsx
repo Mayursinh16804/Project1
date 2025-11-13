@@ -956,6 +956,51 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Trusted Clients Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center space-y-4 mb-16">
+            <Badge variant="secondary" className="w-fit mx-auto">
+              Our Trusted Clients
+            </Badge>
+            <h2 className="text-3xl lg:text-5xl font-bold text-primary">
+              Trusted by Industry Leaders
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              We maintain over 20 sites across Ahmedabad, Gandhinagar, and Radhanpur, serving trusted clients including:
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+            {businessConfig.trustedClients.map((client) => (
+              <Card key={client} className="p-6 flex items-center justify-center text-center hover:shadow-lg transition-all">
+                <div className="space-y-3">
+                  <div className="text-2xl font-bold text-accent">{client.charAt(0)}</div>
+                  <p className="font-semibold text-primary">{client}</p>
+                  <p className="text-xs text-muted-foreground">Mayur Aircon trusted client</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+          <div className="bg-gradient-to-r from-accent/5 to-accent/10 rounded-2xl p-8 md:p-12 text-center">
+            <h3 className="text-2xl font-bold text-primary mb-4">
+              Precision AC Services Across Multiple Locations
+            </h3>
+            <p className="text-lg text-muted-foreground mb-6">
+              Mayur Aircon provides PAC (Precision Air Conditioning) services only for Vertiv systems. For all other PAC and AC service needs, we support every brand and model. We maintain over 20 sites across Ahmedabad, Gandhinagar, and Radhanpur.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {businessConfig.serviceRegions.map((region) => (
+                <Badge key={region} variant="secondary" className="text-sm">
+                  {region}
+                </Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Client Testimonials Section */}
       <section id="clients" className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
