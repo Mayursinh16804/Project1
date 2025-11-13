@@ -1159,53 +1159,7 @@ export default function Index() {
 
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <Card className="p-8">
-              <CardHeader className="px-0 pt-0">
-                <CardTitle>Request Your Quote</CardTitle>
-                <CardDescription>
-                  Fill out the form and we'll get back to you within 24 hours
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="px-0 space-y-4">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Name</label>
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                      className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Phone</label>
-                    <input
-                      type="tel"
-                      placeholder="+91 XXXXX XXXXX"
-                      className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Email</label>
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Message</label>
-                  <textarea
-                    placeholder="Tell us about your AC requirements (type, space size, etc.)..."
-                    rows={4}
-                    className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
-                  ></textarea>
-                </div>
-                <Button className="w-full bg-accent hover:bg-accent/90">
-                  Send Message
-                </Button>
-              </CardContent>
-            </Card>
+            <ContactFormComponent />
 
             {/* Contact Details */}
             <div className="space-y-8">
