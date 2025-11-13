@@ -177,7 +177,7 @@ export default function Index() {
                   className="text-lg px-8 border-accent text-accent hover:bg-accent hover:text-white"
                 >
                   <Phone className="w-5 h-5 mr-2" />
-                  Call +91 95587 19344
+                  Call +91 {businessConfig.phone}
                 </Button>
               </div>
               <div className="flex items-center gap-8 pt-4">
