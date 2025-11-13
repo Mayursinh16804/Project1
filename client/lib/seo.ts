@@ -56,8 +56,7 @@ export const generateOrganizationSchema = (config: {
   url: typeof window !== "undefined" ? window.location.origin : "",
   telephone: `+91${config.phone}`,
   email: config.email,
-  logo:
-    "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fb62909aa440046ef82b1eff0e7532fc5?format=webp&width=800",
+  logo: "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fb62909aa440046ef82b1eff0e7532fc5?format=webp&width=800",
   sameAs: [],
   contactPoint: {
     "@type": "ContactPoint",
@@ -66,7 +65,9 @@ export const generateOrganizationSchema = (config: {
   },
 });
 
-export const generateBreadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
+export const generateBreadcrumbSchema = (
+  items: Array<{ name: string; url: string }>,
+) => ({
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: items.map((item, index) => ({

@@ -41,18 +41,14 @@ export default function Index() {
     }
   };
 
-  const handleProductKeyDown = (
-    event: KeyboardEvent<HTMLDivElement>,
-  ) => {
+  const handleProductKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       handleProductNavigation();
     }
   };
 
-  const handleProductButtonClick = (
-    event: MouseEvent<HTMLButtonElement>,
-  ) => {
+  const handleProductButtonClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     handleProductNavigation();
   };
@@ -270,7 +266,9 @@ export default function Index() {
                   Professional AC Installation & Service
                 </p>
                 <p className="text-muted-foreground">
-                  Mayur Aircon provides PAC (Precision Air Conditioning) services only for Vertiv systems. For all other PAC and AC service needs, we support every brand and model.
+                  Mayur Aircon provides PAC (Precision Air Conditioning)
+                  services only for Vertiv systems. For all other PAC and AC
+                  service needs, we support every brand and model.
                 </p>
               </div>
             </div>
@@ -292,16 +290,31 @@ export default function Index() {
                 </h2>
                 <div className="space-y-4">
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    {businessConfig.name} is a trusted name in air conditioning solutions with specialization in Vertiv PAC systems. With {businessConfig.experience} years of experience, we have successfully completed over {businessConfig.installations} installations across residential, commercial, and industrial sectors.
+                    {businessConfig.name} is a trusted name in air conditioning
+                    solutions with specialization in Vertiv PAC systems. With{" "}
+                    {businessConfig.experience} years of experience, we have
+                    successfully completed over {businessConfig.installations}{" "}
+                    installations across residential, commercial, and industrial
+                    sectors.
                   </p>
                   <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 space-y-3">
                     <p className="text-sm font-semibold text-primary">
                       ✓ Our Service Expertise:
                     </p>
                     <ul className="text-sm text-muted-foreground space-y-2">
-                      <li>• {businessConfig.name} provides PAC (Precision Air Conditioning) services <strong>exclusively for Vertiv systems</strong></li>
-                      <li>• For all other PAC and AC service needs, we support <strong>every brand and model</strong></li>
-                      <li>• We maintain <strong>over 20 sites</strong> across {businessConfig.serviceRegions.join(", ")}</li>
+                      <li>
+                        • {businessConfig.name} provides PAC (Precision Air
+                        Conditioning) services{" "}
+                        <strong>exclusively for Vertiv systems</strong>
+                      </li>
+                      <li>
+                        • For all other PAC and AC service needs, we support{" "}
+                        <strong>every brand and model</strong>
+                      </li>
+                      <li>
+                        • We maintain <strong>over 20 sites</strong> across{" "}
+                        {businessConfig.serviceRegions.join(", ")}
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -340,9 +353,12 @@ export default function Index() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-accent mt-0.5" />
                   <div>
-                    <h3 className="font-semibold">Trusted by Industry Leaders</h3>
+                    <h3 className="font-semibold">
+                      Trusted by Industry Leaders
+                    </h3>
                     <p className="text-muted-foreground">
-                      Serving TATA, Vodafone, Airtel, GNFC, News18, ABP News, Stock Exchange Ahmedabad and many more
+                      Serving TATA, Vodafone, Airtel, GNFC, News18, ABP News,
+                      Stock Exchange Ahmedabad and many more
                     </p>
                   </div>
                 </div>
@@ -351,7 +367,11 @@ export default function Index() {
               <Button
                 size="lg"
                 className="mt-6 bg-accent hover:bg-accent/90"
-                onClick={() => document.getElementById('clients')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() =>
+                  document
+                    .getElementById("clients")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 View Our Trusted Clients
               </Button>
@@ -412,11 +432,16 @@ export default function Index() {
               Complete AC Solutions for Every Need
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From installation to maintenance, we provide comprehensive air conditioning services
+              From installation to maintenance, we provide comprehensive air
+              conditioning services
             </p>
             <div className="bg-accent/5 border border-accent/20 rounded-lg px-6 py-4 max-w-3xl mx-auto mt-6">
               <p className="text-sm text-muted-foreground">
-                🎯 <strong>Service Clarity:</strong> {businessConfig.name} provides PAC (Precision Air Conditioning) services exclusively for Vertiv systems. For all other PAC and AC service needs, we support every brand and model including Daikin, Voltas, LG, Blue Star, and more.
+                🎯 <strong>Service Clarity:</strong> {businessConfig.name}{" "}
+                provides PAC (Precision Air Conditioning) services exclusively
+                for Vertiv systems. For all other PAC and AC service needs, we
+                support every brand and model including Daikin, Voltas, LG, Blue
+                Star, and more.
               </p>
             </div>
           </div>
@@ -994,17 +1019,25 @@ export default function Index() {
               Trusted by Industry Leaders
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              We maintain over 20 sites across Ahmedabad, Gandhinagar, and Radhanpur, serving trusted clients including:
+              We maintain over 20 sites across Ahmedabad, Gandhinagar, and
+              Radhanpur, serving trusted clients including:
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
             {businessConfig.trustedClients.map((client) => (
-              <Card key={client} className="p-6 flex items-center justify-center text-center hover:shadow-lg transition-all">
+              <Card
+                key={client}
+                className="p-6 flex items-center justify-center text-center hover:shadow-lg transition-all"
+              >
                 <div className="space-y-3">
-                  <div className="text-2xl font-bold text-accent">{client.charAt(0)}</div>
+                  <div className="text-2xl font-bold text-accent">
+                    {client.charAt(0)}
+                  </div>
                   <p className="font-semibold text-primary">{client}</p>
-                  <p className="text-xs text-muted-foreground">Mayur Aircon trusted client</p>
+                  <p className="text-xs text-muted-foreground">
+                    Mayur Aircon trusted client
+                  </p>
                 </div>
               </Card>
             ))}
@@ -1015,7 +1048,10 @@ export default function Index() {
               Precision AC Services Across Multiple Locations
             </h3>
             <p className="text-lg text-muted-foreground mb-6">
-              Mayur Aircon provides PAC (Precision Air Conditioning) services only for Vertiv systems. For all other PAC and AC service needs, we support every brand and model. We maintain over 20 sites across Ahmedabad, Gandhinagar, and Radhanpur.
+              Mayur Aircon provides PAC (Precision Air Conditioning) services
+              only for Vertiv systems. For all other PAC and AC service needs,
+              we support every brand and model. We maintain over 20 sites across
+              Ahmedabad, Gandhinagar, and Radhanpur.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {businessConfig.serviceRegions.map((region) => (

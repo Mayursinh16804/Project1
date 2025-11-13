@@ -1,9 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { FormEvent, KeyboardEvent } from "react";
 import { MessageCircle, Send, Sparkles, Loader2 } from "lucide-react";
 
@@ -95,10 +90,7 @@ export function SupportChatWidget() {
         lowerContent.includes("trusted")
       ) {
         botResponse = `⭐ Our Trusted Clients\n\n${businessConfig.name} is proud to serve industry leaders across various sectors:\n\n${businessConfig.trustedClients.join("\n")}\n\nWe maintain over 20 service sites across:\n${businessConfig.serviceRegions.join(", ")}\n\nour commitment to excellence ensures top-tier AC solutions for businesses of all sizes.`;
-      } else if (
-        lowerContent === "5" ||
-        lowerContent.includes("contact us")
-      ) {
+      } else if (lowerContent === "5" || lowerContent.includes("contact us")) {
         botResponse = `📞 Contact ${businessConfig.name}\n\n📱 Phone: +91 ${businessConfig.phone}\n📧 Email: ${businessConfig.email}\n📍 Service Areas: ${businessConfig.serviceRegions.join(", ")}\n\n⏰ Service Hours:\nMonday - Saturday: 9:00 AM - 7:00 PM\nEmergency Service: 24/7 Available\n\nWe're here to help! What can we assist you with today?`;
         shouldShowMenu = true;
       } else if (
@@ -144,13 +136,10 @@ export function SupportChatWidget() {
     textareaRef.current?.focus();
   }, []);
 
-  const pushUserMessage = useCallback(
-    (content: string) => {
-      const userMessage = createMessage("user", content);
-      setMessages((previous) => [...previous, userMessage]);
-    },
-    [],
-  );
+  const pushUserMessage = useCallback((content: string) => {
+    const userMessage = createMessage("user", content);
+    setMessages((previous) => [...previous, userMessage]);
+  }, []);
 
   const sendMessage = useCallback(
     (content: string) => {
@@ -207,10 +196,7 @@ export function SupportChatWidget() {
 
       <SheetContent
         side={isMobile ? "bottom" : "right"}
-        className={cn(
-          "flex flex-col p-0",
-          isMobile ? "h-[90vh]" : "w-[400px]",
-        )}
+        className={cn("flex flex-col p-0", isMobile ? "h-[90vh]" : "w-[400px]")}
       >
         <SheetHeader className="border-b border-border px-6 py-4">
           <SheetTitle className="flex items-center gap-2 text-base">
