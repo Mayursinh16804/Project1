@@ -1390,8 +1390,8 @@ export default function Index() {
             <div>
               <h3 className="font-semibold mb-4">Contact Info</h3>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li>Phone: +91 95587 19344</li>
-                <li>Email: mayuraircon1684@gmail.com</li>
+                <li>Phone: +91 {businessConfig.phone}</li>
+                <li>Email: {businessConfig.email}</li>
                 <li>24/7 Emergency Service</li>
                 <li>Free Consultation</li>
               </ul>
