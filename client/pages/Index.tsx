@@ -1479,3 +1479,145 @@ export default function Index() {
     </div>
   );
 }
+
+function ContactFormComponent() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setSubmitStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 5000);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <Card className="p-8">
+      <CardHeader className="px-0 pt-0">
+        <CardTitle>Request Your Quote</CardTitle>
+        <CardDescription>
+          Fill out the form and we'll get back to you within 24 hours
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="px-0 space-y-4">
+        {submitStatus === "success" && (
+          <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md">
+            ✓ Thank you for your message. We'll contact you within 24 hours.
+          </div>
+        )}
+        {submitStatus === "error" && (
+          <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+            ✗ Failed to submit form. Please try again.
+          </div>
+        )}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Name</label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name"
+                required
+                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium">Phone</label>
+              <input
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+91 XXXXX XXXXX"
+                required
+                className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+              />
+            </div>
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Email</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="your@email.com"
+              required
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+            />
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-medium">Message</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Tell us about your AC requirements (type, space size, etc.)..."
+              rows={4}
+              required
+              className="w-full p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
+            ></textarea>
+          </div>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-accent hover:bg-accent/90 disabled:opacity-50"
+          >
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </Button>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}
