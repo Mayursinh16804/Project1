@@ -289,12 +289,21 @@ export default function Index() {
                 <h2 className="text-3xl lg:text-5xl font-bold text-primary">
                   Trusted AC Experts with 2+ Years of Experience
                 </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  MAYUR AIRCON has been providing reliable air conditioning
-                  solutions for over 2 years. We specialize in residential,
-                  commercial, and industrial AC solutions for homes, offices,
-                  industries, malls, hospitals, and schools.
-                </p>
+                <div className="space-y-4">
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {businessConfig.name} is a trusted name in air conditioning solutions with specialization in Vertiv PAC systems. With {businessConfig.experience} years of experience, we have successfully completed over {businessConfig.installations} installations across residential, commercial, and industrial sectors.
+                  </p>
+                  <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 space-y-3">
+                    <p className="text-sm font-semibold text-primary">
+                      ✓ Our Service Expertise:
+                    </p>
+                    <ul className="text-sm text-muted-foreground space-y-2">
+                      <li>• {businessConfig.name} provides PAC (Precision Air Conditioning) services <strong>exclusively for Vertiv systems</strong></li>
+                      <li>• For all other PAC and AC service needs, we support <strong>every brand and model</strong></li>
+                      <li>• We maintain <strong>over 20 sites</strong> across {businessConfig.serviceRegions.join(", ")}</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-4">
