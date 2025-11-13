@@ -258,7 +258,7 @@ export default function Index() {
                   onMouseLeave={(e) => e.currentTarget.pause()}
                 >
                   <source
-                    src="https://cdn.builder.io/o/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F598752652fa144c6a1671eca2bc7bd97?alt=media&token=8fb9d776-5b78-40c5-a192-fd3c592ffbdb&apiKey=5a8c30a1b7984e9dbaf0e12f1f3a6110"
+                    src="https://cdn.builder.io/o/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fa1f3895aa3de4c14838301be8ed80219?alt=media&token=97b1012f-b585-49fd-a0f1-b88ec0401149&apiKey=5a8c30a1b7984e9dbaf0e12f1f3a6110"
                     type="video/mp4"
                   />
                   Your browser does not support the video tag.
