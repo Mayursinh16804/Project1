@@ -1423,10 +1423,10 @@ export default function Index() {
                 </li>
                 <li>
                   <a
-                    href="#products"
+                    href="#about"
                     className="hover:text-primary-foreground transition-colors"
                   >
-                    Products
+                    About Us
                   </a>
                 </li>
                 <li>
@@ -1435,6 +1435,22 @@ export default function Index() {
                     className="hover:text-primary-foreground transition-colors"
                   >
                     Services
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#products"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    Products
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#clients"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    Clients
                   </a>
                 </li>
                 <li>
@@ -1451,10 +1467,38 @@ export default function Index() {
             <div>
               <h3 className="font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li>AC Installation</li>
-                <li>AMC Services</li>
-                <li>AC Repair</li>
-                <li>HVAC Systems</li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    AC Installation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    AMC Services
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    AC Repair
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    className="hover:text-primary-foreground transition-colors"
+                  >
+                    HVAC Systems
+                  </a>
+                </li>
               </ul>
             </div>
 
