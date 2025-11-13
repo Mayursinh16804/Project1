@@ -398,9 +398,13 @@ export default function Index() {
               Complete AC Solutions for Every Need
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              From installation to maintenance, we provide comprehensive air
-              conditioning services
+              From installation to maintenance, we provide comprehensive air conditioning services
             </p>
+            <div className="bg-accent/5 border border-accent/20 rounded-lg px-6 py-4 max-w-3xl mx-auto mt-6">
+              <p className="text-sm text-muted-foreground">
+                🎯 <strong>Service Clarity:</strong> {businessConfig.name} provides PAC (Precision Air Conditioning) services exclusively for Vertiv systems. For all other PAC and AC service needs, we support every brand and model including Daikin, Voltas, LG, Blue Star, and more.
+              </p>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
