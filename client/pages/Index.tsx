@@ -1147,7 +1147,7 @@ export default function Index() {
                       Available for calls and emergencies
                     </p>
                     <p className="text-lg font-semibold text-accent">
-                      +91 95587 19344
+                      +91 {businessConfig.phone}
                     </p>
                   </div>
                 </div>
@@ -1162,7 +1162,7 @@ export default function Index() {
                       Send us your AC requirements
                     </p>
                     <p className="text-lg font-semibold text-accent">
-                      mayuraircon1684@gmail.com
+                      {businessConfig.email}
                     </p>
                   </div>
                 </div>
