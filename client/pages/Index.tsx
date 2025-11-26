@@ -26,6 +26,8 @@ import {
   Wind,
   Building,
   Home,
+  Linkedin,
+  Instagram,
 } from "lucide-react";
 import { SupportChatWidget } from "@/components/support-chat-widget";
 import { useBusinessConfig } from "@/context/BusinessContext";
