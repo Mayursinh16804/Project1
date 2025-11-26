@@ -1038,13 +1038,23 @@ export default function Index() {
             {businessConfig.trustedClients.map((client) => (
               <Card
                 key={client}
-                className="p-6 flex items-center justify-center text-center hover:shadow-lg transition-all"
+                className="p-6 flex flex-col items-center justify-center text-center hover:shadow-lg transition-all h-full"
               >
-                <div className="space-y-3">
-                  <div className="text-2xl font-bold text-accent">
-                    {client.charAt(0)}
-                  </div>
-                  <p className="font-semibold text-primary">{client}</p>
+                <div className="flex flex-col items-center justify-center gap-3 w-full h-full">
+                  {clientLogos[client] ? (
+                    <div className="flex-1 flex items-center justify-center w-full">
+                      <img
+                        src={clientLogos[client]}
+                        alt={`${client} logo`}
+                        className="max-h-24 max-w-full object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="text-2xl font-bold text-accent">
+                      {client.charAt(0)}
+                    </div>
+                  )}
+                  <p className="font-semibold text-primary text-sm">{client}</p>
                   <p className="text-xs text-muted-foreground">
                     Mayur Aircon trusted client
                   </p>
