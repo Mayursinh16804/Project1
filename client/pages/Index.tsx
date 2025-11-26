@@ -1279,73 +1279,153 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Founder & Co-Founder Section */}
-      <section className="py-16 lg:py-20 bg-white">
+      {/* Leadership Section */}
+      <section className="py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
-          <div className="space-y-12">
-            {/* Header */}
-            <div className="text-center space-y-3 max-w-2xl mx-auto">
+          <div className="space-y-16">
+            {/* Section Header */}
+            <div className="text-center space-y-4 max-w-3xl mx-auto">
               <Badge variant="secondary" className="w-fit mx-auto">
-                Leadership
+                Our Leadership
               </Badge>
-              <h2 className="text-3xl lg:text-4xl font-bold text-primary tracking-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-primary tracking-tight">
                 Founder & Co-Founder
               </h2>
-              <p className="text-base lg:text-lg text-muted-foreground pt-2">
-                A father-son duo bringing together 25+ years of industry expertise with innovative vision
+              <div className="h-1 w-16 bg-accent mx-auto"></div>
+              <p className="text-lg text-muted-foreground pt-2">
+                A father-son duo leading with 25+ years of industry expertise and modern innovation
               </p>
             </div>
 
-            {/* Founders Grid */}
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-4xl mx-auto">
-              {/* Founder */}
-              <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                {/* Image */}
-                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden flex-shrink-0 bg-muted shadow-sm">
+            {/* Profile Cards Grid */}
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+              {/* Founder Profile Card */}
+              <div className="flex flex-col items-center bg-white rounded-xl p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                {/* Profile Image */}
+                <div className="w-28 h-28 rounded-full overflow-hidden bg-gradient-to-br from-accent/20 to-accent/10 shadow-md mb-6 border-4 border-white">
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F3041d0e3075f4780bc754d5282fbbd8a?format=webp&width=800"
                     alt="Narendrasinh Padhiyar - Founder"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* Text */}
-                <div className="text-center md:text-left space-y-2 flex-1">
-                  <p className="text-xs font-semibold text-accent uppercase tracking-wide">Founder</p>
-                  <h3 className="text-lg md:text-xl font-bold text-primary">Narendrasinh Padhiyar</h3>
-                  <p className="text-sm font-medium text-accent">25+ Years of Industry Experience</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed pt-1">
-                    A respected industry leader known for trust, quality, and long-term vision.
+
+                {/* Profile Content */}
+                <div className="text-center space-y-3 mb-6">
+                  <p className="text-xs font-semibold text-accent uppercase tracking-widest">Founder</p>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-primary">
+                    Narendrasinh Padhiyar
+                  </h3>
+                  <p className="text-sm font-semibold text-accent">25+ Years of Industry Expertise</p>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-muted-foreground leading-relaxed text-center mb-8 max-w-sm">
+                  A highly respected leader known for experience, trust, and a strong foundation in the industry.
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex justify-center gap-3 w-full">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 hover:bg-accent hover:text-white border-gray-200 transition-colors"
+                    onClick={() => window.location.href = "mailto:napadhiyar123@gmail.com"}
+                  >
+                    <Mail size={16} />
+                    <span className="hidden sm:inline">Email</span>
+                  </Button>
+                </div>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gray-100 my-6"></div>
+
+                {/* Leadership Highlight */}
+                <div className="w-full text-center">
+                  <p className="text-xs text-muted-foreground font-medium">
+                    Senior Leadership • Founder
                   </p>
                 </div>
               </div>
 
-              {/* Co-Founder */}
-              <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
-                {/* Image */}
-                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden flex-shrink-0 bg-muted shadow-sm">
+              {/* Co-Founder Profile Card */}
+              <div className="flex flex-col items-center bg-white rounded-xl p-8 lg:p-10 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100">
+                {/* Profile Image */}
+                <div className="w-28 h-28 rounded-full overflow-hidden bg-gradient-to-br from-accent/20 to-accent/10 shadow-md mb-6 border-4 border-white">
                   <img
                     src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F0cb8f855552240a98f5e2baf64752dfb?format=webp&width=800"
                     alt="Mayursinh Padhiyar - Co-Founder"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* Text */}
-                <div className="text-center md:text-left space-y-2 flex-1">
-                  <p className="text-xs font-semibold text-accent uppercase tracking-wide">Co-Founder</p>
-                  <h3 className="text-lg md:text-xl font-bold text-primary">Mayursinh Padhiyar</h3>
-                  <p className="text-sm font-medium text-accent">4+ Years in the Industry</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed pt-1">
-                    Representing modern innovation and customer-focused growth.
+
+                {/* Profile Content */}
+                <div className="text-center space-y-3 mb-6">
+                  <p className="text-xs font-semibold text-accent uppercase tracking-widest">Co-Founder</p>
+                  <h3 className="text-2xl lg:text-3xl font-bold text-primary">
+                    Mayursinh Padhiyar
+                  </h3>
+                  <p className="text-sm font-semibold text-accent">4+ Years of Industry Experience</p>
+                </div>
+
+                {/* Description */}
+                <p className="text-sm text-muted-foreground leading-relaxed text-center mb-8 max-w-sm">
+                  Represents modern thinking, innovation, and customer-focused growth driving MAYUR AIRCON forward.
+                </p>
+
+                {/* Action Buttons */}
+                <div className="flex justify-center gap-2 w-full flex-wrap">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 hover:bg-accent hover:text-white border-gray-200 transition-colors"
+                    onClick={() => window.location.href = "mailto:mayursinhp507@gmail.com"}
+                  >
+                    <Mail size={16} />
+                    <span className="hidden sm:inline">Email</span>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 hover:bg-blue-600 hover:text-white border-gray-200 hover:border-blue-600 transition-colors"
+                    onClick={() => window.location.href = "https://www.linkedin.com/in/mayursinh-padhiyar-043349280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"}
+                  >
+                    <Linkedin size={16} />
+                    <span className="hidden sm:inline">LinkedIn</span>
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2 hover:bg-pink-600 hover:text-white border-gray-200 hover:border-pink-600 transition-colors"
+                    onClick={() => window.location.href = "https://instagram.com/mayursinh_1684"}
+                  >
+                    <Instagram size={16} />
+                    <span className="hidden sm:inline">Instagram</span>
+                  </Button>
+                </div>
+
+                {/* Divider */}
+                <div className="w-full h-px bg-gray-100 my-6"></div>
+
+                {/* Leadership Highlight */}
+                <div className="w-full text-center">
+                  <p className="text-xs text-muted-foreground font-medium">
+                    Innovation • Customer Focus
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Vision Statement */}
-            <div className="text-center max-w-3xl mx-auto pt-4">
-              <p className="text-base lg:text-lg text-primary leading-relaxed">
-                Together, they blend <strong>deep industry experience with modern innovation</strong>, delivering precision air conditioning solutions with trust and excellence.
-              </p>
+            {/* Father-Son Leadership Message */}
+            <div className="max-w-3xl mx-auto text-center pt-8">
+              <div className="inline-block">
+                <p className="text-base lg:text-lg text-primary leading-relaxed">
+                  <span className="font-semibold text-accent">A Father-Son Leadership Team</span>
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Combining decades of trusted expertise with modern innovation to deliver excellence
+                </p>
+              </div>
             </div>
           </div>
         </div>
