@@ -47,6 +47,16 @@ const clientLogos: Record<string, string> = {
     "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F2d9f54d95b5d409c9d97c4435a9073e1?format=webp&width=800",
 };
 
+const clientWebsites: Record<string, string> = {
+  "ABP News": "https://www.abpnews.com/",
+  "Stock Exchange Ahmedabad": "https://www.asepl.com/",
+  Airtel: "https://www.airtel.in/",
+  GNFC: "https://www.gnfc.in/",
+  News18: "https://www.news18.com/",
+  TATA: "https://www.tata.com/",
+  Vodafone: "https://www.vodafone.in/",
+};
+
 export default function Index() {
   const businessConfig = useBusinessConfig();
   const productRedirectUrl =
