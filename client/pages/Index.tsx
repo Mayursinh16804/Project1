@@ -1277,101 +1277,91 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Founder Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      {/* Founder & Co-Founder Section */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center space-y-8">
-            <div className="space-y-4">
-              <Badge
-                variant="secondary"
-                className="w-fit mx-auto bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20"
-              >
-                Company Founder
+          <div className="space-y-16">
+            {/* Header */}
+            <div className="text-center space-y-4 max-w-2xl mx-auto">
+              <Badge variant="secondary" className="w-fit mx-auto">
+                Leadership
               </Badge>
-              <h2 className="text-3xl lg:text-5xl font-bold">
-                Meet Our Founder
+              <h2 className="text-4xl lg:text-5xl font-bold text-primary tracking-tight">
+                Founder & Co-Founder
               </h2>
-              <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto">
-                The visionary behind MAYUR AIRCON's success and commitment to
-                excellence
+              <div className="h-1 w-12 bg-accent mx-auto"></div>
+              <p className="text-lg text-muted-foreground pt-4">
+                A father-son duo bringing together 25+ years of industry expertise with innovative vision for the future
               </p>
             </div>
 
-            <Card className="max-w-2xl mx-auto bg-white/10 backdrop-blur border-primary-foreground/20">
-              <div className="p-12 text-center">
-                <div className="w-40 h-40 mx-auto mb-8 rounded-full overflow-hidden border-4 border-accent/50">
+            {/* Leadership Grid */}
+            <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+              {/* Founder */}
+              <div className="flex flex-col justify-between space-y-6">
+                <div className="aspect-square rounded-lg overflow-hidden bg-muted">
                   <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fe44870ba918145f797458d5d8ff14dff?format=webp&width=800"
-                    alt="Mayursinh Padhiyar - Founder"
+                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Ff916a59eee564b228d143361aff057c7?format=webp&width=800"
+                    alt="Narendrasinh Padhiyar - Founder"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="space-y-4">
-                  <h3 className="text-3xl font-bold text-primary-foreground">
-                    Mayursinh Padhiyar
-                  </h3>
-                  <p className="text-accent font-semibold text-xl">
-                    Founder & Chief Executive Officer
-                  </p>
-                  <div className="text-primary-foreground/90 text-lg leading-relaxed space-y-4">
+                  <div>
+                    <p className="text-sm font-semibold text-accent uppercase tracking-wide mb-2">Founder</p>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-primary">
+                      Narendrasinh Padhiyar
+                    </h3>
+                  </div>
+                  <p className="text-accent font-semibold text-lg">25+ Years of Industry Experience</p>
+                  <div className="space-y-3 text-muted-foreground leading-relaxed">
                     <p>
-                      With over 5 years of unwavering dedication to the air
-                      conditioning industry, Mayursinh Padhiyar founded MAYUR
-                      AIRCON with a vision to revolutionize cooling solutions
-                      for both residential and commercial sectors.
-                    </p>
-                    <p>
-                      His commitment to excellence, innovative approach, and
-                      customer-first philosophy have made MAYUR AIRCON a trusted
-                      name in precision air conditioning systems. Under his
-                      leadership, the company has successfully completed over
-                      5000 installations and continues to set new standards in
-                      the industry.
-                    </p>
-                    <p>
-                      Mayursinh's expertise spans across commercial PAC systems,
-                      data center cooling solutions, and cutting-edge HVAC
-                      technologies, making him a respected leader in the field.
+                      A respected industry leader known for trust, quality, and long-term vision. His decades of expertise form the foundation of MAYUR AIRCON's commitment to excellence.
                     </p>
                   </div>
-
-                  <div className="grid md:grid-cols-3 gap-6 mt-8 pt-8 border-t border-primary-foreground/20">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-accent mb-1">
-                        5+
-                      </div>
-                      <div className="text-sm text-primary-foreground/80">
-                        Years of Experience
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-accent mb-1">
-                        5000+
-                      </div>
-                      <div className="text-sm text-primary-foreground/80">
-                        Projects Completed
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-accent mb-1">
-                        100%
-                      </div>
-                      <div className="text-sm text-primary-foreground/80">
-                        Customer Satisfaction
-                      </div>
-                    </div>
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-sm text-muted-foreground">
+                      <strong>Specialization:</strong> Industry leadership, strategic vision, quality assurance, and trusted client relationships
+                    </p>
                   </div>
                 </div>
               </div>
-            </Card>
 
-            <div className="text-center">
-              <p className="text-lg text-primary-foreground/80 italic">
-                "Excellence in air conditioning is not just our business - it's
-                our passion and commitment to every client."
-              </p>
-              <p className="text-accent font-semibold mt-2">
-                - Mayursinh Padhiyar
+              {/* Co-Founder */}
+              <div className="flex flex-col justify-between space-y-6">
+                <div className="aspect-square rounded-lg overflow-hidden bg-muted">
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F55668f4e92404712b61918e3c1231df1?format=webp&width=800"
+                    alt="Mayursinh Padhiyar - Co-Founder"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-sm font-semibold text-accent uppercase tracking-wide mb-2">Co-Founder</p>
+                    <h3 className="text-2xl lg:text-3xl font-bold text-primary">
+                      Mayursinh Padhiyar
+                    </h3>
+                  </div>
+                  <p className="text-accent font-semibold text-lg">4+ Years in the Industry</p>
+                  <div className="space-y-3 text-muted-foreground leading-relaxed">
+                    <p>
+                      Represents the next generation of innovation and customer-focused growth. His modern approach and technical expertise drive MAYUR AIRCON toward new horizons.
+                    </p>
+                  </div>
+                  <div className="pt-4 border-t border-border">
+                    <p className="text-sm text-muted-foreground">
+                      <strong>Specialization:</strong> Innovation, customer-centric solutions, technical expertise, and modern business growth
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Vision Statement */}
+            <div className="bg-accent/5 rounded-lg border border-accent/10 p-8 lg:p-12 text-center max-w-3xl mx-auto">
+              <p className="text-lg lg:text-xl text-primary font-light leading-relaxed">
+                Together, we blend <strong>deep industry experience with modern innovation</strong>, delivering precision air conditioning solutions that set new standards in quality, trust, and customer satisfaction.
               </p>
             </div>
           </div>
