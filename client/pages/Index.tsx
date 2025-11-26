@@ -1055,9 +1055,6 @@ export default function Index() {
                     </div>
                   )}
                   <p className="font-semibold text-primary text-sm">{client}</p>
-                  <p className="text-xs text-muted-foreground">
-                    Mayur Aircon trusted client
-                  </p>
                 </div>
               </Card>
             ))}
