@@ -112,12 +112,9 @@ export function SupportChatWidget() {
     typingTimeoutsRef.current.push(timeoutId);
   }, []);
 
-  const updateChatState = useCallback(
-    (updates: Partial<ChatState>) => {
-      setChatState((prev) => ({ ...prev, ...updates }));
-    },
-    [],
-  );
+  const updateChatState = useCallback((updates: Partial<ChatState>) => {
+    setChatState((prev) => ({ ...prev, ...updates }));
+  }, []);
 
   const showBookingForm = useCallback(() => {
     addBotMessage(
@@ -150,11 +147,7 @@ export function SupportChatWidget() {
       let nextStage = "main_menu";
       let newShowMenu = true;
 
-      if (
-        lower === "1" ||
-        lower === "hvac" ||
-        lower.includes("hvac")
-      ) {
+      if (lower === "1" || lower === "hvac" || lower.includes("hvac")) {
         botResponse = `We provide complete HVAC Solutions:\n\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\nWould you like to book an appointment, request a quotation, or choose Emergency Service 🚨?`;
         nextStage = "hvac_service";
         setChatState((prev) => ({
@@ -226,23 +219,16 @@ export function SupportChatWidget() {
       ) {
         botResponse = `We're here to help 🚨. Please confirm: Is your AC covered under AMC or Warranty?`;
         nextStage = "amc_check";
-      } else if (
-        lower === "yes" &&
-        chatState.stage === "amc_check"
-      ) {
+      } else if (lower === "yes" && chatState.stage === "amc_check") {
         botResponse = `Please share:\n\n1. Full Name\n2. Contact Number\n3. Location\n4. Type of AC (Centralized / Split / Other)\n5. Describe the problem briefly`;
         nextStage = "collecting_breakdown_details";
-      } else if (
-        lower === "no" &&
-        chatState.stage === "amc_check"
-      ) {
+      } else if (lower === "no" && chatState.stage === "amc_check") {
         botResponse = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.`;
         newShowMenu = true;
         nextStage = "main_menu";
       } else if (
         lower === "operational" ||
-        lower === "2" &&
-        chatState.stage === "amc_menu"
+        (lower === "2" && chatState.stage === "amc_menu")
       ) {
         botResponse = `Please describe your issue (e.g., AC not cooling, unusual noise, remote not working).`;
         nextStage = "collecting_operational_details";
