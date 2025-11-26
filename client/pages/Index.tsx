@@ -54,7 +54,7 @@ export default function Index() {
 
   const handleProductNavigation = () => {
     if (typeof window !== "undefined") {
-      window.location.href = productRedirectUrl;
+      window.open(productRedirectUrl, "_blank");
     }
   };
 
