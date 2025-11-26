@@ -30,6 +30,16 @@ import {
 import { SupportChatWidget } from "@/components/support-chat-widget";
 import { useBusinessConfig } from "@/context/BusinessContext";
 
+const clientLogos: Record<string, string> = {
+  "ABP News": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fd2e11d77f6104bf4aa14fe319856fc9d?format=webp&width=800",
+  "Stock Exchange Ahmedabad": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fb970e56dc59b4a5c821f505faea82ac5?format=webp&width=800",
+  "Airtel": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F2ea3c9b4eaff447cab118816786c478b?format=webp&width=800",
+  "GNFC": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F28ba1cac61d54bcaa875954fc64bf443?format=webp&width=800",
+  "News18": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F5d687bcbfd5045edb2cc248d2caea8b7?format=webp&width=800",
+  "TATA": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F0c625373a9fb4412bfd207608b3a10dd?format=webp&width=800",
+  "Vodafone": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F2d9f54d95b5d409c9d97c4435a9073e1?format=webp&width=800",
+};
+
 export default function Index() {
   const businessConfig = useBusinessConfig();
   const productRedirectUrl =
