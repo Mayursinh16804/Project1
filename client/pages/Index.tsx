@@ -33,13 +33,18 @@ import { SupportChatWidget } from "@/components/support-chat-widget";
 import { useBusinessConfig } from "@/context/BusinessContext";
 
 const clientLogos: Record<string, string> = {
-  "ABP News": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fd2e11d77f6104bf4aa14fe319856fc9d?format=webp&width=800",
-  "Stock Exchange Ahmedabad": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fb970e56dc59b4a5c821f505faea82ac5?format=webp&width=800",
-  "Airtel": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F2ea3c9b4eaff447cab118816786c478b?format=webp&width=800",
-  "GNFC": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F28ba1cac61d54bcaa875954fc64bf443?format=webp&width=800",
-  "News18": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F5d687bcbfd5045edb2cc248d2caea8b7?format=webp&width=800",
-  "TATA": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F0c625373a9fb4412bfd207608b3a10dd?format=webp&width=800",
-  "Vodafone": "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F2d9f54d95b5d409c9d97c4435a9073e1?format=webp&width=800",
+  "ABP News":
+    "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fd2e11d77f6104bf4aa14fe319856fc9d?format=webp&width=800",
+  "Stock Exchange Ahmedabad":
+    "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fb970e56dc59b4a5c821f505faea82ac5?format=webp&width=800",
+  Airtel:
+    "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F2ea3c9b4eaff447cab118816786c478b?format=webp&width=800",
+  GNFC: "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F28ba1cac61d54bcaa875954fc64bf443?format=webp&width=800",
+  News18:
+    "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F5d687bcbfd5045edb2cc248d2caea8b7?format=webp&width=800",
+  TATA: "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F0c625373a9fb4412bfd207608b3a10dd?format=webp&width=800",
+  Vodafone:
+    "https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F2d9f54d95b5d409c9d97c4435a9073e1?format=webp&width=800",
 };
 
 export default function Index() {
@@ -1293,7 +1298,8 @@ export default function Index() {
               </h2>
               <div className="h-1 w-16 bg-accent mx-auto"></div>
               <p className="text-lg text-muted-foreground pt-2">
-                A father-son duo leading with 25+ years of industry expertise and modern innovation
+                A father-son duo leading with 25+ years of industry expertise
+                and modern innovation
               </p>
             </div>
 
@@ -1312,16 +1318,21 @@ export default function Index() {
 
                 {/* Profile Content */}
                 <div className="text-center space-y-3 mb-6">
-                  <p className="text-xs font-semibold text-accent uppercase tracking-widest">Founder</p>
+                  <p className="text-xs font-semibold text-accent uppercase tracking-widest">
+                    Founder
+                  </p>
                   <h3 className="text-2xl lg:text-3xl font-bold text-primary">
                     Narendrasinh Padhiyar
                   </h3>
-                  <p className="text-sm font-semibold text-accent">25+ Years of Industry Expertise</p>
+                  <p className="text-sm font-semibold text-accent">
+                    25+ Years of Industry Expertise
+                  </p>
                 </div>
 
                 {/* Description */}
                 <p className="text-sm text-muted-foreground leading-relaxed text-center mb-8 max-w-sm">
-                  A highly respected leader known for experience, trust, and a strong foundation in the industry.
+                  A highly respected leader known for experience, trust, and a
+                  strong foundation in the industry.
                 </p>
 
                 {/* Action Buttons */}
@@ -1365,16 +1376,21 @@ export default function Index() {
 
                 {/* Profile Content */}
                 <div className="text-center space-y-3 mb-6">
-                  <p className="text-xs font-semibold text-accent uppercase tracking-widest">Co-Founder</p>
+                  <p className="text-xs font-semibold text-accent uppercase tracking-widest">
+                    Co-Founder
+                  </p>
                   <h3 className="text-2xl lg:text-3xl font-bold text-primary">
                     Mayursinh Padhiyar
                   </h3>
-                  <p className="text-sm font-semibold text-accent">4+ Years of Industry Experience</p>
+                  <p className="text-sm font-semibold text-accent">
+                    4+ Years of Industry Experience
+                  </p>
                 </div>
 
                 {/* Description */}
                 <p className="text-sm text-muted-foreground leading-relaxed text-center mb-8 max-w-sm">
-                  Represents modern thinking, innovation, and customer-focused growth driving MAYUR AIRCON forward.
+                  Represents modern thinking, innovation, and customer-focused
+                  growth driving MAYUR AIRCON forward.
                 </p>
 
                 {/* Action Buttons */}
@@ -1398,7 +1414,10 @@ export default function Index() {
                     className="flex items-center gap-2 hover:bg-blue-600 hover:text-white border-gray-200 hover:border-blue-600 transition-colors"
                     onClick={() => {
                       if (typeof window !== "undefined") {
-                        window.open("https://www.linkedin.com/in/mayursinh-padhiyar-043349280", "_blank");
+                        window.open(
+                          "https://www.linkedin.com/in/mayursinh-padhiyar-043349280",
+                          "_blank",
+                        );
                       }
                     }}
                   >
@@ -1411,7 +1430,10 @@ export default function Index() {
                     className="flex items-center gap-2 hover:bg-pink-600 hover:text-white border-gray-200 hover:border-pink-600 transition-colors"
                     onClick={() => {
                       if (typeof window !== "undefined") {
-                        window.open("https://www.instagram.com/mayursinh_1684/", "_blank");
+                        window.open(
+                          "https://www.instagram.com/mayursinh_1684/",
+                          "_blank",
+                        );
                       }
                     }}
                   >
@@ -1436,10 +1458,13 @@ export default function Index() {
             <div className="max-w-3xl mx-auto text-center pt-8">
               <div className="inline-block">
                 <p className="text-base lg:text-lg text-primary leading-relaxed">
-                  <span className="font-semibold text-accent">A Father-Son Leadership Team</span>
+                  <span className="font-semibold text-accent">
+                    A Father-Son Leadership Team
+                  </span>
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  Combining decades of trusted expertise with modern innovation to deliver excellence
+                  Combining decades of trusted expertise with modern innovation
+                  to deliver excellence
                 </p>
               </div>
             </div>
