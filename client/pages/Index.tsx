@@ -1388,7 +1388,7 @@ export default function Index() {
                     variant="outline"
                     size="sm"
                     className="flex items-center gap-2 hover:bg-blue-600 hover:text-white border-gray-200 hover:border-blue-600 transition-colors"
-                    onClick={() => window.location.href = "https://www.linkedin.com/in/mayursinh-padhiyar-043349280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"}
+                    onClick={() => window.location.href = "https://www.linkedin.com/in/mayursinh-padhiyar-043349280"}
                   >
                     <Linkedin size={16} />
                     <span className="hidden sm:inline">LinkedIn</span>
@@ -1397,7 +1397,7 @@ export default function Index() {
                     variant="outline"
                     size="sm"
                     className="flex items-center gap-2 hover:bg-pink-600 hover:text-white border-gray-200 hover:border-pink-600 transition-colors"
-                    onClick={() => window.location.href = "https://instagram.com/mayursinh_1684"}
+                    onClick={() => window.location.href = "https://www.instagram.com/mayursinh_1684/"}
                   >
                     <Instagram size={16} />
                     <span className="hidden sm:inline">Instagram</span>
