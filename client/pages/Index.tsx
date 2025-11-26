@@ -54,7 +54,7 @@ const clientWebsites: Record<string, string> = {
   GNFC: "https://www.gnfc.in/",
   News18: "https://www.news18.com/",
   TATA: "https://www.tata.com/",
-  Vodafone: "https://www.vodafone.in/",
+  Vodafone: "https://www.myvi.in/",
 };
 
 export default function Index() {
