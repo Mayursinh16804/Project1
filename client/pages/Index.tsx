@@ -1330,7 +1330,11 @@ export default function Index() {
                     variant="outline"
                     size="sm"
                     className="flex items-center gap-2 hover:bg-accent hover:text-white border-gray-200 transition-colors"
-                    onClick={() => window.location.href = "mailto:napadhiyar123@gmail.com"}
+                    onClick={() => {
+                      if (typeof window !== "undefined") {
+                        window.open("mailto:napadhiyar123@gmail.com", "_blank");
+                      }
+                    }}
                   >
                     <Mail size={16} />
                     <span className="hidden sm:inline">Email</span>
