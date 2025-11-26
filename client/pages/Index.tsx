@@ -1331,7 +1331,7 @@ export default function Index() {
               <div className="flex flex-col justify-between space-y-6">
                 <div className="aspect-square rounded-lg overflow-hidden bg-muted">
                   <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F55668f4e92404712b61918e3c1231df1?format=webp&width=800"
+                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fa4691165a49841dbb21eae01af88ed2f?format=webp&width=800"
                     alt="Mayursinh Padhiyar - Co-Founder"
                     className="w-full h-full object-cover"
                   />
