@@ -1278,90 +1278,71 @@ export default function Index() {
       </section>
 
       {/* Founder & Co-Founder Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="space-y-16">
+          <div className="space-y-12">
             {/* Header */}
-            <div className="text-center space-y-4 max-w-2xl mx-auto">
+            <div className="text-center space-y-3 max-w-2xl mx-auto">
               <Badge variant="secondary" className="w-fit mx-auto">
                 Leadership
               </Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-primary tracking-tight">
+              <h2 className="text-3xl lg:text-4xl font-bold text-primary tracking-tight">
                 Founder & Co-Founder
               </h2>
-              <div className="h-1 w-12 bg-accent mx-auto"></div>
-              <p className="text-lg text-muted-foreground pt-4">
-                A father-son duo bringing together 25+ years of industry expertise with innovative vision for the future
+              <p className="text-base lg:text-lg text-muted-foreground pt-2">
+                A father-son duo bringing together 25+ years of industry expertise with innovative vision
               </p>
             </div>
 
-            {/* Leadership Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+            {/* Founders Grid */}
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-4xl mx-auto">
               {/* Founder */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div className="aspect-square rounded-lg overflow-hidden bg-muted">
+              <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                {/* Image */}
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden flex-shrink-0 bg-muted shadow-sm">
                   <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fa6af25b156664c9b9fb3af7fe00f3dde?format=webp&width=800"
+                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F3041d0e3075f4780bc754d5282fbbd8a?format=webp&width=800"
                     alt="Narendrasinh Padhiyar - Founder"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-semibold text-accent uppercase tracking-wide mb-2">Founder</p>
-                    <h3 className="text-2xl lg:text-3xl font-bold text-primary">
-                      Narendrasinh Padhiyar
-                    </h3>
-                  </div>
-                  <p className="text-accent font-semibold text-lg">25+ Years of Industry Experience</p>
-                  <div className="space-y-3 text-muted-foreground leading-relaxed">
-                    <p>
-                      A respected industry leader known for trust, quality, and long-term vision. His decades of expertise form the foundation of MAYUR AIRCON's commitment to excellence.
-                    </p>
-                  </div>
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-sm text-muted-foreground">
-                      <strong>Specialization:</strong> Industry leadership, strategic vision, quality assurance, and trusted client relationships
-                    </p>
-                  </div>
+                {/* Text */}
+                <div className="text-center md:text-left space-y-2 flex-1">
+                  <p className="text-xs font-semibold text-accent uppercase tracking-wide">Founder</p>
+                  <h3 className="text-lg md:text-xl font-bold text-primary">Narendrasinh Padhiyar</h3>
+                  <p className="text-sm font-medium text-accent">25+ Years of Industry Experience</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+                    A respected industry leader known for trust, quality, and long-term vision.
+                  </p>
                 </div>
               </div>
 
               {/* Co-Founder */}
-              <div className="flex flex-col justify-between space-y-6">
-                <div className="aspect-square rounded-lg overflow-hidden bg-muted">
+              <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
+                {/* Image */}
+                <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden flex-shrink-0 bg-muted shadow-sm">
                   <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2Fa4691165a49841dbb21eae01af88ed2f?format=webp&width=800"
+                    src="https://cdn.builder.io/api/v1/image/assets%2F5a8c30a1b7984e9dbaf0e12f1f3a6110%2F0cb8f855552240a98f5e2baf64752dfb?format=webp&width=800"
                     alt="Mayursinh Padhiyar - Co-Founder"
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-semibold text-accent uppercase tracking-wide mb-2">Co-Founder</p>
-                    <h3 className="text-2xl lg:text-3xl font-bold text-primary">
-                      Mayursinh Padhiyar
-                    </h3>
-                  </div>
-                  <p className="text-accent font-semibold text-lg">4+ Years in the Industry</p>
-                  <div className="space-y-3 text-muted-foreground leading-relaxed">
-                    <p>
-                      Represents the next generation of innovation and customer-focused growth. His modern approach and technical expertise drive MAYUR AIRCON toward new horizons.
-                    </p>
-                  </div>
-                  <div className="pt-4 border-t border-border">
-                    <p className="text-sm text-muted-foreground">
-                      <strong>Specialization:</strong> Innovation, customer-centric solutions, technical expertise, and modern business growth
-                    </p>
-                  </div>
+                {/* Text */}
+                <div className="text-center md:text-left space-y-2 flex-1">
+                  <p className="text-xs font-semibold text-accent uppercase tracking-wide">Co-Founder</p>
+                  <h3 className="text-lg md:text-xl font-bold text-primary">Mayursinh Padhiyar</h3>
+                  <p className="text-sm font-medium text-accent">4+ Years in the Industry</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+                    Representing modern innovation and customer-focused growth.
+                  </p>
                 </div>
               </div>
             </div>
 
             {/* Vision Statement */}
-            <div className="bg-accent/5 rounded-lg border border-accent/10 p-8 lg:p-12 text-center max-w-3xl mx-auto">
-              <p className="text-lg lg:text-xl text-primary font-light leading-relaxed">
-                Together, we blend <strong>deep industry experience with modern innovation</strong>, delivering precision air conditioning solutions that set new standards in quality, trust, and customer satisfaction.
+            <div className="text-center max-w-3xl mx-auto pt-4">
+              <p className="text-base lg:text-lg text-primary leading-relaxed">
+                Together, they blend <strong>deep industry experience with modern innovation</strong>, delivering precision air conditioning solutions with trust and excellence.
               </p>
             </div>
           </div>
