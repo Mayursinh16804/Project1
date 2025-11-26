@@ -1055,7 +1055,12 @@ export default function Index() {
             {businessConfig.trustedClients.map((client) => (
               <Card
                 key={client}
-                className="p-6 flex flex-col items-center justify-center text-center hover:shadow-lg transition-all h-full"
+                className="p-6 flex flex-col items-center justify-center text-center hover:shadow-lg hover:cursor-pointer transition-all h-full"
+                onClick={() => {
+                  if (typeof window !== "undefined" && clientWebsites[client]) {
+                    window.open(clientWebsites[client], "_blank");
+                  }
+                }}
               >
                 <div className="flex flex-col items-center justify-center gap-3 w-full h-full">
                   {clientLogos[client] ? (
