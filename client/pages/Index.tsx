@@ -148,7 +148,10 @@ export default function Index() {
                 Contact
               </a>
             </nav>
-            <Button className="bg-accent hover:bg-accent/90">
+            <Button
+              className="bg-accent hover:bg-accent/90"
+              onClick={() => setChatOpen(true)}
+            >
               Request a Quote
             </Button>
           </div>
