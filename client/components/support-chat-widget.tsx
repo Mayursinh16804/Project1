@@ -23,11 +23,10 @@ interface ChatMessage {
   timestamp: Date;
 }
 
-interface ChatState {
-  stage: string;
-  hasShownFirstBookingOffer: boolean;
-  selectedService: string | null;
-  userDetails: Record<string, string>;
+interface MenuItem {
+  number: string;
+  label: string;
+  value: string;
 }
 
 const createMessage = (
@@ -40,35 +39,75 @@ const createMessage = (
   timestamp: new Date(),
 });
 
+const mainMenuItems: MenuItem[] = [
+  { number: "1️⃣", label: "HVAC Services", value: "hvac" },
+  { number: "2️⃣", label: "Centralized AC", value: "centralized" },
+  { number: "3️⃣", label: "Split (Home) AC", value: "split" },
+  { number: "4️⃣", label: "AMC/Warranty Support", value: "amc_support" },
+  { number: "5️⃣", label: "Emergency Service", value: "emergency" },
+  { number: "6️⃣", label: "Contact Us", value: "contact" },
+];
+
+const amc_support_menu: MenuItem[] = [
+  { number: "1️⃣", label: "Breakdown / Service Issue", value: "breakdown" },
+  { number: "2️⃣", label: "Operational Problem (Remote Support)", value: "operational" },
+  { number: "3️⃣", label: "Other Issues", value: "other_issues" },
+];
+
+const service_action_menu: MenuItem[] = [
+  { number: "1️⃣", label: "Book an appointment", value: "book" },
+  { number: "2️⃣", label: "Request a quotation", value: "quotation" },
+  { number: "3️⃣", label: "Emergency Service", value: "emergency" },
+];
+
+const split_action_menu: MenuItem[] = [
+  { number: "1️⃣", label: "Book an appointment", value: "book" },
+  { number: "2️⃣", label: "Check AMC plans", value: "amc_plans" },
+  { number: "3️⃣", label: "Emergency Service", value: "emergency" },
+];
+
+const amc_coverage_menu: MenuItem[] = [
+  { number: "1️⃣", label: "Yes", value: "yes" },
+  { number: "2️⃣", label: "No", value: "no" },
+];
+
+const emergency_confirm_menu: MenuItem[] = [
+  { number: "1️⃣", label: "Yes", value: "yes" },
+  { number: "2️⃣", label: "No", value: "no" },
+];
+
+const contact_menu: MenuItem[] = [
+  { number: "1️⃣", label: "Yes, connect me to a customer care executive", value: "yes" },
+  { number: "2️⃣", label: "No, thanks", value: "no" },
+];
+
+const follow_up_menu: MenuItem[] = [
+  { number: "1️⃣", label: "Yes, resolved", value: "yes" },
+  { number: "2️⃣", label: "No, needs escalation", value: "no" },
+];
+
+const feedback_menu: MenuItem[] = [
+  { number: "⭐", label: "Poor", value: "poor" },
+  { number: "⭐⭐", label: "Average", value: "average" },
+  { number: "⭐⭐⭐", label: "Good", value: "good" },
+  { number: "⭐⭐⭐⭐", label: "Very Good", value: "very_good" },
+  { number: "⭐⭐⭐⭐⭐", label: "Excellent", value: "excellent" },
+];
+
 export function SupportChatWidget() {
   const businessConfig = useBusinessConfig();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     createMessage(
       "bot",
-      `Hello! 👋 Welcome to ${businessConfig.name} – Commercial & Split AC Solutions. How can I help you today?`,
+      `Hello! 👋 Welcome to ${businessConfig.name} – Commercial & Split AC Solutions. How can I help you today?\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`,
     ),
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isThinking, setIsThinking] = useState(false);
   const [canSendMessage, setCanSendMessage] = useState(false);
-  const [chatState, setChatState] = useState<ChatState>({
-    stage: "main_menu",
-    hasShownFirstBookingOffer: false,
-    selectedService: null,
-    userDetails: {},
-  });
-  const [showMenu, setShowMenu] = useState(true);
-  const [menuOptions, setMenuOptions] = useState<
-    Array<{ label: string; value: string }>
-  >([
-    { label: "1️⃣ HVAC Services", value: "hvac" },
-    { label: "2️⃣ Centralized AC", value: "centralized" },
-    { label: "3️⃣ Split (Home) AC", value: "split" },
-    { label: "4️⃣ AMC/Warranty Support", value: "amc_support" },
-    { label: "5️⃣ Emergency Service", value: "emergency" },
-    { label: "6️⃣ Contact Us", value: "contact" },
-  ]);
+  const [currentStage, setCurrentStage] = useState("main_menu");
+  const [firstServiceSelected, setFirstServiceSelected] = useState(false);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const pendingResponseCountRef = useRef(0);
@@ -112,187 +151,194 @@ export function SupportChatWidget() {
     typingTimeoutsRef.current.push(timeoutId);
   }, []);
 
-  const updateChatState = useCallback((updates: Partial<ChatState>) => {
-    setChatState((prev) => ({ ...prev, ...updates }));
-  }, []);
-
-  const showBookingForm = useCallback(() => {
-    addBotMessage(
-      "Great! ✅ Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Type of Service (Installation / AMC / Repair / Warranty / Gas Refilling)\n5. Preferred Date & Time (10 AM – 7 PM)",
-    );
-    updateChatState({ stage: "collecting_booking_details" });
-  }, [addBotMessage, updateChatState]);
-
   const respondToUser = useCallback(
-    (userContent: string) => {
-      const lower = userContent.toLowerCase().trim();
+    (userInput: string) => {
+      const input = userInput.trim().toLowerCase();
 
-      if (chatState.stage === "collecting_booking_details") {
-        setChatState((prev) => ({
-          ...prev,
-          userDetails: { ...prev.userDetails, details: userContent },
-        }));
-        addBotMessage(
-          `Thank you! Your appointment is booked. Our team will contact you for confirmation. ${!chatState.hasShownFirstBookingOffer ? "🎉 Don't forget your 10% OFF on your first service bill!" : ""}`,
-        );
-        updateChatState({
-          stage: "main_menu",
-          hasShownFirstBookingOffer: true,
-        });
-        setShowMenu(true);
-        return;
-      }
+      // Extract number from input (1, 2, 3, etc.)
+      const numberMatch = input.match(/\d/);
+      const selectedNumber = numberMatch ? numberMatch[0] : null;
 
-      let botResponse = "";
-      let nextStage = "main_menu";
-      let newShowMenu = true;
+      let response = "";
+      let nextStage = currentStage;
 
-      if (lower === "1" || lower === "hvac" || lower.includes("hvac")) {
-        botResponse = `We provide complete HVAC Solutions:\n\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\nWould you like to book an appointment, request a quotation, or choose Emergency Service 🚨?`;
-        nextStage = "hvac_service";
-        setChatState((prev) => ({
-          ...prev,
-          selectedService: "hvac",
-          hasShownFirstBookingOffer: true,
-        }));
-      } else if (
-        lower === "2" ||
-        lower === "centralized" ||
-        lower.includes("centralized")
-      ) {
-        botResponse = `We specialize in Commercial & Industrial Centralized AC Systems:\n\n• VRF / VRV Systems\n• Ductable Units\n• Chillers\n• Energy-Saving Solutions\n\nWould you like to book an appointment, request a quotation, or choose Emergency Service 🚨?`;
-        nextStage = "centralized_service";
-        setChatState((prev) => ({
-          ...prev,
-          selectedService: "centralized",
-          hasShownFirstBookingOffer: true,
-        }));
-      } else if (
-        lower === "3" ||
-        lower === "split" ||
-        lower.includes("split")
-      ) {
-        botResponse = `We provide complete Split AC Services:\n\n• Installation\n• Servicing & Repairs\n• Gas Refilling\n• AMC Packages\n• Warranty Support\n\nWould you like to book an appointment, check AMC plans, or choose Emergency Service 🚨?`;
-        nextStage = "split_service";
-        setChatState((prev) => ({
-          ...prev,
-          selectedService: "split",
-          hasShownFirstBookingOffer: true,
-        }));
-      } else if (
-        lower === "4" ||
-        lower.includes("amc") ||
-        lower.includes("warranty")
-      ) {
-        botResponse = `Please select the type of support you need:\n\n1️⃣ Breakdown / Service Issue\n2️⃣ Operational Problem (Remote Support)\n3️⃣ Other Issues`;
-        nextStage = "amc_menu";
-      } else if (
-        lower === "5" ||
-        lower === "emergency" ||
-        lower.includes("emergency")
-      ) {
-        botResponse = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services.\n\nDo you want to proceed?`;
-        nextStage = "emergency_confirmation";
-      } else if (
-        lower === "6" ||
-        lower === "contact" ||
-        lower.includes("contact")
-      ) {
-        botResponse = `You can reach us at:\n\n📱 Phone: +91 ${businessConfig.phone}\n📧 Email: ${businessConfig.email}\n📍 Address: ${businessConfig.address}\n\nWould you like me to connect you with a customer care executive (Available 10 AM – 7 PM)?`;
-        nextStage = "contact_menu";
-      } else if (
-        lower === "book" ||
-        lower.includes("appointment") ||
-        lower.includes("booking")
-      ) {
-        if (!chatState.hasShownFirstBookingOffer) {
-          addBotMessage(
-            `🎉 Great news! Since this is your first booking with ${businessConfig.name}, you get 10% OFF on your first service bill.`,
-          );
+      if (currentStage === "main_menu") {
+        if (selectedNumber === "1" || input.includes("hvac")) {
+          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          nextStage = "hvac_action";
+          if (!firstServiceSelected) {
+            addBotMessage(
+              `🎉 Great news! Since this is your first booking with ${businessConfig.name}, you get 10% OFF on your first service bill.`,
+              300,
+            );
+            setFirstServiceSelected(true);
+          }
+        } else if (selectedNumber === "2" || input.includes("centralized")) {
+          response = `We specialize in Commercial & Industrial Centralized AC Systems:\n• VRF / VRV Systems\n• Ductable Units\n• Chillers\n• Energy-Saving Solutions\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          nextStage = "centralized_action";
+          if (!firstServiceSelected) {
+            addBotMessage(
+              `🎉 Great news! Since this is your first booking with ${businessConfig.name}, you get 10% OFF on your first service bill.`,
+              300,
+            );
+            setFirstServiceSelected(true);
+          }
+        } else if (selectedNumber === "3" || input.includes("split")) {
+          response = `We provide complete Split AC Services:\n• Installation\n• Servicing & Repairs\n• Gas Refilling\n• AMC Packages\n• Warranty Support\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
+          nextStage = "split_action";
+          if (!firstServiceSelected) {
+            addBotMessage(
+              `🎉 Great news! Since this is your first booking with ${businessConfig.name}, you get 10% OFF on your first service bill.`,
+              300,
+            );
+            setFirstServiceSelected(true);
+          }
+        } else if (selectedNumber === "4" || input.includes("amc")) {
+          response = `Please select the type of support you need:\n\n1️⃣ Breakdown / Service Issue\n2️⃣ Operational Problem (Remote Support)\n3️⃣ Other Issues`;
+          nextStage = "amc_support_menu";
+        } else if (selectedNumber === "5" || input.includes("emergency")) {
+          response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "emergency_confirm";
+        } else if (selectedNumber === "6" || input.includes("contact")) {
+          response = `You can reach us at:\n\n📱 Phone: +91 ${businessConfig.phone}\n📧 Email: ${businessConfig.email}\n📍 Address: ${businessConfig.address}\n\nWould you like me to connect you with a customer care executive (Available 10 AM – 7 PM)?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "contact_action";
+        } else {
+          response = `Please select an option from the menu using numbers 1-6:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+          nextStage = "main_menu";
         }
-        showBookingForm();
+      } else if (currentStage === "hvac_action" || currentStage === "centralized_action") {
+        if (selectedNumber === "1" || input.includes("book")) {
+          response = `Great! ✅ Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Type of Service (Installation / AMC / Repair / Warranty / Gas Refilling)\n5. Preferred Date & Time (10 AM – 7 PM)`;
+          nextStage = "collecting_details";
+        } else if (selectedNumber === "2" || input.includes("quotation")) {
+          response = `Great! Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Service Details`;
+          nextStage = "collecting_details";
+        } else if (selectedNumber === "3" || input.includes("emergency")) {
+          response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "emergency_confirm";
+        } else {
+          response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "split_action") {
+        if (selectedNumber === "1" || input.includes("book")) {
+          response = `Great! ✅ Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Type of Service (Installation / Repair / Gas Refilling)\n5. Preferred Date & Time (10 AM – 7 PM)`;
+          nextStage = "collecting_details";
+        } else if (selectedNumber === "2" || input.includes("amc")) {
+          response = `🎉 Special Offer: When you buy a 12-month AMC, you'll get 1 extra month FREE (13 months total coverage)!\n\nWould you like to proceed with AMC booking?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "amc_booking";
+        } else if (selectedNumber === "3" || input.includes("emergency")) {
+          response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "emergency_confirm";
+        } else {
+          response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "amc_booking") {
+        if (selectedNumber === "1" || input.includes("yes")) {
+          response = `Great! ✅ Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Preferred AMC Duration\n5. Preferred Date & Time (10 AM – 7 PM)`;
+          nextStage = "collecting_details";
+        } else if (selectedNumber === "2" || input.includes("no")) {
+          response = `No problem! Let me show you the main menu again.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+          nextStage = "main_menu";
+        } else {
+          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "amc_support_menu") {
+        if (selectedNumber === "1" || input.includes("breakdown")) {
+          response = `We're here to help 🚨. Please confirm: Is your AC covered under AMC or Warranty?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "amc_coverage_check";
+        } else if (selectedNumber === "2" || input.includes("operational")) {
+          response = `Please describe your issue (e.g., AC not cooling, unusual noise, remote not working).`;
+          nextStage = "collecting_operational";
+        } else if (selectedNumber === "3" || input.includes("other")) {
+          response = `Please describe your issue.`;
+          nextStage = "collecting_operational";
+        } else {
+          response = `Please select an option:\n\n1️⃣ Breakdown / Service Issue\n2️⃣ Operational Problem (Remote Support)\n3️⃣ Other Issues`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "amc_coverage_check") {
+        if (selectedNumber === "1" || input.includes("yes")) {
+          response = `Please share:\n\n1. Full Name\n2. Contact Number\n3. Location\n4. Type of AC (Centralized / Split / Other)\n5. Describe the problem briefly`;
+          nextStage = "collecting_breakdown_details";
+        } else if (selectedNumber === "2" || input.includes("no")) {
+          response = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ Emergency Service\n5️⃣ Contact Us`;
+          nextStage = "main_menu";
+        } else {
+          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "collecting_details" || currentStage === "collecting_breakdown_details") {
+        response = `Thank you! Your appointment is booked. Our team will contact you for confirmation. ✅`;
+        addBotMessage(`Would you like help with anything else?\n\n1️⃣ Yes\n2️⃣ No`, 650);
+        nextStage = "follow_up";
+        setCurrentStage("follow_up");
+        addBotMessage(response, 650);
         return;
-      } else if (
-        lower === "amc" ||
-        lower === "breakdown" ||
-        lower.includes("breakdown")
-      ) {
-        botResponse = `We're here to help 🚨. Please confirm: Is your AC covered under AMC or Warranty?`;
-        nextStage = "amc_check";
-      } else if (lower === "yes" && chatState.stage === "amc_check") {
-        botResponse = `Please share:\n\n1. Full Name\n2. Contact Number\n3. Location\n4. Type of AC (Centralized / Split / Other)\n5. Describe the problem briefly`;
-        nextStage = "collecting_breakdown_details";
-      } else if (lower === "no" && chatState.stage === "amc_check") {
-        botResponse = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.`;
-        newShowMenu = true;
-        nextStage = "main_menu";
-      } else if (
-        lower === "operational" ||
-        (lower === "2" && chatState.stage === "amc_menu")
-      ) {
-        botResponse = `Please describe your issue (e.g., AC not cooling, unusual noise, remote not working).`;
-        nextStage = "collecting_operational_details";
-      } else if (
-        lower === "yes" &&
-        chatState.stage === "emergency_confirmation"
-      ) {
-        addBotMessage(
-          `Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Problem Description`,
-        );
-        updateChatState({ stage: "collecting_emergency_details" });
-        return;
-      } else if (
-        lower === "no" &&
-        chatState.stage === "emergency_confirmation"
-      ) {
-        botResponse = `No problem! Let me show you the main menu again.`;
-        newShowMenu = true;
-        nextStage = "main_menu";
-      } else if (
-        chatState.stage === "collecting_breakdown_details" ||
-        chatState.stage === "collecting_operational_details" ||
-        chatState.stage === "collecting_emergency_details"
-      ) {
-        setChatState((prev) => ({
-          ...prev,
-          userDetails: { ...prev.userDetails, issue: userContent },
-        }));
-        botResponse =
-          chatState.stage === "collecting_operational_details"
-            ? `Our engineer will call you within business hours (10 AM – 7 PM) to assist remotely 📞.`
-            : `Our technician will contact you within 2 hours 🚀.`;
-        newShowMenu = true;
-        nextStage = "main_menu";
-      } else if (lower === "yes" && chatState.stage === "contact_menu") {
-        botResponse = `I'll connect you to a customer care executive. Support hours: 10 AM – 7 PM (Mon–Sat).`;
-        nextStage = "talking_to_executive";
-      } else if (lower === "feedback" || lower.includes("rate")) {
-        botResponse = `Before we close, please rate your experience:\n\n⭐ Poor\n⭐⭐ Average\n⭐⭐⭐ Good\n⭐⭐⭐⭐ Very Good\n⭐⭐⭐⭐⭐ Excellent`;
-        nextStage = "feedback";
-      } else if (chatState.stage === "feedback") {
-        botResponse = `Thank you for your feedback! We'll keep improving 🙏`;
-        newShowMenu = true;
-        nextStage = "main_menu";
-      } else if (
-        lower === "hello" ||
-        lower === "hi" ||
-        lower === "menu" ||
-        lower.includes("back")
-      ) {
-        botResponse = `👋 Let me show you the main menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
-        newShowMenu = true;
+      } else if (currentStage === "collecting_operational") {
+        response = `Our engineer will call you within business hours (10 AM – 7 PM) to assist remotely 📞.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
+        nextStage = "follow_up";
+      } else if (currentStage === "emergency_confirm") {
+        if (selectedNumber === "1" || input.includes("yes")) {
+          response = `Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Problem Description`;
+          nextStage = "collecting_emergency";
+        } else if (selectedNumber === "2" || input.includes("no")) {
+          response = `No problem! Let me show you the main menu again.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Contact Us`;
+          nextStage = "main_menu";
+        } else {
+          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "collecting_emergency") {
+        response = `Our technician will contact you within 2 hours 🚀.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
+        nextStage = "follow_up";
+      } else if (currentStage === "follow_up") {
+        if (selectedNumber === "1" || input.includes("yes")) {
+          response = `Can we help you with anything else?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "follow_up_end";
+        } else if (selectedNumber === "2" || input.includes("no")) {
+          response = `Your call has been reopened and escalated for faster resolution.\n\nBefore we close, please rate your experience:\n\n⭐ Poor\n⭐⭐ Average\n⭐⭐⭐ Good\n⭐⭐⭐⭐ Very Good\n⭐⭐⭐⭐⭐ Excellent`;
+          nextStage = "feedback";
+        } else {
+          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "follow_up_end") {
+        if (selectedNumber === "1" || input.includes("yes")) {
+          response = `1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+          nextStage = "main_menu";
+        } else if (selectedNumber === "2" || input.includes("no")) {
+          response = `Before we close, please rate your experience:\n\n⭐ Poor\n⭐⭐ Average\n⭐⭐⭐ Good\n⭐⭐⭐⭐ Very Good\n⭐⭐⭐⭐⭐ Excellent`;
+          nextStage = "feedback";
+        } else {
+          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "contact_action") {
+        if (selectedNumber === "1" || input.includes("yes")) {
+          response = `I'll connect you to a customer care executive. Support hours: 10 AM – 7 PM (Mon–Sat).`;
+          nextStage = "main_menu";
+        } else if (selectedNumber === "2" || input.includes("no")) {
+          response = `No problem. Is there anything else I can help you with?`;
+          nextStage = "main_menu";
+        } else {
+          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "feedback") {
+        response = `Thank you for your feedback! We'll keep improving 🙏`;
         nextStage = "main_menu";
       } else {
-        botResponse = `Thanks for your message! To better assist you, please select one of the options:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
-        newShowMenu = true;
+        response = `Please select an option from the menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
         nextStage = "main_menu";
       }
 
-      addBotMessage(botResponse);
-      updateChatState({ stage: nextStage });
-      setShowMenu(newShowMenu);
+      addBotMessage(response);
+      setCurrentStage(nextStage);
     },
-    [chatState, addBotMessage, updateChatState, businessConfig],
+    [currentStage, firstServiceSelected, businessConfig, addBotMessage],
   );
 
   const focusTextarea = useCallback(() => {
@@ -327,11 +373,6 @@ export function SupportChatWidget() {
       sendMessage(inputValue);
       focusTextarea();
     }
-  };
-
-  const handleMenuClick = (value: string) => {
-    setInputValue(value);
-    sendMessage(value);
   };
 
   useEffect(() => {
@@ -407,21 +448,6 @@ export function SupportChatWidget() {
           </div>
         </ScrollArea>
 
-        {showMenu && chatState.stage === "main_menu" && (
-          <div className="border-t border-border bg-background px-4 py-3 space-y-2 max-h-40 overflow-y-auto">
-            {menuOptions.map((option) => (
-              <Button
-                key={option.value}
-                variant="outline"
-                className="w-full text-left justify-start text-xs hover:bg-accent hover:text-accent-foreground"
-                onClick={() => handleMenuClick(option.value)}
-              >
-                {option.label}
-              </Button>
-            ))}
-          </div>
-        )}
-
         <div className="border-t border-border bg-background px-4 py-3">
           <form
             onSubmit={(e: FormEvent<HTMLFormElement>) => {
@@ -439,7 +465,7 @@ export function SupportChatWidget() {
                 adjustTextareaHeight();
               }}
               onKeyDown={handleTextareaKeyDown}
-              placeholder="Type your message..."
+              placeholder="Type number or message..."
               aria-label="Message support"
               autoComplete="off"
               className="flex-1 resize-none rounded-2xl border border-border bg-white px-4 py-3 text-sm leading-relaxed shadow-sm focus-visible:ring-accent"
