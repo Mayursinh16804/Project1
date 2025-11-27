@@ -50,7 +50,11 @@ const mainMenuItems: MenuItem[] = [
 
 const amc_support_menu: MenuItem[] = [
   { number: "1️⃣", label: "Breakdown / Service Issue", value: "breakdown" },
-  { number: "2️⃣", label: "Operational Problem (Remote Support)", value: "operational" },
+  {
+    number: "2️⃣",
+    label: "Operational Problem (Remote Support)",
+    value: "operational",
+  },
   { number: "3️⃣", label: "Other Issues", value: "other_issues" },
 ];
 
@@ -77,7 +81,11 @@ const emergency_confirm_menu: MenuItem[] = [
 ];
 
 const contact_menu: MenuItem[] = [
-  { number: "1️⃣", label: "Yes, connect me to a customer care executive", value: "yes" },
+  {
+    number: "1️⃣",
+    label: "Yes, connect me to a customer care executive",
+    value: "yes",
+  },
   { number: "2️⃣", label: "No, thanks", value: "no" },
 ];
 
@@ -207,7 +215,10 @@ export function SupportChatWidget() {
           response = `Please select an option from the menu using numbers 1-6:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
           nextStage = "main_menu";
         }
-      } else if (currentStage === "hvac_action" || currentStage === "centralized_action") {
+      } else if (
+        currentStage === "hvac_action" ||
+        currentStage === "centralized_action"
+      ) {
         if (selectedNumber === "1" || input.includes("book")) {
           response = `Great! ✅ Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Type of Service (Installation / AMC / Repair / Warranty / Gas Refilling)\n5. Preferred Date & Time (10 AM – 7 PM)`;
           nextStage = "collecting_details";
@@ -271,9 +282,15 @@ export function SupportChatWidget() {
           response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = currentStage;
         }
-      } else if (currentStage === "collecting_details" || currentStage === "collecting_breakdown_details") {
+      } else if (
+        currentStage === "collecting_details" ||
+        currentStage === "collecting_breakdown_details"
+      ) {
         response = `Thank you! Your appointment is booked. Our team will contact you for confirmation. ✅`;
-        addBotMessage(`Would you like help with anything else?\n\n1️⃣ Yes\n2️⃣ No`, 650);
+        addBotMessage(
+          `Would you like help with anything else?\n\n1️⃣ Yes\n2️⃣ No`,
+          650,
+        );
         nextStage = "follow_up";
         setCurrentStage("follow_up");
         addBotMessage(response, 650);
