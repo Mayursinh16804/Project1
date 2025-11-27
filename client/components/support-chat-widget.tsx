@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, createContext, useContext } from "react";
 import type { FormEvent, KeyboardEvent } from "react";
-import { MessageCircle, Send, Sparkles, Loader2, RotateCcw } from "lucide-react";
+import { MessageCircle, Send, Sparkles, Loader2, RotateCcw, MoreVertical } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -569,7 +569,7 @@ export function SupportChatWidget() {
     setMessages([
       createMessage(
         "bot",
-        `Hello! 👋 Welcome to ${businessConfig.name} – Commercial & Split AC Solutions. How can I help you today?\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`,
+        `Hello! 👋 Welcome to ${businessConfig.name} – Commercial & Split AC Solutions. How can I help you today?\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3���⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`,
       ),
     ]);
     setInputValue("");
