@@ -29,6 +29,17 @@ interface MenuItem {
   value: string;
 }
 
+interface UserDetails {
+  fullName: string;
+  phone: string;
+  address?: string;
+  serviceType?: string;
+  serviceDetails?: string;
+  preferredDate?: string;
+  amc?: string;
+  duration?: string;
+}
+
 const createMessage = (
   author: "user" | "bot",
   content: string,
