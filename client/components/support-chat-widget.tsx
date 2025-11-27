@@ -110,6 +110,7 @@ export function SupportChatWidget() {
   const [firstServiceSelected, setFirstServiceSelected] = useState(false);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const pendingResponseCountRef = useRef(0);
   const typingTimeoutsRef = useRef<number[]>([]);
 
@@ -184,7 +185,7 @@ export function SupportChatWidget() {
             setFirstServiceSelected(true);
           }
         } else if (selectedNumber === "3" || input.includes("split")) {
-          response = `We provide complete Split AC Services:\n• Installation\n• Servicing & Repairs\n• Gas Refilling\n• AMC Packages\n• Warranty Support\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete Split AC Services:\n• Installation\n• Servicing & Repairs\n• Gas Refilling\n• AMC Packages\n• Warranty Support\n\n1���⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
           nextStage = "split_action";
           if (!firstServiceSelected) {
             addBotMessage(
