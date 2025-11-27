@@ -548,7 +548,7 @@ export function SupportChatWidget() {
         response = `Thank you for your feedback! We'll keep improving 🙏`;
         nextStage = "main_menu";
       } else {
-        response = `Please select an option from the menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4���⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+        response = `Please select an option from the menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
         nextStage = "main_menu";
       }
 
@@ -643,10 +643,22 @@ export function SupportChatWidget() {
         className={cn("flex flex-col p-0", isMobile ? "h-[90vh]" : "w-[400px]")}
       >
         <SheetHeader className="border-b border-border px-6 py-4">
-          <SheetTitle className="flex items-center gap-2 text-base">
-            <Sparkles className="h-4 w-4 text-accent" />
-            {businessConfig.name} Support
-          </SheetTitle>
+          <div className="flex items-center justify-between w-full gap-2">
+            <SheetTitle className="flex items-center gap-2 text-base">
+              <Sparkles className="h-4 w-4 text-accent" />
+              {businessConfig.name} Support
+            </SheetTitle>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleRestart}
+              className="h-8 w-8 p-0 hover:bg-accent/10"
+              title="Start a new chat"
+            >
+              <RotateCcw className="h-4 w-4 text-accent" />
+              <span className="sr-only">Restart chat</span>
+            </Button>
+          </div>
         </SheetHeader>
 
         <ScrollArea className="flex-1 overflow-hidden">
