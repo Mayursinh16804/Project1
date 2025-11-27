@@ -115,7 +115,7 @@ const split_action_menu: MenuItem[] = [
 
 const amc_coverage_menu: MenuItem[] = [
   { number: "1️⃣", label: "Yes", value: "yes" },
-  { number: "2���⃣", label: "No", value: "no" },
+  { number: "2️⃣", label: "No", value: "no" },
 ];
 
 const emergency_confirm_menu: MenuItem[] = [
@@ -277,7 +277,7 @@ export function SupportChatWidget() {
           response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "emergency_confirm";
         } else {
-          response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `Please select an option:\n\n1️⃣ Book an appointment\n2���⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = currentStage;
         }
       } else if (currentStage === "split_action") {
@@ -327,22 +327,80 @@ export function SupportChatWidget() {
           response = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ Emergency Service\n5️⃣ Contact Us`;
           nextStage = "main_menu";
         } else {
-          response = `Please select:\n\n1️�� Yes\n2️⃣ No`;
+          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = currentStage;
         }
-      } else if (
-        currentStage === "collecting_details" ||
-        currentStage === "collecting_breakdown_details"
-      ) {
-        response = `Thank you! Your appointment is booked. Our team will contact you for confirmation. ✅`;
-        addBotMessage(
-          `Would you like help with anything else?\n\n1️⃣ Yes\n2️⃣ No`,
-          650,
-        );
-        nextStage = "follow_up";
-        setCurrentStage("follow_up");
-        addBotMessage(response, 650);
-        return;
+      } else if (currentStage === "collecting_details") {
+        const updatedDetails = { ...userDetails };
+        const step = detailsCollectionStep;
+
+        if (step === 0) {
+          updatedDetails.fullName = input;
+          setDetailsCollectionStep(1);
+          setUserDetails(updatedDetails);
+          response = `Great! I have your name as ${input}.\n\nNow, please share your contact number:`;
+          nextStage = "collecting_details";
+        } else if (step === 1) {
+          updatedDetails.phone = input;
+          setDetailsCollectionStep(2);
+          setUserDetails(updatedDetails);
+          response = `Thank you! Contact number saved as ${input}.\n\nPlease share your address:`;
+          nextStage = "collecting_details";
+        } else if (step === 2) {
+          updatedDetails.address = input;
+          setDetailsCollectionStep(3);
+          setUserDetails(updatedDetails);
+          response = `Address saved. Now, please describe your service details or requirements:`;
+          nextStage = "collecting_details";
+        } else if (step === 3) {
+          updatedDetails.serviceDetails = input;
+          setDetailsCollectionStep(4);
+          setUserDetails(updatedDetails);
+          response = `Perfect! I've collected all your details.\n\nHow would you like to submit your quotation request?\n\n1️⃣ Send via Email\n2️⃣ Send via WhatsApp`;
+          nextStage = "submit_quote_method";
+        } else {
+          response = `Please provide the required information.`;
+          nextStage = "collecting_details";
+        }
+      } else if (currentStage === "collecting_breakdown_details") {
+        const updatedDetails = { ...userDetails };
+        const step = detailsCollectionStep;
+
+        if (step === 0) {
+          updatedDetails.fullName = input;
+          setDetailsCollectionStep(1);
+          setUserDetails(updatedDetails);
+          response = `Thank you for your name. Please share your contact number:`;
+          nextStage = "collecting_breakdown_details";
+        } else if (step === 1) {
+          updatedDetails.phone = input;
+          setDetailsCollectionStep(2);
+          setUserDetails(updatedDetails);
+          response = `Contact number saved. Please share your location:`;
+          nextStage = "collecting_breakdown_details";
+        } else if (step === 2) {
+          updatedDetails.address = input;
+          setDetailsCollectionStep(3);
+          setUserDetails(updatedDetails);
+          response = `Location saved. Please describe the problem briefly:`;
+          nextStage = "collecting_breakdown_details";
+        } else if (step === 3) {
+          updatedDetails.serviceDetails = input;
+          setDetailsCollectionStep(0);
+          setUserDetails(updatedDetails);
+          response = `Thank you! Your service request has been registered. Our team will contact you for confirmation. ✅`;
+          addBotMessage(
+            `Would you like help with anything else?\n\n1️⃣ Yes\n2️⃣ No`,
+            650,
+          );
+          nextStage = "follow_up";
+          setCurrentStage("follow_up");
+          addBotMessage(response, 650);
+          return;
+        } else {
+          response = `Please provide the required information.`;
+          nextStage = "collecting_breakdown_details";
+        }
       } else if (currentStage === "collecting_operational") {
         response = `Our engineer will call you within business hours (10 AM – 7 PM) to assist remotely 📞.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
         nextStage = "follow_up";
