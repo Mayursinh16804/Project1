@@ -511,10 +511,9 @@ export function SupportChatWidget() {
         if (selectedNumber === "1" || input.includes("email")) {
           const emailSubject = "Request for Quotation - AC Services";
           const emailBody = generateEmailMessage(userDetails);
-          const mailtoLink = `mailto:${businessConfig.email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-          response = `Perfect! I'll help you send this via email.\n\n📧 Click the link below to open your email client:\n${mailtoLink}\n\nOr you can email directly at: ${businessConfig.email}`;
+          response = `Perfect! I'll help you send this via email.\n\n📧 Email Address: ${businessConfig.email}\n\nYour quotation request details:\n\n${emailBody}`;
           addBotMessage(
-            `Your quotation request is ready to send! Our team will respond within 24 hours.`,
+            `Your quotation request is ready! Copy the details above and send them to ${businessConfig.email}. Our team will respond within 24 hours.`,
             650,
           );
           setDetailsCollectionStep(0);
@@ -522,10 +521,9 @@ export function SupportChatWidget() {
           nextStage = "follow_up";
         } else if (selectedNumber === "2" || input.includes("whatsapp")) {
           const whatsappMessage = generateWhatsAppMessage(userDetails);
-          const whatsappLink = `https://wa.me/${businessConfig.phone.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappMessage)}`;
-          response = `Great! I'll help you send this via WhatsApp.\n\n💬 Click the link below to open WhatsApp:\n${whatsappLink}\n\nOr search for: +91 ${businessConfig.phone}`;
+          response = `Great! I'll help you send this via WhatsApp.\n\n💬 WhatsApp Number: +91 ${businessConfig.phone}\n\nYour message:\n\n${whatsappMessage}`;
           addBotMessage(
-            `Your quotation request is ready to send! Our team will respond within 24 hours.`,
+            `Your quotation request is ready! Send the above message to our WhatsApp number +91 ${businessConfig.phone}. Our team will respond within 24 hours.`,
             650,
           );
           setDetailsCollectionStep(0);
