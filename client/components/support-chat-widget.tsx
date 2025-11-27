@@ -314,7 +314,7 @@ export function SupportChatWidget() {
           response = `Great! ✅ Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Preferred AMC Duration\n5. Preferred Date & Time (10 AM – 7 PM)`;
           nextStage = "collecting_details";
         } else if (selectedNumber === "2" || input.includes("no")) {
-          response = `No problem! Let me show you the main menu again.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️�� Emergency Service\n6️⃣ Contact Us`;
+          response = `No problem! Let me show you the main menu again.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
           nextStage = "main_menu";
         } else {
           response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
@@ -548,7 +548,7 @@ export function SupportChatWidget() {
         response = `Thank you for your feedback! We'll keep improving 🙏`;
         nextStage = "main_menu";
       } else {
-        response = `Please select an option from the menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+        response = `Please select an option from the menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4���⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
         nextStage = "main_menu";
       }
 
@@ -557,6 +557,21 @@ export function SupportChatWidget() {
     },
     [currentStage, firstServiceSelected, businessConfig, addBotMessage],
   );
+
+  const handleRestart = useCallback(() => {
+    setMessages([
+      createMessage(
+        "bot",
+        `Hello! 👋 Welcome to ${businessConfig.name} – Commercial & Split AC Solutions. How can I help you today?\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`,
+      ),
+    ]);
+    setInputValue("");
+    setCurrentStage("main_menu");
+    setFirstServiceSelected(false);
+    setUserDetails({ fullName: "", phone: "" });
+    setDetailsCollectionStep(0);
+    adjustTextareaHeight();
+  }, [businessConfig.name, adjustTextareaHeight]);
 
   const focusTextarea = useCallback(() => {
     textareaRef.current?.focus();
