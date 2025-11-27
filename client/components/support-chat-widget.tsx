@@ -110,7 +110,7 @@ export function SupportChatWidget() {
   const [firstServiceSelected, setFirstServiceSelected] = useState(false);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const pendingResponseCountRef = useRef(0);
   const typingTimeoutsRef = useRef<number[]>([]);
 
@@ -165,7 +165,7 @@ export function SupportChatWidget() {
 
       if (currentStage === "main_menu") {
         if (selectedNumber === "1" || input.includes("hvac")) {
-          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1��⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = "hvac_action";
           if (!firstServiceSelected) {
             addBotMessage(
