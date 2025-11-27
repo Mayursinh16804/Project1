@@ -119,7 +119,7 @@ const amc_support_menu: MenuItem[] = [
 const service_action_menu: MenuItem[] = [
   { number: "1️⃣", label: "Book an appointment", value: "book" },
   { number: "2️⃣", label: "Request a quotation", value: "quotation" },
-  { number: "3️⃣", label: "Emergency Service", value: "emergency" },
+  { number: "3��⃣", label: "Emergency Service", value: "emergency" },
 ];
 
 const split_action_menu: MenuItem[] = [
@@ -129,7 +129,7 @@ const split_action_menu: MenuItem[] = [
 ];
 
 const amc_coverage_menu: MenuItem[] = [
-  { number: "1️��", label: "Yes", value: "yes" },
+  { number: "1️⃣", label: "Yes", value: "yes" },
   { number: "2️⃣", label: "No", value: "no" },
 ];
 
@@ -156,7 +156,7 @@ const feedback_menu: MenuItem[] = [
   { number: "⭐", label: "Poor", value: "poor" },
   { number: "⭐⭐", label: "Average", value: "average" },
   { number: "⭐⭐⭐", label: "Good", value: "good" },
-  { number: "⭐⭐⭐⭐", label: "Very Good", value: "very_good" },
+  { number: "��⭐⭐⭐", label: "Very Good", value: "very_good" },
   { number: "⭐⭐⭐⭐⭐", label: "Excellent", value: "excellent" },
 ];
 
@@ -236,7 +236,7 @@ export function SupportChatWidget() {
 
       if (currentStage === "main_menu") {
         if (selectedNumber === "1" || input.includes("hvac")) {
-          response = `We provide complete HVAC Solutions:\n• Installation\n��� AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = "hvac_action";
           if (!firstServiceSelected) {
             addBotMessage(
@@ -711,5 +711,16 @@ export function SupportChatWidget() {
         </div>
       </SheetContent>
     </Sheet>
+  );
+}
+
+export function ChatWidgetProvider({ children }: { children: React.ReactNode }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <ChatWidgetContext.Provider value={{ isOpen, setIsOpen }}>
+      {children}
+      <SupportChatWidget />
+    </ChatWidgetContext.Provider>
   );
 }
