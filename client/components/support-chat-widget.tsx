@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, createContext, useContext } from "react";
 import type { FormEvent, KeyboardEvent } from "react";
 import { MessageCircle, Send, Sparkles, Loader2 } from "lucide-react";
 
@@ -15,6 +15,21 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { useBusinessConfig } from "@/context/BusinessContext";
+
+interface ChatWidgetContextType {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+}
+
+const ChatWidgetContext = createContext<ChatWidgetContextType | undefined>(undefined);
+
+export const useChatWidget = () => {
+  const context = useContext(ChatWidgetContext);
+  if (!context) {
+    throw new Error("useChatWidget must be used within ChatWidgetProvider");
+  }
+  return context;
+};
 
 interface ChatMessage {
   id: string;
@@ -114,7 +129,7 @@ const split_action_menu: MenuItem[] = [
 ];
 
 const amc_coverage_menu: MenuItem[] = [
-  { number: "1️⃣", label: "Yes", value: "yes" },
+  { number: "1️��", label: "Yes", value: "yes" },
   { number: "2️⃣", label: "No", value: "no" },
 ];
 
@@ -221,7 +236,7 @@ export function SupportChatWidget() {
 
       if (currentStage === "main_menu") {
         if (selectedNumber === "1" || input.includes("hvac")) {
-          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n��� Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete HVAC Solutions:\n• Installation\n��� AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = "hvac_action";
           if (!firstServiceSelected) {
             addBotMessage(
@@ -291,7 +306,7 @@ export function SupportChatWidget() {
           response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "emergency_confirm";
         } else {
-          response = `Please select an option:\n\n1️⃣ Book an appointment\n2���⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
+          response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
           nextStage = currentStage;
         }
       } else if (currentStage === "amc_booking") {
