@@ -29,7 +29,7 @@ import {
   Linkedin,
   Instagram,
 } from "lucide-react";
-import { SupportChatWidget } from "@/components/support-chat-widget";
+import { useChatWidget } from "@/components/support-chat-widget";
 import { useBusinessConfig } from "@/context/BusinessContext";
 
 const clientLogos: Record<string, string> = {
