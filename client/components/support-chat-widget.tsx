@@ -119,7 +119,7 @@ const amc_support_menu: MenuItem[] = [
 const service_action_menu: MenuItem[] = [
   { number: "1️⃣", label: "Book an appointment", value: "book" },
   { number: "2️⃣", label: "Request a quotation", value: "quotation" },
-  { number: "3��⃣", label: "Emergency Service", value: "emergency" },
+  { number: "3️⃣", label: "Emergency Service", value: "emergency" },
 ];
 
 const split_action_menu: MenuItem[] = [
@@ -156,13 +156,13 @@ const feedback_menu: MenuItem[] = [
   { number: "⭐", label: "Poor", value: "poor" },
   { number: "⭐⭐", label: "Average", value: "average" },
   { number: "⭐⭐⭐", label: "Good", value: "good" },
-  { number: "��⭐⭐⭐", label: "Very Good", value: "very_good" },
+  { number: "⭐⭐⭐⭐", label: "Very Good", value: "very_good" },
   { number: "⭐⭐⭐⭐⭐", label: "Excellent", value: "excellent" },
 ];
 
 export function SupportChatWidget() {
   const businessConfig = useBusinessConfig();
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen } = useChatWidget();
   const [messages, setMessages] = useState<ChatMessage[]>([
     createMessage(
       "bot",
