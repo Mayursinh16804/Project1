@@ -1,6 +1,20 @@
-import { useCallback, useEffect, useRef, useState, createContext, useContext } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  createContext,
+  useContext,
+} from "react";
 import type { FormEvent, KeyboardEvent } from "react";
-import { MessageCircle, Send, Sparkles, Loader2, RotateCcw, MoreVertical } from "lucide-react";
+import {
+  MessageCircle,
+  Send,
+  Sparkles,
+  Loader2,
+  RotateCcw,
+  MoreVertical,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -28,7 +42,9 @@ interface ChatWidgetContextType {
   setIsOpen: (open: boolean) => void;
 }
 
-const ChatWidgetContext = createContext<ChatWidgetContextType | undefined>(undefined);
+const ChatWidgetContext = createContext<ChatWidgetContextType | undefined>(
+  undefined,
+);
 
 export const useChatWidget = () => {
   const context = useContext(ChatWidgetContext);
@@ -772,7 +788,11 @@ export function SupportChatWidget() {
   );
 }
 
-export function ChatWidgetProvider({ children }: { children: React.ReactNode }) {
+export function ChatWidgetProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
