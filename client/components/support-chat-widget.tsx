@@ -84,7 +84,7 @@ Please provide me with a quotation.`;
 
 const mainMenuItems: MenuItem[] = [
   { number: "1️⃣", label: "HVAC Services", value: "hvac" },
-  { number: "2️⃣", label: "Centralized AC", value: "centralized" },
+  { number: "2️���", label: "Centralized AC", value: "centralized" },
   { number: "3️⃣", label: "Split (Home) AC", value: "split" },
   { number: "4️⃣", label: "AMC/Warranty Support", value: "amc_support" },
   { number: "5️⃣", label: "Emergency Service", value: "emergency" },
@@ -402,8 +402,31 @@ export function SupportChatWidget() {
           nextStage = "collecting_breakdown_details";
         }
       } else if (currentStage === "collecting_operational") {
-        response = `Our engineer will call you within business hours (10 AM – 7 PM) to assist remotely 📞.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
-        nextStage = "follow_up";
+        const updatedDetails = { ...userDetails };
+        const step = detailsCollectionStep;
+
+        if (step === 0) {
+          updatedDetails.fullName = input;
+          setDetailsCollectionStep(1);
+          setUserDetails(updatedDetails);
+          response = `Thank you for your name. Please share your contact number:`;
+          nextStage = "collecting_operational";
+        } else if (step === 1) {
+          updatedDetails.phone = input;
+          setDetailsCollectionStep(2);
+          setUserDetails(updatedDetails);
+          response = `Contact saved. Please describe your issue:`;
+          nextStage = "collecting_operational";
+        } else if (step === 2) {
+          updatedDetails.serviceDetails = input;
+          setDetailsCollectionStep(0);
+          setUserDetails(updatedDetails);
+          response = `Our engineer will call you within business hours (10 AM – 7 PM) to assist remotely 📞.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "follow_up";
+        } else {
+          response = `Our engineer will call you within business hours (10 AM – 7 PM) to assist remotely 📞.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "follow_up";
+        }
       } else if (currentStage === "emergency_confirm") {
         if (selectedNumber === "1" || input.includes("yes")) {
           response = `Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Problem Description`;
