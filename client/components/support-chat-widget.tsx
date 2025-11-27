@@ -419,7 +419,7 @@ export function SupportChatWidget() {
         </SheetHeader>
 
         <ScrollArea className="flex-1 overflow-hidden">
-          <div ref={messagesContainerRef} className="space-y-4 p-4">
+          <div className="space-y-4 p-4">
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -453,6 +453,7 @@ export function SupportChatWidget() {
                 </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
         </ScrollArea>
 
