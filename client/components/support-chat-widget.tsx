@@ -84,7 +84,7 @@ Please provide me with a quotation.`;
 
 const mainMenuItems: MenuItem[] = [
   { number: "1️⃣", label: "HVAC Services", value: "hvac" },
-  { number: "2️���", label: "Centralized AC", value: "centralized" },
+  { number: "2️⃣", label: "Centralized AC", value: "centralized" },
   { number: "3️⃣", label: "Split (Home) AC", value: "split" },
   { number: "4️⃣", label: "AMC/Warranty Support", value: "amc_support" },
   { number: "5️⃣", label: "Emergency Service", value: "emergency" },
@@ -221,7 +221,7 @@ export function SupportChatWidget() {
 
       if (currentStage === "main_menu") {
         if (selectedNumber === "1" || input.includes("hvac")) {
-          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n��� Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = "hvac_action";
           if (!firstServiceSelected) {
             addBotMessage(
@@ -291,7 +291,7 @@ export function SupportChatWidget() {
           response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "emergency_confirm";
         } else {
-          response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
+          response = `Please select an option:\n\n1️⃣ Book an appointment\n2���⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
           nextStage = currentStage;
         }
       } else if (currentStage === "amc_booking") {
@@ -439,8 +439,37 @@ export function SupportChatWidget() {
           nextStage = currentStage;
         }
       } else if (currentStage === "collecting_emergency") {
-        response = `Our technician will contact you within 2 hours 🚀.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
-        nextStage = "follow_up";
+        const updatedDetails = { ...userDetails };
+        const step = detailsCollectionStep;
+
+        if (step === 0) {
+          updatedDetails.fullName = input;
+          setDetailsCollectionStep(1);
+          setUserDetails(updatedDetails);
+          response = `Thank you for your name. Please share your contact number:`;
+          nextStage = "collecting_emergency";
+        } else if (step === 1) {
+          updatedDetails.phone = input;
+          setDetailsCollectionStep(2);
+          setUserDetails(updatedDetails);
+          response = `Contact saved. Please share your address:`;
+          nextStage = "collecting_emergency";
+        } else if (step === 2) {
+          updatedDetails.address = input;
+          setDetailsCollectionStep(3);
+          setUserDetails(updatedDetails);
+          response = `Address saved. Please describe the problem:`;
+          nextStage = "collecting_emergency";
+        } else if (step === 3) {
+          updatedDetails.serviceDetails = input;
+          setDetailsCollectionStep(0);
+          setUserDetails(updatedDetails);
+          response = `Our technician will contact you within 2 hours 🚀.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "follow_up";
+        } else {
+          response = `Our technician will contact you within 2 hours 🚀.\n\nWas your issue resolved successfully?\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = "follow_up";
+        }
       } else if (currentStage === "follow_up") {
         if (selectedNumber === "1" || input.includes("yes")) {
           response = `Can we help you with anything else?\n\n1️⃣ Yes\n2️⃣ No`;
