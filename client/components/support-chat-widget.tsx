@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, createContext, useContext } from "react";
 import type { FormEvent, KeyboardEvent } from "react";
-import { MessageCircle, Send, Sparkles, Loader2 } from "lucide-react";
+import { MessageCircle, Send, Sparkles, Loader2, RotateCcw } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -314,7 +314,7 @@ export function SupportChatWidget() {
           response = `Great! ✅ Please share your details:\n\n1. Full Name\n2. Contact Number\n3. Address\n4. Preferred AMC Duration\n5. Preferred Date & Time (10 AM – 7 PM)`;
           nextStage = "collecting_details";
         } else if (selectedNumber === "2" || input.includes("no")) {
-          response = `No problem! Let me show you the main menu again.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+          response = `No problem! Let me show you the main menu again.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️�� Emergency Service\n6️⃣ Contact Us`;
           nextStage = "main_menu";
         } else {
           response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
