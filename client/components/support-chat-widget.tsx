@@ -50,6 +50,38 @@ const createMessage = (
   timestamp: new Date(),
 });
 
+const generateEmailMessage = (details: UserDetails): string => {
+  return `Hi there,
+
+I would like to request a quotation for your AC services with the following details:
+
+Full Name: ${details.fullName}
+Contact Number: ${details.phone}
+${details.address ? `Address: ${details.address}` : ""}
+${details.serviceDetails ? `Service Details: ${details.serviceDetails}` : ""}
+${details.serviceType ? `Service Type: ${details.serviceType}` : ""}
+${details.preferredDate ? `Preferred Date & Time: ${details.preferredDate}` : ""}
+${details.amc ? `Current AMC/Warranty: ${details.amc}` : ""}
+${details.duration ? `Preferred Duration: ${details.duration}` : ""}
+
+Please provide me with a quotation at your earliest convenience.
+
+Thank you!`;
+};
+
+const generateWhatsAppMessage = (details: UserDetails): string => {
+  return `Hi, I would like to request a quotation for your AC services.
+
+Full Name: ${details.fullName}
+Contact Number: ${details.phone}
+${details.address ? `Address: ${details.address}` : ""}
+${details.serviceDetails ? `Service Details: ${details.serviceDetails}` : ""}
+${details.serviceType ? `Service Type: ${details.serviceType}` : ""}
+${details.preferredDate ? `Preferred Date & Time: ${details.preferredDate}` : ""}
+
+Please provide me with a quotation.`;
+};
+
 const mainMenuItems: MenuItem[] = [
   { number: "1️⃣", label: "HVAC Services", value: "hvac" },
   { number: "2️⃣", label: "Centralized AC", value: "centralized" },
@@ -83,7 +115,7 @@ const split_action_menu: MenuItem[] = [
 
 const amc_coverage_menu: MenuItem[] = [
   { number: "1️⃣", label: "Yes", value: "yes" },
-  { number: "2️⃣", label: "No", value: "no" },
+  { number: "2���⃣", label: "No", value: "no" },
 ];
 
 const emergency_confirm_menu: MenuItem[] = [
@@ -295,7 +327,7 @@ export function SupportChatWidget() {
           response = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ Emergency Service\n5️⃣ Contact Us`;
           nextStage = "main_menu";
         } else {
-          response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          response = `Please select:\n\n1️�� Yes\n2️⃣ No`;
           nextStage = currentStage;
         }
       } else if (
