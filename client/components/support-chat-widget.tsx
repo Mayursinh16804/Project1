@@ -165,7 +165,7 @@ export function SupportChatWidget() {
 
       if (currentStage === "main_menu") {
         if (selectedNumber === "1" || input.includes("hvac")) {
-          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️��� Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = "hvac_action";
           if (!firstServiceSelected) {
             addBotMessage(
@@ -426,7 +426,7 @@ export function SupportChatWidget() {
         </SheetHeader>
 
         <ScrollArea className="flex-1 overflow-hidden">
-          <div className="space-y-4 p-4">
+          <div ref={messagesContainerRef} className="space-y-4 p-4">
             {messages.map((message) => (
               <div
                 key={message.id}
