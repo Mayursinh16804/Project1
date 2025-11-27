@@ -59,6 +59,7 @@ const clientWebsites: Record<string, string> = {
 
 export default function Index() {
   const businessConfig = useBusinessConfig();
+  const { setIsOpen: setChatOpen } = useChatWidget();
   const productRedirectUrl =
     "https://www.vertiv.com/en-in/products-catalog/thermal-management/room-cooling/#/";
 
