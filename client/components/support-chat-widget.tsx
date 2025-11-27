@@ -165,7 +165,7 @@ export function SupportChatWidget() {
 
       if (currentStage === "main_menu") {
         if (selectedNumber === "1" || input.includes("hvac")) {
-          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete HVAC Solutions:\n• Installation\n• AMC (Annual Maintenance Contracts)\n• Warranty Support\n• Repairs & Maintenance\n\n1️⃣ Book an appointment\n2️��� Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = "hvac_action";
           if (!firstServiceSelected) {
             addBotMessage(
@@ -185,7 +185,7 @@ export function SupportChatWidget() {
             setFirstServiceSelected(true);
           }
         } else if (selectedNumber === "3" || input.includes("split")) {
-          response = `We provide complete Split AC Services:\n• Installation\n• Servicing & Repairs\n• Gas Refilling\n• AMC Packages\n• Warranty Support\n\n1���⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
+          response = `We provide complete Split AC Services:\n• Installation\n• Servicing & Repairs\n• Gas Refilling\n• AMC Packages\n• Warranty Support\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
           nextStage = "split_action";
           if (!firstServiceSelected) {
             addBotMessage(
@@ -379,6 +379,20 @@ export function SupportChatWidget() {
   useEffect(() => {
     adjustTextareaHeight();
   }, [adjustTextareaHeight]);
+
+  // Auto-scroll to latest message
+  useEffect(() => {
+    if (messagesContainerRef.current) {
+      const scrollContainer = messagesContainerRef.current.closest(
+        "[data-radix-scroll-area-viewport]",
+      );
+      if (scrollContainer) {
+        setTimeout(() => {
+          scrollContainer.scrollTop = scrollContainer.scrollHeight;
+        }, 0);
+      }
+    }
+  }, [messages, isThinking]);
 
   useEffect(() => {
     return () => {
