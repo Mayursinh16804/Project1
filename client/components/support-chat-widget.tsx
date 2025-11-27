@@ -127,6 +127,11 @@ export function SupportChatWidget() {
   const [canSendMessage, setCanSendMessage] = useState(false);
   const [currentStage, setCurrentStage] = useState("main_menu");
   const [firstServiceSelected, setFirstServiceSelected] = useState(false);
+  const [userDetails, setUserDetails] = useState<UserDetails>({
+    fullName: "",
+    phone: "",
+  });
+  const [detailsCollectionStep, setDetailsCollectionStep] = useState(0);
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
