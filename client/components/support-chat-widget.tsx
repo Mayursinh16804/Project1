@@ -277,7 +277,7 @@ export function SupportChatWidget() {
           response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "emergency_confirm";
         } else {
-          response = `Please select an option:\n\n1️⃣ Book an appointment\n2���⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
+          response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Request a quotation\n3️⃣ Emergency Service 🚨`;
           nextStage = currentStage;
         }
       } else if (currentStage === "split_action") {
@@ -438,6 +438,34 @@ export function SupportChatWidget() {
           nextStage = "feedback";
         } else {
           response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
+          nextStage = currentStage;
+        }
+      } else if (currentStage === "submit_quote_method") {
+        if (selectedNumber === "1" || input.includes("email")) {
+          const emailSubject = "Request for Quotation - AC Services";
+          const emailBody = generateEmailMessage(userDetails);
+          const mailtoLink = `mailto:${businessConfig.email}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+          response = `Perfect! I'll help you send this via email.\n\n📧 Click the link below to open your email client:\n${mailtoLink}\n\nOr you can email directly at: ${businessConfig.email}`;
+          addBotMessage(
+            `Your quotation request is ready to send! Our team will respond within 24 hours.`,
+            650,
+          );
+          setDetailsCollectionStep(0);
+          setUserDetails({ fullName: "", phone: "" });
+          nextStage = "follow_up";
+        } else if (selectedNumber === "2" || input.includes("whatsapp")) {
+          const whatsappMessage = generateWhatsAppMessage(userDetails);
+          const whatsappLink = `https://wa.me/${businessConfig.phone.replace(/\D/g, "")}?text=${encodeURIComponent(whatsappMessage)}`;
+          response = `Great! I'll help you send this via WhatsApp.\n\n💬 Click the link below to open WhatsApp:\n${whatsappLink}\n\nOr search for: +91 ${businessConfig.phone}`;
+          addBotMessage(
+            `Your quotation request is ready to send! Our team will respond within 24 hours.`,
+            650,
+          );
+          setDetailsCollectionStep(0);
+          setUserDetails({ fullName: "", phone: "" });
+          nextStage = "follow_up";
+        } else {
+          response = `Please select:\n\n1️⃣ Send via Email\n2️⃣ Send via WhatsApp`;
           nextStage = currentStage;
         }
       } else if (currentStage === "contact_action") {
