@@ -569,7 +569,7 @@ export function SupportChatWidget() {
     setMessages([
       createMessage(
         "bot",
-        `Hello! 👋 Welcome to ${businessConfig.name} – Commercial & Split AC Solutions. How can I help you today?\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3���⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`,
+        `Hello! 👋 Welcome to ${businessConfig.name} – Commercial & Split AC Solutions. How can I help you today?\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`,
       ),
     ]);
     setInputValue("");
@@ -655,16 +655,42 @@ export function SupportChatWidget() {
               <Sparkles className="h-4 w-4 text-accent" />
               {businessConfig.name} Support
             </SheetTitle>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleRestart}
-              className="h-8 w-8 p-0 hover:bg-accent/10"
-              title="Start a new chat"
-            >
-              <RotateCcw className="h-4 w-4 text-accent" />
-              <span className="sr-only">Restart chat</span>
-            </Button>
+            <div className="flex items-center gap-1">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleRestart}
+                className="h-8 w-8 p-0 hover:bg-accent/10"
+                title="Start a new chat"
+              >
+                <RotateCcw className="h-4 w-4 text-accent" />
+                <span className="sr-only">Restart chat</span>
+              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 w-8 p-0 hover:bg-accent/10"
+                  >
+                    <MoreVertical className="h-4 w-4 text-accent" />
+                    <span className="sr-only">Chat options</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem onClick={handleRestart}>
+                    <RotateCcw className="mr-2 h-4 w-4" />
+                    <span>New Chat</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem disabled>
+                    <span className="text-xs text-muted-foreground">
+                      Contact: +91 {businessConfig.phone}
+                    </span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </SheetHeader>
 
