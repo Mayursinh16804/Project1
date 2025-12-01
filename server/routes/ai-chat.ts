@@ -39,9 +39,22 @@ export async function handleAIChat(req: Request, res: Response) {
       },
     );
 
+    let data: HFResponse[];
+
+    try {
+      data = (await response.json()) as HFResponse[];
+    } catch {
+      console.error(
+        "Hugging Face API error: Failed to parse response",
+        response.status,
+      );
+      return res.status(500).json({
+        error: "Unable to generate response. Please try again or contact support.",
+      });
+    }
+
     if (!response.ok) {
-      const errorData = await response.text();
-      console.error("Hugging Face API error:", response.status, errorData);
+      console.error("Hugging Face API error:", response.status, data);
 
       // Return a user-friendly error message
       if (response.status === 429) {
@@ -54,8 +67,6 @@ export async function handleAIChat(req: Request, res: Response) {
         error: "Unable to generate response. Please try again or contact support.",
       });
     }
-
-    const data = (await response.json()) as HFResponse[];
 
     if (!data || !data[0]) {
       return res.status(500).json({
