@@ -244,23 +244,46 @@ export async function getACResponse(
     };
   }
 
-  try {
-    const [aiResponse, searchResults] = await Promise.all([
-      callVicunaAI(question),
-      searchWeb(question),
-    ]);
+  // Try to find answer in local knowledge base first
+  const knowledgeBaseAnswer = findBestAnswer(question);
+  if (knowledgeBaseAnswer) {
+    return {
+      answer: knowledgeBaseAnswer.answer,
+      sources: knowledgeBaseAnswer.sources,
+      isAI: true,
+    };
+  }
 
+  // Fallback: Try AI via backend (if Hugging Face key is available)
+  try {
+    const aiResponse = await callVicunaAI(question);
     return {
       answer: aiResponse,
-      sources: searchResults,
+      sources: [
+        {
+          title: "Mayur Aircon Services",
+          url: "https://www.mayuraircon.com",
+          snippet:
+            "Professional AC solutions including installation, maintenance, and repair services.",
+        },
+      ],
       isAI: true,
     };
   } catch (error) {
     console.error("Error getting AC response:", error);
+
+    // Final fallback: generic response
     return {
       answer:
-        "I encountered an issue retrieving information. Please try again or contact our support team.",
-      sources: [],
+        "Thank you for your question about AC services. For detailed information, please contact our support team at +91 9909017725 or visit our website. We're available 24/7 for emergency support!",
+      sources: [
+        {
+          title: "Contact Mayur Aircon",
+          url: "https://www.mayuraircon.com",
+          snippet:
+            "Phone: +91 9909017725 | Email: mayuraircon1684@gmail.com | Available 24/7",
+        },
+      ],
       isAI: false,
     };
   }
