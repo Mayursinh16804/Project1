@@ -14,6 +14,7 @@ import {
   Loader2,
   RotateCcw,
   MoreVertical,
+  Brain,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -36,6 +37,7 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { useBusinessConfig } from "@/context/BusinessContext";
+import { getACResponse, isACQuestion } from "@/lib/ai-chat";
 
 interface ChatWidgetContextType {
   isOpen: boolean;
