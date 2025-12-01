@@ -386,7 +386,7 @@ export function SupportChatWidget() {
           response = `Please share:\n\n1. Full Name\n2. Contact Number\n3. Location\n4. Type of AC (Centralized / Split / Other)\n5. Describe the problem briefly`;
           nextStage = "collecting_breakdown_details";
         } else if (selectedNumber === "2" || input.includes("no")) {
-          response = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3���⃣ Split (Home) AC\n4️⃣ Emergency Service\n5️⃣ Contact Us`;
+          response = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ Emergency Service\n5️⃣ Contact Us`;
           nextStage = "main_menu";
         } else {
           response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
@@ -630,11 +630,11 @@ export function SupportChatWidget() {
   }, []);
 
   const sendMessage = useCallback(
-    (content: string) => {
+    async (content: string) => {
       if (!content.trim()) return;
 
       pushUserMessage(content);
-      respondToUser(content);
+      await respondToUser(content);
       setInputValue("");
       adjustTextareaHeight();
     },
