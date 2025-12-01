@@ -176,7 +176,7 @@ const contact_menu: MenuItem[] = [
 
 const follow_up_menu: MenuItem[] = [
   { number: "1️⃣", label: "Yes, resolved", value: "yes" },
-  { number: "2��⃣", label: "No, needs escalation", value: "no" },
+  { number: "2️⃣", label: "No, needs escalation", value: "no" },
 ];
 
 const feedback_menu: MenuItem[] = [
@@ -350,7 +350,7 @@ export function SupportChatWidget() {
           response = `🎉 Special Offer: When you buy a 12-month AMC, you'll get 1 extra month FREE (13 months total coverage)!\n\nWould you like to proceed with AMC booking?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "amc_booking";
         } else if (selectedNumber === "3" || input.includes("emergency")) {
-          response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️�� No`;
+          response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "emergency_confirm";
         } else {
           response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
@@ -369,7 +369,7 @@ export function SupportChatWidget() {
         }
       } else if (currentStage === "amc_support_menu") {
         if (selectedNumber === "1" || input.includes("breakdown")) {
-          response = `We're here to help 🚨. Please confirm: Is your AC covered under AMC or Warranty?\n\n1️�� Yes\n2️⃣ No`;
+          response = `We're here to help 🚨. Please confirm: Is your AC covered under AMC or Warranty?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "amc_coverage_check";
         } else if (selectedNumber === "2" || input.includes("operational")) {
           response = `Please describe your issue (e.g., AC not cooling, unusual noise, remote not working).`;
@@ -386,7 +386,7 @@ export function SupportChatWidget() {
           response = `Please share:\n\n1. Full Name\n2. Contact Number\n3. Location\n4. Type of AC (Centralized / Split / Other)\n5. Describe the problem briefly`;
           nextStage = "collecting_breakdown_details";
         } else if (selectedNumber === "2" || input.includes("no")) {
-          response = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ Emergency Service\n5️⃣ Contact Us`;
+          response = `It looks like your system is not under AMC/Warranty. Don't worry – you can still book a paid service.\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3���⃣ Split (Home) AC\n4️⃣ Emergency Service\n5️⃣ Contact Us`;
           nextStage = "main_menu";
         } else {
           response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
@@ -755,6 +755,36 @@ export function SupportChatWidget() {
                   <p className="whitespace-pre-wrap break-words">
                     {message.content}
                   </p>
+                  {message.isAI && (
+                    <div className="mt-2 flex items-center gap-1 text-xs opacity-70">
+                      <Brain className="h-3 w-3" />
+                      <span>AI-powered response</span>
+                    </div>
+                  )}
+                  {message.sources && message.sources.length > 0 && (
+                    <details className="mt-2 cursor-pointer text-xs opacity-70">
+                      <summary className="font-semibold hover:opacity-100">
+                        📚 Sources ({message.sources.length})
+                      </summary>
+                      <ul className="mt-2 space-y-1 text-xs">
+                        {message.sources.map((source, idx) => (
+                          <li key={idx} className="break-words">
+                            <a
+                              href={source.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-500 hover:underline"
+                            >
+                              {source.title}
+                            </a>
+                            <p className="mt-1 line-clamp-2 opacity-70">
+                              {source.snippet}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  )}
                 </div>
               </div>
             ))}
@@ -764,7 +794,7 @@ export function SupportChatWidget() {
                 <div className="flex items-center gap-2 rounded-2xl bg-muted px-4 py-3">
                   <Loader2 className="h-4 w-4 animate-spin text-accent" />
                   <span className="text-sm text-muted-foreground">
-                    Typing...
+                    Thinking...
                   </span>
                 </div>
               </div>
