@@ -61,6 +61,8 @@ interface ChatMessage {
   author: "user" | "bot";
   content: string;
   timestamp: Date;
+  isAI?: boolean;
+  sources?: Array<{ title: string; url: string; snippet: string }>;
 }
 
 interface MenuItem {
