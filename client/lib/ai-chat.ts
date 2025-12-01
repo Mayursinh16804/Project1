@@ -1,10 +1,5 @@
 // AI Chat utility - Uses Vicuna (Hugging Face) + free web search
-// Setup required:
-// 1. Get HuggingFace API key from https://huggingface.co/settings/tokens
-// 2. Set VITE_HUGGINGFACE_API_KEY in .env
-
-const HF_API_KEY = import.meta.env.VITE_HUGGINGFACE_API_KEY || "";
-const VICUNA_MODEL = "lmsys/vicuna-7b-v1.5"; // Free tier compatible
+// The backend proxy handles API calls, avoiding CORS issues
 
 interface WebSearchResult {
   title: string;
