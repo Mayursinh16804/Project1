@@ -176,7 +176,7 @@ const contact_menu: MenuItem[] = [
 
 const follow_up_menu: MenuItem[] = [
   { number: "1️⃣", label: "Yes, resolved", value: "yes" },
-  { number: "2️⃣", label: "No, needs escalation", value: "no" },
+  { number: "2��⃣", label: "No, needs escalation", value: "no" },
 ];
 
 const feedback_menu: MenuItem[] = [
@@ -251,8 +251,28 @@ export function SupportChatWidget() {
   }, []);
 
   const respondToUser = useCallback(
-    (userInput: string) => {
+    async (userInput: string) => {
       const input = userInput.trim().toLowerCase();
+
+      // Check if it's an AC question and try to get AI response
+      if (isACQuestion(userInput) && currentStage === "main_menu") {
+        setIsThinking(true);
+        try {
+          const acResponse = await getACResponse(userInput);
+          const botMessage = createMessage("bot", acResponse.answer);
+          botMessage.isAI = acResponse.isAI;
+          botMessage.sources = acResponse.sources;
+
+          setTimeout(() => {
+            setMessages((previous) => [...previous, botMessage]);
+            setIsThinking(false);
+          }, 650);
+          return;
+        } catch (error) {
+          console.error("AI response error:", error);
+          setIsThinking(false);
+        }
+      }
 
       // Extract number from input (1, 2, 3, etc.)
       const numberMatch = input.match(/\d/);
@@ -330,7 +350,7 @@ export function SupportChatWidget() {
           response = `🎉 Special Offer: When you buy a 12-month AMC, you'll get 1 extra month FREE (13 months total coverage)!\n\nWould you like to proceed with AMC booking?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "amc_booking";
         } else if (selectedNumber === "3" || input.includes("emergency")) {
-          response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️⃣ No`;
+          response = `🚨 Emergency Service is available 24/7. Please note: Emergency charges are higher than normal services. Do you want to proceed?\n\n1️⃣ Yes\n2️�� No`;
           nextStage = "emergency_confirm";
         } else {
           response = `Please select an option:\n\n1️⃣ Book an appointment\n2️⃣ Check AMC plans\n3️⃣ Emergency Service 🚨`;
@@ -349,7 +369,7 @@ export function SupportChatWidget() {
         }
       } else if (currentStage === "amc_support_menu") {
         if (selectedNumber === "1" || input.includes("breakdown")) {
-          response = `We're here to help 🚨. Please confirm: Is your AC covered under AMC or Warranty?\n\n1️⃣ Yes\n2️⃣ No`;
+          response = `We're here to help 🚨. Please confirm: Is your AC covered under AMC or Warranty?\n\n1️�� Yes\n2️⃣ No`;
           nextStage = "amc_coverage_check";
         } else if (selectedNumber === "2" || input.includes("operational")) {
           response = `Please describe your issue (e.g., AC not cooling, unusual noise, remote not working).`;
