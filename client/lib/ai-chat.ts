@@ -75,34 +75,27 @@ async function searchWeb(query: string): Promise<WebSearchResult[]> {
   }
 }
 
-// Call Vicuna AI via Hugging Face Inference API
+// Call Vicuna AI via backend proxy (avoids CORS issues)
 async function callVicunaAI(question: string): Promise<string> {
-  if (!HF_API_KEY) {
-    return (
-      "AI responses unavailable. Please set VITE_HUGGINGFACE_API_KEY in your .env file. " +
-      "Get a free key from https://huggingface.co/settings/tokens"
-    );
-  }
-
   try {
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/lmsys/vicuna-7b-v1.5",
-      {
-        headers: { Authorization: `Bearer ${HF_API_KEY}` },
-        method: "POST",
-        body: JSON.stringify({
-          inputs: `You are an expert HVAC and air conditioning assistant. Answer the following question concisely and helpfully:\n\nQuestion: ${question}\n\nAnswer:`,
-          parameters: {
-            max_length: 500,
-            temperature: 0.7,
-          },
-        }),
-      },
-    );
+    const response = await fetch("/api/ai-chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question }),
+    });
 
     if (!response.ok) {
-      const error = await response.text();
-      console.error("Vicuna API error:", error);
+      const error = await response.json();
+      console.error("AI API error:", error);
+
+      if (response.status === 429) {
+        return "Service is temporarily busy. Please try again in a moment.";
+      }
+
+      if (error.error) {
+        return error.error;
+      }
+
       return (
         "I'm currently unable to access AI responses. Please try again in a moment, " +
         "or contact our support team for immediate assistance."
@@ -110,13 +103,10 @@ async function callVicunaAI(question: string): Promise<string> {
     }
 
     const data = await response.json();
-    const answer =
-      data[0]?.generated_text ||
-      "Unable to generate response. Please try rephrasing your question.";
-
-    // Extract just the answer part (after "Answer:")
-    const answerMatch = answer.match(/Answer:\s*([\s\S]*?)$/);
-    return answerMatch ? answerMatch[1].trim() : answer;
+    return (
+      data.answer ||
+      "Unable to generate response. Please try rephrasing your question."
+    );
   } catch (error) {
     console.error("AI chat error:", error);
     return (
