@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleContactForm, healthCheck } from "./routes/contact";
+import { handleAIChat } from "./routes/ai-chat";
 
 export function createServer() {
   const app = express();
@@ -25,6 +26,9 @@ export function createServer() {
 
   // Contact form endpoint
   app.post("/api/contact", handleContactForm);
+
+  // AI Chat endpoint (Hugging Face Vicuna proxy)
+  app.post("/api/ai-chat", handleAIChat);
 
   return app;
 }
