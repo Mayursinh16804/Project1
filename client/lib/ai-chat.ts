@@ -79,16 +79,18 @@ async function callVicunaAI(question: string): Promise<string> {
       body: JSON.stringify({ question }),
     });
 
+    // Always read the body first to avoid stream issues
+    const data = await response.json();
+
     if (!response.ok) {
-      const error = await response.json();
-      console.error("AI API error:", error);
+      console.error("AI API error:", data);
 
       if (response.status === 429) {
         return "Service is temporarily busy. Please try again in a moment.";
       }
 
-      if (error.error) {
-        return error.error;
+      if (data.error) {
+        return data.error;
       }
 
       return (
@@ -97,7 +99,6 @@ async function callVicunaAI(question: string): Promise<string> {
       );
     }
 
-    const data = await response.json();
     return (
       data.answer ||
       "Unable to generate response. Please try rephrasing your question."
