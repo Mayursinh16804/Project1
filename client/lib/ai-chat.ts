@@ -199,13 +199,21 @@ export async function getACResponse(
     };
   }
 
-  // Try to find answer in local knowledge base first
-  const knowledgeBaseAnswer = findBestAnswer(question);
-  if (knowledgeBaseAnswer) {
+  // Try to find answer in comprehensive FAQ database first
+  const faqMatch = findBestFAQMatch(question, 0.35);
+  if (faqMatch && faqMatch.matchScore > 0.4) {
+    const entry = faqMatch.entry;
+    const sources: WebSearchResult[] =
+      entry.source_references?.map((url) => ({
+        title: `Source: ${entry.category}`,
+        url,
+        snippet: entry.short_answer.substring(0, 100),
+      })) || [];
+
     return {
-      answer: knowledgeBaseAnswer.answer,
-      sources: knowledgeBaseAnswer.sources,
-      isAI: true,
+      answer: entry.short_answer,
+      sources,
+      isAI: false,
     };
   }
 
