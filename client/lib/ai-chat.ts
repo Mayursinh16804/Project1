@@ -1,6 +1,8 @@
 // AI Chat utility - Smart offline AC knowledge base + Hugging Face fallback
 // No external API keys required for basic functionality
 
+import { AC_FAQ_DATABASE, type FAQEntry } from "./ac-faq-data";
+
 interface WebSearchResult {
   title: string;
   url: string;
@@ -13,135 +15,96 @@ interface ACResponse {
   isAI: boolean;
 }
 
-// Comprehensive AC knowledge base
-const AC_KNOWLEDGE_BASE: Record<string, { answer: string; sources: WebSearchResult[] }> = {
-  "maintain|maintenance|service|maintain": {
-    answer:
-      "To maintain your AC system:\n1. Clean or replace filters every 1-2 months\n2. Get professional servicing once or twice yearly\n3. Keep outdoor unit free from debris\n4. Check refrigerant levels annually\n5. Ensure proper airflow around the unit\n\nRegular maintenance improves efficiency and extends your AC's lifespan.",
-    sources: [
-      {
-        title: "AC Maintenance Checklist",
-        url: "https://www.mayuraircon.com/maintenance",
-        snippet:
-          "Regular maintenance keeps your AC running efficiently. Clean filters monthly and service annually.",
-      },
-      {
-        title: "When to Service Your AC",
-        url: "https://www.mayuraircon.com/service",
-        snippet:
-          "Service your AC before summer season and after heavy usage. Annual servicing recommended.",
-      },
-    ],
-  },
-  "cool|not cooling|not cold|not working|stopped": {
-    answer:
-      "If your AC is not cooling properly:\n1. Check if the thermostat is set correctly\n2. Ensure air filters are clean\n3. Check that the outdoor unit has airflow\n4. Look for refrigerant leaks\n5. Verify the compressor is running\n\nIf these steps don't help, contact a professional technician for inspection.",
-    sources: [
-      {
-        title: "AC Troubleshooting Guide",
-        url: "https://www.mayuraircon.com/troubleshooting",
-        snippet:
-          "Common reasons your AC isn't cooling: dirty filters, low refrigerant, thermostat issues, or compressor problems.",
-      },
-      {
-        title: "When to Call a Professional",
-        url: "https://www.mayuraircon.com/when-to-call",
-        snippet:
-          "If your AC has refrigerant leaks, compressor issues, or electrical problems, contact a professional.",
-      },
-    ],
-  },
-  "gas|refill|low|refrigerant|freon": {
-    answer:
-      "AC refrigerant (gas) management:\n1. Low refrigerant indicates a leak\n2. Refilling without fixing the leak is temporary\n3. Professional technicians should handle all refrigerant work\n4. Refills are needed every 4-5 years in normal conditions\n5. Leaks must be fixed for lasting solutions\n\nContact us for professional refrigerant inspection and refilling.",
-    sources: [
-      {
-        title: "AC Refrigerant Guide",
-        url: "https://www.mayuraircon.com/refrigerant",
-        snippet:
-          "Understanding AC refrigerant: types, costs, and when to refill your system.",
-      },
-      {
-        title: "Refrigerant Leak Repair",
-        url: "https://www.mayuraircon.com/leak-repair",
-        snippet:
-          "If your AC is low on refrigerant, it indicates a leak. We can locate and repair the leak.",
-      },
-    ],
-  },
-  "noise|sound|loud|grinding|squealing": {
-    answer:
-      "Unusual AC noises indicate potential issues:\n1. Grinding sounds: compressor problems\n2. Squealing: refrigerant leak or motor issue\n3. Rattling: loose components\n4. Hissing: refrigerant leak\n\nDon't ignore these sounds - they need professional attention to prevent further damage.",
-    sources: [
-      {
-        title: "AC Noise Diagnosis",
-        url: "https://www.mayuraircon.com/noise",
-        snippet:
-          "Different AC noises indicate different problems. Learn what each sound means.",
-      },
-      {
-        title: "AC Repair Services",
-        url: "https://www.mayuraircon.com/repair",
-        snippet:
-          "We diagnose and repair all AC issues, from noise to cooling problems.",
-      },
-    ],
-  },
-  "bill|power|energy|consumption|expensive": {
-    answer:
-      "To reduce AC energy consumption:\n1. Set thermostat to 24-26°C (optimal comfort)\n2. Use programmable thermostat for scheduling\n3. Keep filters clean for better efficiency\n4. Seal air leaks in doors and windows\n5. Close curtains during hot hours\n6. Regular maintenance improves efficiency by 15%\n\nWe offer energy-efficient AC solutions tailored to your needs.",
-    sources: [
-      {
-        title: "Energy Efficient AC Tips",
-        url: "https://www.mayuraircon.com/efficiency",
-        snippet:
-          "Reduce your AC bills by 20-30% with these simple efficiency tips.",
-      },
-      {
-        title: "Energy Saving AC Systems",
-        url: "https://www.mayuraircon.com/energy-saving",
-        snippet:
-          "Our energy-efficient AC units save you money while keeping you cool.",
-      },
-    ],
-  },
-  "install|installation|new|buy": {
-    answer:
-      "AC Installation Service:\n1. We install all types: split, window, centralized, and commercial AC\n2. Professional installation ensures optimal performance\n3. We handle complete setup including wiring and gas filling\n4. Warranty coverage on parts and labor\n\nContact us for a free consultation and competitive quote on AC installation.",
-    sources: [
-      {
-        title: "AC Installation Services",
-        url: "https://www.mayuraircon.com/installation",
-        snippet:
-          "Expert AC installation for homes and businesses. Get 10% OFF your first installation!",
-      },
-      {
-        title: "Free Installation Consultation",
-        url: "https://www.mayuraircon.com/consultation",
-        snippet:
-          "Book your free AC installation consultation and get a detailed quote.",
-      },
-    ],
-  },
-  "amc|warranty|contract|coverage": {
-    answer:
-      "AMC (Annual Maintenance Contract) Benefits:\n1. Regular preventive maintenance (4 times/year)\n2. Priority emergency service (24/7)\n3. 50% discount on spare parts\n4. Extended warranty coverage\n5. Guaranteed uptime and performance\n\nWe offer flexible AMC plans starting from ₹999/month. Special offer: Buy 12-month AMC, get 1 month FREE!",
-    sources: [
-      {
-        title: "AMC Plans & Pricing",
-        url: "https://www.mayuraircon.com/amc",
-        snippet:
-          "Our AMC plans include 4 services/year, 24/7 support, and spare parts discount.",
-      },
-      {
-        title: "Special AMC Offer",
-        url: "https://www.mayuraircon.com/amc-offer",
-        snippet:
-          "Buy 12 months AMC, get 1 extra month FREE + 24/7 emergency support.",
-      },
-    ],
-  },
-};
+// Helper functions for text matching
+function tokenize(text: string): Set<string> {
+  return new Set(
+    text
+      .toLowerCase()
+      .replace(/[^\w\s]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length > 0),
+  );
+}
+
+function jaccardSimilarity(a: string, b: string): number {
+  const setA = tokenize(a);
+  const setB = tokenize(b);
+
+  if (setA.size === 0 && setB.size === 0) return 1;
+  if (setA.size === 0 || setB.size === 0) return 0;
+
+  const intersection = new Set([...setA].filter((x) => setB.has(x)));
+  const union = new Set([...setA, ...setB]);
+
+  return intersection.size / union.size;
+}
+
+function levenshteinSimilarity(a: string, b: string): number {
+  const aLower = a.toLowerCase();
+  const bLower = b.toLowerCase();
+
+  if (!aLower.length) return bLower.length ? 0 : 1;
+  if (!bLower.length) return aLower.length ? 0 : 1;
+
+  const matrix: number[][] = [];
+  for (let i = 0; i <= aLower.length; i++) {
+    matrix[i] = [i];
+  }
+  for (let j = 0; j <= bLower.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= aLower.length; i++) {
+    for (let j = 1; j <= bLower.length; j++) {
+      const cost = aLower[i - 1] === bLower[j - 1] ? 0 : 1;
+      matrix[i][j] = Math.min(
+        matrix[i - 1][j] + 1,
+        matrix[i][j - 1] + 1,
+        matrix[i - 1][j - 1] + cost,
+      );
+    }
+  }
+
+  const maxLen = Math.max(aLower.length, bLower.length);
+  const distance = matrix[aLower.length][bLower.length];
+  return 1 - distance / maxLen;
+}
+
+function scoreMatch(userQuestion: string, candidateText: string): number {
+  const jaccard = jaccardSimilarity(userQuestion, candidateText);
+  const levenshtein = levenshteinSimilarity(userQuestion, candidateText);
+
+  return 0.7 * jaccard + 0.3 * levenshtein;
+}
+
+function findBestFAQMatch(
+  question: string,
+  threshold = 0.4,
+): { entry: FAQEntry; matchScore: number } | null {
+  let bestMatch: { entry: FAQEntry; matchScore: number } | null = null;
+  let bestScore = threshold;
+
+  for (const entry of AC_FAQ_DATABASE) {
+    // Check canonical question
+    const canonicalScore = scoreMatch(question, entry.canonical_question);
+    if (canonicalScore > bestScore) {
+      bestScore = canonicalScore;
+      bestMatch = { entry, matchScore: canonicalScore };
+    }
+
+    // Check question variations (limit to first 50 for performance)
+    const variations = entry.question_variations.slice(0, 50);
+    for (const variation of variations) {
+      const variationScore = scoreMatch(question, variation);
+      if (variationScore > bestScore) {
+        bestScore = variationScore;
+        bestMatch = { entry, matchScore: variationScore };
+      }
+    }
+  }
+
+  return bestMatch;
+}
 
 // Detect if question is AC-related
 export function isACQuestion(text: string): boolean {
