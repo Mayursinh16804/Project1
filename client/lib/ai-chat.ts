@@ -131,25 +131,17 @@ export function isACQuestion(text: string): boolean {
     "temperature",
     "coolant",
     "conditioner",
+    "amc",
+    "warranty",
+    "installation",
+    "energy",
+    "thermostat",
+    "filter",
+    "drain",
+    "duct",
   ];
   const lower = text.toLowerCase();
   return keywords.some((k) => lower.includes(k));
-}
-
-// Find best matching answer from knowledge base
-function findBestAnswer(
-  question: string,
-): { answer: string; sources: WebSearchResult[] } | null {
-  const lower = question.toLowerCase();
-
-  for (const [keywords, content] of Object.entries(AC_KNOWLEDGE_BASE)) {
-    const keywordArray = keywords.split("|");
-    if (keywordArray.some((k) => lower.includes(k))) {
-      return content;
-    }
-  }
-
-  return null;
 }
 
 // Call Vicuna AI via backend proxy (avoids CORS issues)
