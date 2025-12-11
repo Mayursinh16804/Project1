@@ -131,6 +131,7 @@ const mainMenuItems: MenuItem[] = [
   { number: "4️⃣", label: "AMC/Warranty Support", value: "amc_support" },
   { number: "5️⃣", label: "Emergency Service", value: "emergency" },
   { number: "6️⃣", label: "Contact Us", value: "contact" },
+  { number: "7️⃣", label: "Ask me any question", value: "ask_question" },
 ];
 
 const amc_support_menu: MenuItem[] = [
