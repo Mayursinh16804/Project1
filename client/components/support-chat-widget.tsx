@@ -595,11 +595,43 @@ export function SupportChatWidget() {
           response = `Please select:\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = currentStage;
         }
+      } else if (currentStage === "ask_question") {
+        try {
+          const acResponse = await getACResponse(input);
+          const botMessage = createMessage("bot", acResponse.answer);
+          botMessage.isAI = acResponse.isAI;
+          botMessage.sources = acResponse.sources;
+
+          setTimeout(() => {
+            setMessages((previous) => [...previous, botMessage]);
+            addBotMessage(
+              `Do you have another question or would you like to explore other services?\n\n1️⃣ Ask another question\n2️⃣ Go to main menu`,
+              650,
+            );
+            setCurrentStage("ask_question_followup");
+          }, 650);
+          return;
+        } catch (error) {
+          console.error("Error getting AC response:", error);
+          response = `I encountered an issue retrieving the answer. Please try rephrasing your question or contact our support team.`;
+          nextStage = "ask_question";
+        }
+      } else if (currentStage === "ask_question_followup") {
+        if (selectedNumber === "1" || input.includes("another")) {
+          response = `Great! What's your next question about AC services?`;
+          nextStage = "ask_question";
+        } else if (selectedNumber === "2" || input.includes("menu")) {
+          response = `1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us\n7️⃣ Ask me any question`;
+          nextStage = "main_menu";
+        } else {
+          response = `Please select:\n\n1️⃣ Ask another question\n2️⃣ Go to main menu`;
+          nextStage = currentStage;
+        }
       } else if (currentStage === "feedback") {
         response = `Thank you for your feedback! We'll keep improving 🙏`;
         nextStage = "main_menu";
       } else {
-        response = `Please select an option from the menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+        response = `Please select an option from the menu:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us\n7️⃣ Ask me any question`;
         nextStage = "main_menu";
       }
 
