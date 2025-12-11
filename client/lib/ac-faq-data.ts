@@ -124,10 +124,7 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
     tags: ["noise", "fan", "compressor", "maintenance"],
     safety:
       "Loud bangs or smells with noise may indicate severe internal damage—turn off the unit and disconnect power before inspection.",
-    follow_up: [
-      "How to quiet a window AC?",
-      "When to replace the compressor?",
-    ],
+    follow_up: ["How to quiet a window AC?", "When to replace the compressor?"],
     source_references: [
       "https://www.wmhendersoninc.com/blog/bad-noises-coming-from-your-air-conditioner/",
     ],
@@ -162,7 +159,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "thermostat-issues-006",
     category: "troubleshooting",
-    canonical_question: "Why won't the thermostat turn the AC on or reach temperature?",
+    canonical_question:
+      "Why won't the thermostat turn the AC on or reach temperature?",
     question_variations: [
       "AC thermostat not working",
       "Thermostat won't switch to cool",
@@ -179,10 +177,7 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
       "1) Ensure thermostat is set to 'Cool' and temperature set below current room temp. 2) Replace batteries in battery-powered thermostats. 3) Confirm the thermostat is not in 'Fan on' mode only. 4) Check location — avoid mounting on heat sources or in direct sun. 5) If unit short-cycles or shows incorrect readings, verify wiring and check for error codes. For smart thermostats, confirm Wi-Fi integration and firmware. If problem persists, consult a professional to test the thermostat and AC control circuits.",
     tags: ["thermostat", "control", "settings", "smart-thermostat"],
     safety: "",
-    follow_up: [
-      "How do I reset my thermostat?",
-      "Why does my AC short-cycle?",
-    ],
+    follow_up: ["How do I reset my thermostat?", "Why does my AC short-cycle?"],
     source_references: [
       "https://www.daikin.com/products/ac/services/troubleshooting/",
     ],
@@ -242,7 +237,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "split-ac-inverter-009",
     category: "general",
-    canonical_question: "What is an inverter AC and how is it different from non-inverter?",
+    canonical_question:
+      "What is an inverter AC and how is it different from non-inverter?",
     question_variations: [
       "Inverter vs non-inverter AC difference",
       "What does inverter AC mean?",
@@ -268,7 +264,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "brand-carrier-specific-010",
     category: "brand-specific",
-    canonical_question: "Are there Carrier-specific troubleshooting steps for AC not cooling?",
+    canonical_question:
+      "Are there Carrier-specific troubleshooting steps for AC not cooling?",
     question_variations: [
       "Carrier AC not cooling what to check",
       "Troubleshoot Carrier air conditioner",
@@ -296,7 +293,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "brand-daikin-specific-011",
     category: "brand-specific",
-    canonical_question: "What should I check first for a Daikin AC with poor performance?",
+    canonical_question:
+      "What should I check first for a Daikin AC with poor performance?",
     question_variations: [
       "Daikin AC not cooling checklist",
       "Troubleshoot Daikin split AC",
@@ -407,7 +405,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "capacitor-fault-015",
     category: "parts",
-    canonical_question: "What does a bad capacitor do in an AC and how to diagnose?",
+    canonical_question:
+      "What does a bad capacitor do in an AC and how to diagnose?",
     question_variations: [
       "AC capacitor replacement signs",
       "AC won't start capacitor bad",
@@ -463,7 +462,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "maintenance-annual-service-017",
     category: "maintenance",
-    canonical_question: "How often should I service my AC and what does service include?",
+    canonical_question:
+      "How often should I service my AC and what does service include?",
     question_variations: [
       "AC annual maintenance checklist",
       "How often to service air conditioner",
@@ -480,16 +480,14 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
       "1) Replace/clean filters. 2) Inspect refrigerant charge & look for leaks. 3) Clean condenser & evaporator coils. 4) Verify electrical connections and test capacitors/motors. 5) Test thermostat and airflow. 6) Clear condensate drain and check drain pan. 7) Lubricate moving parts if applicable. Regular service improves efficiency and reliability.",
     tags: ["maintenance", "service", "annual"],
     safety: "",
-    follow_up: [
-      "How much does AC service cost?",
-      "Can I service AC myself?",
-    ],
+    follow_up: ["How much does AC service cost?", "Can I service AC myself?"],
     source_references: [],
   },
   {
     id: "warranty-coverage-018",
     category: "service",
-    canonical_question: "Is AC repair covered under warranty and what should I check?",
+    canonical_question:
+      "Is AC repair covered under warranty and what should I check?",
     question_variations: [
       "AC warranty repair coverage",
       "Does warranty cover compressor replacement",
@@ -506,16 +504,14 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
       "1) Locate warranty documents and serial number. 2) Determine warranty period for parts vs labor (compressor often has longer warranty). 3) Use authorized service centers to avoid voiding warranty. 4) Keep maintenance records and receipts. 5) For installation defects, contact installer and manufacturer. 6) Some warranties require product registration within a period after purchase.",
     tags: ["warranty", "service", "manufacturer"],
     safety: "",
-    follow_up: [
-      "How to register AC warranty?",
-      "What voids AC warranty?",
-    ],
+    follow_up: ["How to register AC warranty?", "What voids AC warranty?"],
     source_references: [],
   },
   {
     id: "filter-replacement-019",
     category: "maintenance",
-    canonical_question: "When should I replace my AC filter instead of cleaning it?",
+    canonical_question:
+      "When should I replace my AC filter instead of cleaning it?",
     question_variations: [
       "How often to replace AC filter",
       "Replace vs clean AC filter",
@@ -541,7 +537,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "ductwork-issues-020",
     category: "troubleshooting",
-    canonical_question: "Could ducts be causing my AC problems and how do I inspect them?",
+    canonical_question:
+      "Could ducts be causing my AC problems and how do I inspect them?",
     question_variations: [
       "AC issues from ducts",
       "Blocked air ducts symptoms",
@@ -1020,7 +1017,8 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
   {
     id: "ac-age-and-replacement-041",
     category: "service",
-    canonical_question: "When should I consider replacing my AC unit rather than repairing it?",
+    canonical_question:
+      "When should I consider replacing my AC unit rather than repairing it?",
     question_variations: [
       "Replace vs repair AC how to decide",
       "When to replace old air conditioner",
@@ -1346,8 +1344,7 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
     long_answer:
       "HEPA filters remove fine particulates but impose higher pressure drops; activated carbon adsorbs VOCs/odors; UV-C targets microbial growth on coils and pans; electronic precipitators capture particulates but require maintenance and can produce ozone if not designed properly. Integrate devices with due regard to blower capacity, static pressure, maintenance regimes, and occupant sensitivities. Use objective IAQ metrics (PM2.5, VOCs) to justify installations.",
     tags: ["iaq", "air-cleaning", "HEPA"],
-    safety:
-      "Avoid air cleaners that generate ozone in occupied spaces.",
+    safety: "Avoid air cleaners that generate ozone in occupied spaces.",
     follow_up: [
       "Does UV-C replace filtration?",
       "How to measure IAQ improvements?",
@@ -1526,10 +1523,7 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
       "Mastic sealant combined with fiberglass mesh provides a durable, low-leakage solution for joints and seams. Metal-backed foil tape with appropriate adhesive is acceptable on rigid ducts. Ensure surfaces are clean and dry before application. For large leaks or inaccessible ducts, consider professional reconditioning or replacement. Proper sealing improves efficiency and prevents conditioned air loss into unconditioned spaces.",
     tags: ["ductwork", "sealing", "installation"],
     safety: "",
-    follow_up: [
-      "How to test duct leakage?",
-      "Is aerosol sealing effective?",
-    ],
+    follow_up: ["How to test duct leakage?", "Is aerosol sealing effective?"],
     source_references: [],
   },
   {
