@@ -322,8 +322,11 @@ export function SupportChatWidget() {
         } else if (selectedNumber === "6" || input.includes("contact")) {
           response = `You can reach us at:\n\n📱 Phone: +91 ${businessConfig.phone}\n📧 Email: ${businessConfig.email}\n📍 Address: ${businessConfig.address}\n\nWould you like me to connect you with a customer care executive (Available 10 AM – 7 PM)?\n\n1️⃣ Yes\n2️⃣ No`;
           nextStage = "contact_action";
+        } else if (selectedNumber === "7" || input.includes("question")) {
+          response = `💡 Great! I'm here to help with any AC-related questions. Please ask away and I'll provide you with expert guidance on:\n\n• AC troubleshooting & repair\n• Maintenance tips\n• Installation & sizing\n• Energy efficiency\n• Warranty & service options\n• And more!\n\nWhat's your question?`;
+          nextStage = "ask_question";
         } else {
-          response = `Please select an option from the menu using numbers 1-6:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us`;
+          response = `Please select an option from the menu using numbers 1-7:\n\n1️⃣ HVAC Services\n2️⃣ Centralized AC\n3️⃣ Split (Home) AC\n4️⃣ AMC/Warranty Support\n5️⃣ Emergency Service\n6️⃣ Contact Us\n7️⃣ Ask me any question`;
           nextStage = "main_menu";
         }
       } else if (
