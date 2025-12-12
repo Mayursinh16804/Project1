@@ -590,530 +590,726 @@ export const AC_FAQ_DATABASE: FAQEntry[] = [
       {
         id: "duct-negative-pressure-121",
         category: "airflow",
-        canonical_question: "What causes negative pressure in an HVAC system and how does it affect AC performance?",
+        canonical_question:
+          "What causes negative pressure in an HVAC system and how does it affect AC performance?",
         question_variations: [
           "Why is my home under negative pressure?",
           "Negative pressure HVAC problems",
           "AC airflow imbalance due to negative pressure",
-          "Causes of negative pressure inside house"
+          "Causes of negative pressure inside house",
         ],
-        short_answer: "Negative pressure occurs when exhaust or return airflow exceeds supply airflow, pulling unconditioned air into the home and reducing AC efficiency. Correcting duct balance and sealing leaks restores proper airflow.",
-        long_answer: "Negative pressure results when the HVAC system removes more air than it supplies, often due to imbalanced duct design, return leaks, oversized exhaust fans, or closed interior doors restricting supply pathways. This draws hot, humid, unfiltered outdoor air into living spaces through gaps, raising cooling load and worsening comfort. Technicians resolve negative pressure by balancing supply and return airflow, sealing duct leaks, resizing returns, or adding pressure relief pathways. Persistent negative pressure can increase energy use and cause moisture problems in walls or attics.",
+        short_answer:
+          "Negative pressure occurs when exhaust or return airflow exceeds supply airflow, pulling unconditioned air into the home and reducing AC efficiency. Correcting duct balance and sealing leaks restores proper airflow.",
+        long_answer:
+          "Negative pressure results when the HVAC system removes more air than it supplies, often due to imbalanced duct design, return leaks, oversized exhaust fans, or closed interior doors restricting supply pathways. This draws hot, humid, unfiltered outdoor air into living spaces through gaps, raising cooling load and worsening comfort. Technicians resolve negative pressure by balancing supply and return airflow, sealing duct leaks, resizing returns, or adding pressure relief pathways. Persistent negative pressure can increase energy use and cause moisture problems in walls or attics.",
         tags: ["airflow", "ductwork", "pressure-balance"],
-        safety: "Severe negative pressure can pull combustion gases back into the home—particularly hazardous for gas appliances without sealed combustion.",
-        follow_up: ["How do I test for pressure imbalances?", "Can adding a return vent fix negative pressure?"],
-        source_references: []
+        safety:
+          "Severe negative pressure can pull combustion gases back into the home—particularly hazardous for gas appliances without sealed combustion.",
+        follow_up: [
+          "How do I test for pressure imbalances?",
+          "Can adding a return vent fix negative pressure?",
+        ],
+        source_references: [],
       },
       {
         id: "oversized-ac-symptoms-122",
         category: "installation",
-        canonical_question: "What are the symptoms of an oversized AC unit and why is oversizing problematic?",
+        canonical_question:
+          "What are the symptoms of an oversized AC unit and why is oversizing problematic?",
         question_variations: [
           "Is my AC too big for my room?",
           "Problems caused by oversized AC",
           "Oversized HVAC short cycling",
-          "Why is oversizing AC bad"
+          "Why is oversizing AC bad",
         ],
-        short_answer: "An oversized AC short-cycles, cools too quickly without dehumidifying, causes uneven temperatures, increases wear, and consumes more energy. Proper sizing via load calculation prevents these issues.",
-        long_answer: "Oversized air conditioners deliver rapid temperature drops that satisfy the thermostat before adequate dehumidification occurs. This leads to clammy indoor conditions, humidity-driven mold risk, and discomfort despite low temperatures. Short run times also prevent proper oil return in refrigerant circuits, increasing mechanical stress. Additionally, frequent cycling increases electrical demand charges and reduces equipment life. Correctly sized units run longer, steady cycles that maintain temperature and humidity together. Load calculations (Manual J or equivalent) are essential before replacement.",
+        short_answer:
+          "An oversized AC short-cycles, cools too quickly without dehumidifying, causes uneven temperatures, increases wear, and consumes more energy. Proper sizing via load calculation prevents these issues.",
+        long_answer:
+          "Oversized air conditioners deliver rapid temperature drops that satisfy the thermostat before adequate dehumidification occurs. This leads to clammy indoor conditions, humidity-driven mold risk, and discomfort despite low temperatures. Short run times also prevent proper oil return in refrigerant circuits, increasing mechanical stress. Additionally, frequent cycling increases electrical demand charges and reduces equipment life. Correctly sized units run longer, steady cycles that maintain temperature and humidity together. Load calculations (Manual J or equivalent) are essential before replacement.",
         tags: ["sizing", "installation", "efficiency"],
         safety: "",
-        follow_up: ["How to confirm if my AC is oversized?", "Can airflow adjustments reduce impacts of oversizing?"],
-        source_references: []
+        follow_up: [
+          "How to confirm if my AC is oversized?",
+          "Can airflow adjustments reduce impacts of oversizing?",
+        ],
+        source_references: [],
       },
       {
         id: "undersized-ac-symptoms-123",
         category: "installation",
-        canonical_question: "What are the signs of an undersized AC and how does it affect system performance?",
+        canonical_question:
+          "What are the signs of an undersized AC and how does it affect system performance?",
         question_variations: [
           "AC too small symptoms",
           "Undersized HVAC performance issues",
           "Why my AC never reaches set temperature",
-          "Signs AC unit is too small"
+          "Signs AC unit is too small",
         ],
-        short_answer: "An undersized AC struggles to reach set temperature, runs continuously, produces high humidity, and has limited cooling capacity during peak conditions.",
-        long_answer: "When cooling demand exceeds system capacity, an undersized AC will operate continuously without achieving thermostat targets. This increases energy use while failing to control humidity, because evaporator coils may not reach optimal dewpoint temperature under heavy heat loads. The system may also experience premature wear. Proper load calculation, duct evaluation, and building envelope analysis dictate whether upsizing, adding zoning, or reducing heat gain (insulation, window films, shading) is appropriate.",
+        short_answer:
+          "An undersized AC struggles to reach set temperature, runs continuously, produces high humidity, and has limited cooling capacity during peak conditions.",
+        long_answer:
+          "When cooling demand exceeds system capacity, an undersized AC will operate continuously without achieving thermostat targets. This increases energy use while failing to control humidity, because evaporator coils may not reach optimal dewpoint temperature under heavy heat loads. The system may also experience premature wear. Proper load calculation, duct evaluation, and building envelope analysis dictate whether upsizing, adding zoning, or reducing heat gain (insulation, window films, shading) is appropriate.",
         tags: ["sizing", "capacity", "installation"],
         safety: "",
-        follow_up: ["Should I upgrade tonnage or improve insulation first?", "Can dual systems fix undersizing?"],
-        source_references: []
+        follow_up: [
+          "Should I upgrade tonnage or improve insulation first?",
+          "Can dual systems fix undersizing?",
+        ],
+        source_references: [],
       },
       {
         id: "humidity-high-indoors-124",
         category: "comfort",
-        canonical_question: "Why is indoor humidity high even when the AC is cooling properly?",
+        canonical_question:
+          "Why is indoor humidity high even when the AC is cooling properly?",
         question_variations: [
           "AC cooling but humidity high",
           "Why AC not removing moisture",
           "Indoor humidity issues with AC",
-          "AC dehumidification not working"
+          "AC dehumidification not working",
         ],
-        short_answer: "High humidity despite cooling may result from oversized systems, poor airflow, short cycling, low evaporator coil temperature differences, or infiltration through leaks.",
-        long_answer: "Proper dehumidification requires long, steady AC cycles that cool the evaporator coil below dewpoint. If airflow is too high, the coil warms and loses latent removal capacity. Oversized ACs cool the air rapidly but do not operate long enough to condense moisture. Leaky building envelopes introduce humid outdoor air faster than the system can remove it. Dirty filters, incorrect fan speed, or refrigerant charge issues also impair moisture removal. Technicians measure delta-T, coil temperature, airflow (CFM/ton), and static pressure to diagnose the root cause before recommending changes such as decreasing fan speed or resizing equipment.",
+        short_answer:
+          "High humidity despite cooling may result from oversized systems, poor airflow, short cycling, low evaporator coil temperature differences, or infiltration through leaks.",
+        long_answer:
+          "Proper dehumidification requires long, steady AC cycles that cool the evaporator coil below dewpoint. If airflow is too high, the coil warms and loses latent removal capacity. Oversized ACs cool the air rapidly but do not operate long enough to condense moisture. Leaky building envelopes introduce humid outdoor air faster than the system can remove it. Dirty filters, incorrect fan speed, or refrigerant charge issues also impair moisture removal. Technicians measure delta-T, coil temperature, airflow (CFM/ton), and static pressure to diagnose the root cause before recommending changes such as decreasing fan speed or resizing equipment.",
         tags: ["humidity", "comfort", "airflow"],
         safety: "",
-        follow_up: ["Should I use a standalone dehumidifier?", "Does an inverter AC improve humidity control?"],
-        source_references: []
+        follow_up: [
+          "Should I use a standalone dehumidifier?",
+          "Does an inverter AC improve humidity control?",
+        ],
+        source_references: [],
       },
       {
         id: "supply-vent-placement-125",
         category: "installation",
-        canonical_question: "How does supply vent placement affect cooling effectiveness in a room?",
+        canonical_question:
+          "How does supply vent placement affect cooling effectiveness in a room?",
         question_variations: [
           "Best location for AC supply vents",
           "Why supply vent placement matters",
           "Supply vent too close to thermostat",
-          "Airflow distribution problems AC"
+          "Airflow distribution problems AC",
         ],
-        short_answer: "Supply vents placed high on walls or ceilings allow proper air mixing and minimize stratification; poor placement can cause drafts, uneven cooling, and inaccurate thermostat readings.",
-        long_answer: "Supply vents deliver conditioned air into a space; if positioned too close to thermostats, cold supply air may prematurely satisfy temperature sensors. Vents placed behind furniture or low on exterior walls may create dead zones and uneven temperatures. Ceiling placement promotes mixing due to natural convection patterns. Engineers design supply locations to ensure throw distance covers the occupied zone while avoiding drafts. Adjusting vent direction, balancing dampers, or modifying duct layout improves comfort and air distribution.",
+        short_answer:
+          "Supply vents placed high on walls or ceilings allow proper air mixing and minimize stratification; poor placement can cause drafts, uneven cooling, and inaccurate thermostat readings.",
+        long_answer:
+          "Supply vents deliver conditioned air into a space; if positioned too close to thermostats, cold supply air may prematurely satisfy temperature sensors. Vents placed behind furniture or low on exterior walls may create dead zones and uneven temperatures. Ceiling placement promotes mixing due to natural convection patterns. Engineers design supply locations to ensure throw distance covers the occupied zone while avoiding drafts. Adjusting vent direction, balancing dampers, or modifying duct layout improves comfort and air distribution.",
         tags: ["airflow", "ventilation", "installation"],
         safety: "",
-        follow_up: ["Can adding booster fans fix poorly placed vents?", "How many supply vents should a room have?"],
-        source_references: []
+        follow_up: [
+          "Can adding booster fans fix poorly placed vents?",
+          "How many supply vents should a room have?",
+        ],
+        source_references: [],
       },
       {
         id: "refrigerant-overcharge-126",
         category: "diagnostics",
-        canonical_question: "What are the symptoms of an overcharged AC system and why is overcharging harmful?",
+        canonical_question:
+          "What are the symptoms of an overcharged AC system and why is overcharging harmful?",
         question_variations: [
           "Too much refrigerant symptoms",
           "Overcharged AC coil freezing",
           "High pressure from refrigerant overcharge",
-          "Why overcharging AC is bad"
+          "Why overcharging AC is bad",
         ],
-        short_answer: "An overcharged system shows high head pressure, reduced cooling, compressor strain, and potential liquid floodback. Overcharging decreases efficiency and can damage the compressor.",
-        long_answer: "Excess refrigerant reduces evaporator superheat and raises condenser subcooling, causing excessively high discharge pressure. This increases compressor workload and raises energy consumption. In severe conditions, liquid refrigerant can return to the compressor (floodback), leading to mechanical failure. Frost on the evaporator or noisy compressor operation may occur. Technicians correct overcharge by recovering refrigerant to manufacturer-specified charge levels using scales and superheat/subcooling measurements.",
+        short_answer:
+          "An overcharged system shows high head pressure, reduced cooling, compressor strain, and potential liquid floodback. Overcharging decreases efficiency and can damage the compressor.",
+        long_answer:
+          "Excess refrigerant reduces evaporator superheat and raises condenser subcooling, causing excessively high discharge pressure. This increases compressor workload and raises energy consumption. In severe conditions, liquid refrigerant can return to the compressor (floodback), leading to mechanical failure. Frost on the evaporator or noisy compressor operation may occur. Technicians correct overcharge by recovering refrigerant to manufacturer-specified charge levels using scales and superheat/subcooling measurements.",
         tags: ["refrigerant", "diagnostics", "pressure"],
-        safety: "Do not attempt to adjust refrigerant without certification—improper handling is dangerous and illegal in many regions.",
-        follow_up: ["What is the correct refrigerant charge for my AC?", "How to test superheat and subcooling?"],
-        source_references: []
+        safety:
+          "Do not attempt to adjust refrigerant without certification—improper handling is dangerous and illegal in many regions.",
+        follow_up: [
+          "What is the correct refrigerant charge for my AC?",
+          "How to test superheat and subcooling?",
+        ],
+        source_references: [],
       },
       {
         id: "refrigerant-undercharge-127",
         category: "diagnostics",
-        canonical_question: "What are the signs of an undercharged AC system and what causes low refrigerant levels?",
+        canonical_question:
+          "What are the signs of an undercharged AC system and what causes low refrigerant levels?",
         question_variations: [
           "Low refrigerant symptoms AC",
           "Undercharged AC coil freezing",
           "Why AC needs refrigerant refill",
-          "Causes of refrigerant loss"
+          "Causes of refrigerant loss",
         ],
-        short_answer: "Undercharged systems show reduced cooling, low suction pressure, coil frosting, and long run cycles. The root cause is almost always a leak, not normal consumption.",
-        long_answer: "Refrigerant does not get used up; loss indicates leaks at joints, Schrader valves, evaporator coils, flare fittings, or service ports. Low charge reduces evaporator saturation temperature, causing coil icing and warm supply air. Compressor overheating may occur due to inadequate mass flow. Technicians locate leaks with nitrogen pressure testing, UV dye, or electronic leak detectors before recharging to manufacturer specifications. Recharging without leak repair is a temporary and wasteful fix.",
+        short_answer:
+          "Undercharged systems show reduced cooling, low suction pressure, coil frosting, and long run cycles. The root cause is almost always a leak, not normal consumption.",
+        long_answer:
+          "Refrigerant does not get used up; loss indicates leaks at joints, Schrader valves, evaporator coils, flare fittings, or service ports. Low charge reduces evaporator saturation temperature, causing coil icing and warm supply air. Compressor overheating may occur due to inadequate mass flow. Technicians locate leaks with nitrogen pressure testing, UV dye, or electronic leak detectors before recharging to manufacturer specifications. Recharging without leak repair is a temporary and wasteful fix.",
         tags: ["refrigerant", "diagnostics", "leak"],
         safety: "",
-        follow_up: ["How to detect small refrigerant leaks?", "Is evaporator coil replacement necessary?"],
-        source_references: []
+        follow_up: [
+          "How to detect small refrigerant leaks?",
+          "Is evaporator coil replacement necessary?",
+        ],
+        source_references: [],
       },
       {
         id: "blower-motor-speed-128",
         category: "airflow",
-        canonical_question: "How does blower motor speed affect cooling performance and humidity removal?",
+        canonical_question:
+          "How does blower motor speed affect cooling performance and humidity removal?",
         question_variations: [
           "AC fan speed effect on cooling",
           "Should AC blower speed be high or low",
           "Fan speed and humidity removal",
-          "Why adjusting blower speed matters"
+          "Why adjusting blower speed matters",
         ],
-        short_answer: "Higher blower speeds increase sensible cooling but reduce humidity removal; lower speeds improve latent removal but may reduce airflow too much if set improperly.",
-        long_answer: "Blower speed directly governs CFM delivered across the evaporator coil. Higher CFM increases heat transfer and can improve temperature drop but raises coil temperature, weakening condensation of moisture. Lower CFM cools the coil more deeply, improving latent removal (humidity control), but risks coil freezing or insufficient room air movement if airflow is too low. Optimal settings depend on climate, system charge, duct static pressure, and coil configuration. Technicians measure CFM/ton, ESP, and delta-T to identify correct speed taps or ECM programming profiles.",
+        short_answer:
+          "Higher blower speeds increase sensible cooling but reduce humidity removal; lower speeds improve latent removal but may reduce airflow too much if set improperly.",
+        long_answer:
+          "Blower speed directly governs CFM delivered across the evaporator coil. Higher CFM increases heat transfer and can improve temperature drop but raises coil temperature, weakening condensation of moisture. Lower CFM cools the coil more deeply, improving latent removal (humidity control), but risks coil freezing or insufficient room air movement if airflow is too low. Optimal settings depend on climate, system charge, duct static pressure, and coil configuration. Technicians measure CFM/ton, ESP, and delta-T to identify correct speed taps or ECM programming profiles.",
         tags: ["airflow", "blower-motor", "humidity"],
         safety: "",
-        follow_up: ["What is ideal CFM per ton?", "How does static pressure limit blower adjustments?"],
-        source_references: []
+        follow_up: [
+          "What is ideal CFM per ton?",
+          "How does static pressure limit blower adjustments?",
+        ],
+        source_references: [],
       },
       {
         id: "ecm-motor-benefits-129",
         category: "parts",
-        canonical_question: "What advantages do ECM (electronically commutated) blower motors offer over PSC motors in AC systems?",
+        canonical_question:
+          "What advantages do ECM (electronically commutated) blower motors offer over PSC motors in AC systems?",
         question_variations: [
           "ECM vs PSC blower motor",
           "Benefits of ECM motor AC",
           "Why choose ECM fan motor",
-          "Is ECM more efficient?"
+          "Is ECM more efficient?",
         ],
-        short_answer: "ECM motors provide variable-speed control, better efficiency, quieter operation, and improved airflow stability under varying static pressures compared to PSC motors.",
-        long_answer: "ECM motors use electronic controllers to maintain programmed airflow with high precision, compensating for duct pressure fluctuations. This improves comfort, humidity removal, and compatibility with modern inverter and multi-stage systems. PSC motors, by contrast, lose torque as static pressure rises, reducing delivered CFM. ECMs also consume significantly less energy, especially at part-load airflow speeds. Though ECM motors have higher upfront cost and complex electronics, their long-term efficiency and comfort benefits justify adoption in most residential and commercial systems.",
+        short_answer:
+          "ECM motors provide variable-speed control, better efficiency, quieter operation, and improved airflow stability under varying static pressures compared to PSC motors.",
+        long_answer:
+          "ECM motors use electronic controllers to maintain programmed airflow with high precision, compensating for duct pressure fluctuations. This improves comfort, humidity removal, and compatibility with modern inverter and multi-stage systems. PSC motors, by contrast, lose torque as static pressure rises, reducing delivered CFM. ECMs also consume significantly less energy, especially at part-load airflow speeds. Though ECM motors have higher upfront cost and complex electronics, their long-term efficiency and comfort benefits justify adoption in most residential and commercial systems.",
         tags: ["blower-motor", "ECM", "efficiency"],
         safety: "",
-        follow_up: ["Do ECM motors cost more to replace?", "Can a PSC motor be upgraded to ECM?"],
-        source_references: []
+        follow_up: [
+          "Do ECM motors cost more to replace?",
+          "Can a PSC motor be upgraded to ECM?",
+        ],
+        source_references: [],
       },
       {
         id: "return-air-sizing-130",
         category: "installation",
-        canonical_question: "Why is proper return air sizing essential and what happens when the return path is undersized?",
+        canonical_question:
+          "Why is proper return air sizing essential and what happens when the return path is undersized?",
         question_variations: [
           "Return duct too small symptoms",
           "Importance of return air in HVAC",
           "Why AC return airflow matters",
-          "Return vent sizing guidelines"
+          "Return vent sizing guidelines",
         ],
-        short_answer: "Undersized return air restricts airflow, increases static pressure, reduces cooling capacity, and may cause coil freezing or blower overheating.",
-        long_answer: "A balanced HVAC system requires adequate return pathways to match supply airflow; insufficient return area causes the blower to work harder, increasing energy consumption and noise. High static pressure reduces delivered CFM, undermining heat exchange and potentially triggering freeze-ups or compressor floodback. Proper return sizing considers CFM demand, filter pressure drop, duct velocity limits, and noise constraints. Technicians may add additional return grilles, enlarge ducts, or reduce restrictive filter media to restore airflow balance.",
+        short_answer:
+          "Undersized return air restricts airflow, increases static pressure, reduces cooling capacity, and may cause coil freezing or blower overheating.",
+        long_answer:
+          "A balanced HVAC system requires adequate return pathways to match supply airflow; insufficient return area causes the blower to work harder, increasing energy consumption and noise. High static pressure reduces delivered CFM, undermining heat exchange and potentially triggering freeze-ups or compressor floodback. Proper return sizing considers CFM demand, filter pressure drop, duct velocity limits, and noise constraints. Technicians may add additional return grilles, enlarge ducts, or reduce restrictive filter media to restore airflow balance.",
         tags: ["airflow", "return-duct", "installation"],
         safety: "",
-        follow_up: ["How many return vents should a home have?", "Does filter type affect return sizing?"],
-        source_references: []
+        follow_up: [
+          "How many return vents should a home have?",
+          "Does filter type affect return sizing?",
+        ],
+        source_references: [],
       },
       {
         id: "duct-leakage-impact-131",
         category: "airflow",
-        canonical_question: "How does duct leakage influence AC efficiency and indoor comfort?",
+        canonical_question:
+          "How does duct leakage influence AC efficiency and indoor comfort?",
         question_variations: [
           "Effects of duct leakage on AC",
           "Why duct leaks reduce cooling",
           "Comfort issues from leaky ducts",
-          "Does sealing ducts improve AC performance?"
+          "Does sealing ducts improve AC performance?",
         ],
-        short_answer: "Duct leakage wastes conditioned air, increases cooling load, depressurizes rooms, and causes uneven temperatures. Sealing and insulating ducts improves system efficiency and comfort.",
-        long_answer: "Supply leaks discharge cooled air into attics or wall cavities, forcing the system to work harder while reducing delivered CFM. Return leaks pull hot, dusty, unfiltered air into the system, increasing humidity, load, and contaminant levels. Duct leakage commonly increases energy consumption by 15–30% in poorly sealed systems. Sealing joints with mastic, insulating exposed runs, and pressure-testing ducts to evaluate leakage rates are core corrective actions. Proper duct sealing is especially critical in hot climates, unconditioned attics, and systems with high external static pressure.",
+        short_answer:
+          "Duct leakage wastes conditioned air, increases cooling load, depressurizes rooms, and causes uneven temperatures. Sealing and insulating ducts improves system efficiency and comfort.",
+        long_answer:
+          "Supply leaks discharge cooled air into attics or wall cavities, forcing the system to work harder while reducing delivered CFM. Return leaks pull hot, dusty, unfiltered air into the system, increasing humidity, load, and contaminant levels. Duct leakage commonly increases energy consumption by 15–30% in poorly sealed systems. Sealing joints with mastic, insulating exposed runs, and pressure-testing ducts to evaluate leakage rates are core corrective actions. Proper duct sealing is especially critical in hot climates, unconditioned attics, and systems with high external static pressure.",
         tags: ["ductwork", "airflow", "efficiency"],
         safety: "",
-        follow_up: ["How is duct leakage measured?", "Is aerosol duct sealing effective?"],
-        source_references: []
+        follow_up: [
+          "How is duct leakage measured?",
+          "Is aerosol duct sealing effective?",
+        ],
+        source_references: [],
       },
       {
         id: "txv-function-132",
         category: "parts",
-        canonical_question: "What is the role of a thermostatic expansion valve (TXV) in an AC system?",
+        canonical_question:
+          "What is the role of a thermostatic expansion valve (TXV) in an AC system?",
         question_variations: [
           "How TXV works",
           "Purpose of expansion valve in AC",
           "TXV vs fixed orifice",
-          "Why superheat control matters"
+          "Why superheat control matters",
         ],
-        short_answer: "A TXV regulates refrigerant flow into the evaporator by controlling superheat, improving efficiency and coil utilization compared to fixed metering devices.",
-        long_answer: "The TXV modulates refrigerant flow to maintain a designated superheat level at the evaporator outlet, ensuring the coil remains fully utilized without allowing liquid refrigerant to flood the compressor. This improves performance under varying load and outdoor temperature conditions. Unlike fixed orifice systems that rely strictly on pressure differentials, TXVs adapt dynamically, offering better part-load efficiency and reduced icing risk. Proper sensing bulb placement and insulation are essential for correct TXV behavior.",
+        short_answer:
+          "A TXV regulates refrigerant flow into the evaporator by controlling superheat, improving efficiency and coil utilization compared to fixed metering devices.",
+        long_answer:
+          "The TXV modulates refrigerant flow to maintain a designated superheat level at the evaporator outlet, ensuring the coil remains fully utilized without allowing liquid refrigerant to flood the compressor. This improves performance under varying load and outdoor temperature conditions. Unlike fixed orifice systems that rely strictly on pressure differentials, TXVs adapt dynamically, offering better part-load efficiency and reduced icing risk. Proper sensing bulb placement and insulation are essential for correct TXV behavior.",
         tags: ["refrigerant", "TXV", "metering-device"],
         safety: "",
-        follow_up: ["What symptoms indicate a failing TXV?", "Can a fixed orifice be upgraded to a TXV?"],
-        source_references: []
+        follow_up: [
+          "What symptoms indicate a failing TXV?",
+          "Can a fixed orifice be upgraded to a TXV?",
+        ],
+        source_references: [],
       },
       {
         id: "dirty-evaporator-symptoms-133",
         category: "maintenance",
-        canonical_question: "What are common signs of a dirty evaporator coil and how does it affect AC performance?",
+        canonical_question:
+          "What are common signs of a dirty evaporator coil and how does it affect AC performance?",
         question_variations: [
           "Symptoms of dirty AC evaporator coil",
           "Evaporator coil needs cleaning?",
           "AC cooling weak due to dirty coil",
-          "Dirty evaporator impact on airflow"
+          "Dirty evaporator impact on airflow",
         ],
-        short_answer: "A dirty evaporator reduces airflow, lowers cooling capacity, causes coil icing, and increases energy use. Cleaning restores heat transfer efficiency.",
-        long_answer: "As dust and biofilm accumulate on the evaporator fins, airflow drops and the coil surface becomes insulated, preventing proper heat absorption. This often leads to low delta-T, long cooling cycles, and reduced moisture removal. Severe buildup lowers refrigerant saturation temperature, causing coil frost or icing. Cleaning requires safe access panels, soft brushes, approved coil cleaners, and careful rinsing to avoid damaging fins. Maintaining clean filters significantly extends coil cleanliness intervals.",
+        short_answer:
+          "A dirty evaporator reduces airflow, lowers cooling capacity, causes coil icing, and increases energy use. Cleaning restores heat transfer efficiency.",
+        long_answer:
+          "As dust and biofilm accumulate on the evaporator fins, airflow drops and the coil surface becomes insulated, preventing proper heat absorption. This often leads to low delta-T, long cooling cycles, and reduced moisture removal. Severe buildup lowers refrigerant saturation temperature, causing coil frost or icing. Cleaning requires safe access panels, soft brushes, approved coil cleaners, and careful rinsing to avoid damaging fins. Maintaining clean filters significantly extends coil cleanliness intervals.",
         tags: ["maintenance", "coil", "airflow"],
-        safety: "Shut off power before accessing evaporator compartments to avoid electrical hazards.",
-        follow_up: ["How often should coils be inspected?", "Can UV lights prevent coil biofilm buildup?"],
-        source_references: []
+        safety:
+          "Shut off power before accessing evaporator compartments to avoid electrical hazards.",
+        follow_up: [
+          "How often should coils be inspected?",
+          "Can UV lights prevent coil biofilm buildup?",
+        ],
+        source_references: [],
       },
       {
         id: "condensate-trap-purpose-134",
         category: "installation",
-        canonical_question: "Why does an HVAC system require a condensate trap and what happens if it is missing or improperly installed?",
+        canonical_question:
+          "Why does an HVAC system require a condensate trap and what happens if it is missing or improperly installed?",
         question_variations: [
           "Purpose of condensate trap AC",
           "Why AC drain needs a P-trap",
           "AC water leakage due to missing trap",
-          "How condensate traps work"
+          "How condensate traps work",
         ],
-        short_answer: "A condensate trap prevents air from being sucked through the drain line, ensuring proper drainage. Without a trap, the system may leak water or fail to drain.",
-        long_answer: "Evaporator coils operate under negative air pressure; without a P-trap, this negative pressure pulls air up the drain line, preventing gravity-driven condensation flow. This causes pan overflow, microbial growth, and water damage. A correctly sized trap with a cleanout port and proper water seal maintains drainage even under varying static pressure conditions. In positive-pressure drain pans, different trap geometries apply; installing the wrong type can also cause drainage problems.",
+        short_answer:
+          "A condensate trap prevents air from being sucked through the drain line, ensuring proper drainage. Without a trap, the system may leak water or fail to drain.",
+        long_answer:
+          "Evaporator coils operate under negative air pressure; without a P-trap, this negative pressure pulls air up the drain line, preventing gravity-driven condensation flow. This causes pan overflow, microbial growth, and water damage. A correctly sized trap with a cleanout port and proper water seal maintains drainage even under varying static pressure conditions. In positive-pressure drain pans, different trap geometries apply; installing the wrong type can also cause drainage problems.",
         tags: ["condensate", "installation", "drainage"],
         safety: "",
-        follow_up: ["How deep should a condensate trap be?", "What maintenance does a condensate trap need?"],
-        source_references: []
+        follow_up: [
+          "How deep should a condensate trap be?",
+          "What maintenance does a condensate trap need?",
+        ],
+        source_references: [],
       },
       {
         id: "ac-noise-diagnosis-135",
         category: "diagnostics",
-        canonical_question: "What common causes lead to unusual noise in AC indoor or outdoor units?",
+        canonical_question:
+          "What common causes lead to unusual noise in AC indoor or outdoor units?",
         question_variations: [
           "Why is my AC making noise?",
           "Loud AC outdoor unit noise reason",
           "Indoor unit rattling or buzzing",
-          "Compressor noise troubleshooting"
+          "Compressor noise troubleshooting",
         ],
-        short_answer: "AC noise commonly results from loose panels, failing fan motors, misaligned blowers, refrigerant flow anomalies, or compressor wear. Each noise type indicates specific issues.",
-        long_answer: "Buzzing indoors may indicate failing transformers, blower imbalance, or loose electrical components. Metallic rattling often arises from loosened panels or screws. Outdoor grinding or clanking suggests mechanical compressor failure or seized fan bearings. Hissing may indicate refrigerant leaks, while gurgling can be normal refrigerant flow unless accompanied by poor cooling. Technicians isolate noise sources using operational tests, vibration inspection, and component isolation.",
+        short_answer:
+          "AC noise commonly results from loose panels, failing fan motors, misaligned blowers, refrigerant flow anomalies, or compressor wear. Each noise type indicates specific issues.",
+        long_answer:
+          "Buzzing indoors may indicate failing transformers, blower imbalance, or loose electrical components. Metallic rattling often arises from loosened panels or screws. Outdoor grinding or clanking suggests mechanical compressor failure or seized fan bearings. Hissing may indicate refrigerant leaks, while gurgling can be normal refrigerant flow unless accompanied by poor cooling. Technicians isolate noise sources using operational tests, vibration inspection, and component isolation.",
         tags: ["diagnostics", "noise", "components"],
-        safety: "Persistent grinding or hissing can indicate dangerous compressor or refrigerant issues—shut off the system and schedule service.",
-        follow_up: ["Why does my AC make noise at startup?", "Can vibration pads reduce outdoor unit noise?"],
-        source_references: []
+        safety:
+          "Persistent grinding or hissing can indicate dangerous compressor or refrigerant issues—shut off the system and schedule service.",
+        follow_up: [
+          "Why does my AC make noise at startup?",
+          "Can vibration pads reduce outdoor unit noise?",
+        ],
+        source_references: [],
       },
       {
         id: "mold-growth-ac-136",
         category: "air-quality",
-        canonical_question: "What causes mold growth inside AC units and how can it be prevented?",
+        canonical_question:
+          "What causes mold growth inside AC units and how can it be prevented?",
         question_variations: [
           "Why mold grows in HVAC",
           "Prevent mold in AC ducts",
           "AC has musty smell source",
-          "Evaporator mold prevention"
+          "Evaporator mold prevention",
         ],
-        short_answer: "Mold grows when moisture, dust, and darkness combine—usually on coils, drain pans, and ducts. Prevention includes proper humidity control, drainage, filtration, and regular cleaning.",
-        long_answer: "Moisture accumulation in drain pans, dirty coils, or areas with insufficient airflow fosters microbial growth. Poor dehumidification and high indoor humidity accelerate colonization. Dust acts as a nutrient source, while dark duct interiors provide ideal conditions. Prevention strategies include maintaining humidity between 40–60%, cleaning coils, ensuring drain slope and trap function, using high-quality filters, sealing duct leaks, and optionally installing UV-C lights near the evaporator coil to inhibit growth.",
+        short_answer:
+          "Mold grows when moisture, dust, and darkness combine—usually on coils, drain pans, and ducts. Prevention includes proper humidity control, drainage, filtration, and regular cleaning.",
+        long_answer:
+          "Moisture accumulation in drain pans, dirty coils, or areas with insufficient airflow fosters microbial growth. Poor dehumidification and high indoor humidity accelerate colonization. Dust acts as a nutrient source, while dark duct interiors provide ideal conditions. Prevention strategies include maintaining humidity between 40–60%, cleaning coils, ensuring drain slope and trap function, using high-quality filters, sealing duct leaks, and optionally installing UV-C lights near the evaporator coil to inhibit growth.",
         tags: ["iaq", "mold", "humidity"],
         safety: "",
-        follow_up: ["Are UV lights effective long-term?", "How to eliminate musty odors from AC?"],
-        source_references: []
+        follow_up: [
+          "Are UV lights effective long-term?",
+          "How to eliminate musty odors from AC?",
+        ],
+        source_references: [],
       },
       {
         id: "ac-capacitor-failure-137",
         category: "parts",
-        canonical_question: "What are common symptoms of a failing AC capacitor?",
+        canonical_question:
+          "What are common symptoms of a failing AC capacitor?",
         question_variations: [
           "AC capacitor bad symptoms",
           "Why AC won't start capacitor issue",
           "Capacitor causing weak airflow?",
-          "Compressor not starting capacitor"
+          "Compressor not starting capacitor",
         ],
-        short_answer: "A failing capacitor causes hard starting, humming sounds, intermittent compressor or fan operation, overheating, and tripped breakers.",
-        long_answer: "Start capacitors deliver the torque needed to start motors; run capacitors stabilize voltage and improve efficiency. When capacitors weaken or fail, motors draw excess current, struggle to start, or overheat. Signs include delayed fan start, clicking noises, warm air output, or the condenser fan spinning only after manual push. Technicians confirm failure using microfarad (µF) measurements and replace with manufacturer-specified components to maintain motor reliability.",
+        short_answer:
+          "A failing capacitor causes hard starting, humming sounds, intermittent compressor or fan operation, overheating, and tripped breakers.",
+        long_answer:
+          "Start capacitors deliver the torque needed to start motors; run capacitors stabilize voltage and improve efficiency. When capacitors weaken or fail, motors draw excess current, struggle to start, or overheat. Signs include delayed fan start, clicking noises, warm air output, or the condenser fan spinning only after manual push. Technicians confirm failure using microfarad (µF) measurements and replace with manufacturer-specified components to maintain motor reliability.",
         tags: ["capacitor", "electrical", "diagnostics"],
-        safety: "Capacitors hold dangerous charges even when power is off; discharge safely using proper tools before handling.",
-        follow_up: ["Why do capacitors fail prematurely?", "Should I use hard-start kits?"],
-        source_references: []
+        safety:
+          "Capacitors hold dangerous charges even when power is off; discharge safely using proper tools before handling.",
+        follow_up: [
+          "Why do capacitors fail prematurely?",
+          "Should I use hard-start kits?",
+        ],
+        source_references: [],
       },
       {
         id: "hard-start-kit-138",
         category: "parts",
-        canonical_question: "What is a hard-start kit and when should it be used in an AC system?",
+        canonical_question:
+          "What is a hard-start kit and when should it be used in an AC system?",
         question_variations: [
           "Purpose of hard start kit",
           "Does AC need hard start kit?",
           "Hard start kit benefits",
-          "When to install hard start kit"
+          "When to install hard start kit",
         ],
-        short_answer: "Hard start kits assist compressors in starting with less electrical strain, useful for aging compressors, low-voltage conditions, generator setups, and high starting torque demands.",
-        long_answer: "Hard start kits combine a start capacitor and relay to boost starting torque momentarily, reducing inrush current and helping compressors overcome mechanical resistance. They are often used on systems experiencing dimming lights, repeated hard starts, or when powered by generators with limited surge capacity. However, they should not mask underlying mechanical compressor faults. Technicians evaluate amperage draw, LRA (locked rotor amps), and voltage stability before recommending installation.",
+        short_answer:
+          "Hard start kits assist compressors in starting with less electrical strain, useful for aging compressors, low-voltage conditions, generator setups, and high starting torque demands.",
+        long_answer:
+          "Hard start kits combine a start capacitor and relay to boost starting torque momentarily, reducing inrush current and helping compressors overcome mechanical resistance. They are often used on systems experiencing dimming lights, repeated hard starts, or when powered by generators with limited surge capacity. However, they should not mask underlying mechanical compressor faults. Technicians evaluate amperage draw, LRA (locked rotor amps), and voltage stability before recommending installation.",
         tags: ["compressor", "capacitor", "electrical"],
         safety: "",
-        follow_up: ["Do hard start kits extend compressor life?", "Can they void warranties?"],
-        source_references: []
+        follow_up: [
+          "Do hard start kits extend compressor life?",
+          "Can they void warranties?",
+        ],
+        source_references: [],
       },
       {
         id: "blower-wheel-cleaning-139",
         category: "maintenance",
-        canonical_question: "Why is blower wheel cleaning important and how does buildup affect performance?",
+        canonical_question:
+          "Why is blower wheel cleaning important and how does buildup affect performance?",
         question_variations: [
           "Why clean blower wheel AC",
           "Dirty blower wheel symptoms",
           "Airflow reduced by dirty blower",
-          "How dirt affects blower efficiency"
+          "How dirt affects blower efficiency",
         ],
-        short_answer: "A dirty blower wheel reduces CFM, increases static pressure, disrupts airflow distribution, and strains the motor. Cleaning restores airflow and efficiency.",
-        long_answer: "Dust accumulation on the blower blades reduces aerodynamic efficiency, lowering delivered airflow and raising total external static pressure. Components downstream receive insufficient air, causing poor cooling, coil freeze-ups, or hot spots in rooms. Motors compensate by drawing higher current, accelerating bearing wear. Proper blower cleaning involves removing the assembly, using safe solvents, brushing deposits, and confirming balance before reinstallation.",
+        short_answer:
+          "A dirty blower wheel reduces CFM, increases static pressure, disrupts airflow distribution, and strains the motor. Cleaning restores airflow and efficiency.",
+        long_answer:
+          "Dust accumulation on the blower blades reduces aerodynamic efficiency, lowering delivered airflow and raising total external static pressure. Components downstream receive insufficient air, causing poor cooling, coil freeze-ups, or hot spots in rooms. Motors compensate by drawing higher current, accelerating bearing wear. Proper blower cleaning involves removing the assembly, using safe solvents, brushing deposits, and confirming balance before reinstallation.",
         tags: ["maintenance", "blower", "airflow"],
-        safety: "Improperly balanced blower wheels can cause vibration and motor damage—verify alignment after reinstallation.",
-        follow_up: ["How often should blower wheels be cleaned?", "Do ECM motors need special handling during cleaning?"],
-        source_references: []
+        safety:
+          "Improperly balanced blower wheels can cause vibration and motor damage—verify alignment after reinstallation.",
+        follow_up: [
+          "How often should blower wheels be cleaned?",
+          "Do ECM motors need special handling during cleaning?",
+        ],
+        source_references: [],
       },
       {
         id: "duct-insulation-benefits-140",
         category: "installation",
-        canonical_question: "Why should HVAC ducts in unconditioned spaces be insulated?",
+        canonical_question:
+          "Why should HVAC ducts in unconditioned spaces be insulated?",
         question_variations: [
           "Benefits of insulating AC ducts",
           "Why attic ducts need insulation",
           "Is duct insulation required?",
-          "Heat gain in uninsulated ducts"
+          "Heat gain in uninsulated ducts",
         ],
-        short_answer: "Uninsulated ducts lose or gain heat rapidly in unconditioned spaces, reducing system efficiency and causing uneven temperatures. Insulation preserves delivered cooling capacity.",
-        long_answer: "In attics and crawlspaces, ducts are exposed to extreme heat or cold. Without insulation, cold supply air warms before reaching rooms, lowering delta-T and causing the AC to run longer. Return ducts can also draw in heat, raising coil load and humidity. Insulation with proper R-value reduces thermal loss, prevents condensation on ducts, and improves comfort. Sealing joints before insulating is essential for long-term performance.",
+        short_answer:
+          "Uninsulated ducts lose or gain heat rapidly in unconditioned spaces, reducing system efficiency and causing uneven temperatures. Insulation preserves delivered cooling capacity.",
+        long_answer:
+          "In attics and crawlspaces, ducts are exposed to extreme heat or cold. Without insulation, cold supply air warms before reaching rooms, lowering delta-T and causing the AC to run longer. Return ducts can also draw in heat, raising coil load and humidity. Insulation with proper R-value reduces thermal loss, prevents condensation on ducts, and improves comfort. Sealing joints before insulating is essential for long-term performance.",
         tags: ["installation", "ductwork", "insulation"],
         safety: "",
-        follow_up: ["What R-value should duct insulation have?", "Should insulation be replaced if damaged?"],
-        source_references: []
+        follow_up: [
+          "What R-value should duct insulation have?",
+          "Should insulation be replaced if damaged?",
+        ],
+        source_references: [],
       },
       {
         id: "ac-short-cycling-causes-161",
         category: "diagnostics",
-        canonical_question: "What causes AC systems to short-cycle and how does this affect performance?",
+        canonical_question:
+          "What causes AC systems to short-cycle and how does this affect performance?",
         question_variations: [
           "Why my AC turns on and off rapidly",
           "AC short cycling meaning",
           "Causes of HVAC frequent cycling",
-          "Short cycle AC diagnosis"
+          "Short cycle AC diagnosis",
         ],
-        short_answer: "Short cycling occurs when the AC shuts off prematurely due to oversizing, thermostat issues, refrigerant problems, or airflow restrictions. It reduces efficiency and increases component wear.",
-        long_answer: "Short cycling limits the system's ability to dehumidify, increases energy consumption, and imposes frequent starting loads on the compressor. Common causes include oversized equipment, miscalibrated thermostats, dirty filters, blocked evaporator coils, low or high refrigerant charge, or compressor thermal overload. Technicians diagnose by measuring cycle duration, evaluating refrigerant conditions, and inspecting airflow pathways. Corrective actions range from thermostat relocation to load-balanced resizing or component repair.",
+        short_answer:
+          "Short cycling occurs when the AC shuts off prematurely due to oversizing, thermostat issues, refrigerant problems, or airflow restrictions. It reduces efficiency and increases component wear.",
+        long_answer:
+          "Short cycling limits the system's ability to dehumidify, increases energy consumption, and imposes frequent starting loads on the compressor. Common causes include oversized equipment, miscalibrated thermostats, dirty filters, blocked evaporator coils, low or high refrigerant charge, or compressor thermal overload. Technicians diagnose by measuring cycle duration, evaluating refrigerant conditions, and inspecting airflow pathways. Corrective actions range from thermostat relocation to load-balanced resizing or component repair.",
         tags: ["diagnostics", "controls", "efficiency"],
         safety: "",
-        follow_up: ["How long should a normal AC cycle last?", "Can inverter ACs short-cycle as well?"],
-        source_references: []
+        follow_up: [
+          "How long should a normal AC cycle last?",
+          "Can inverter ACs short-cycle as well?",
+        ],
+        source_references: [],
       },
       {
         id: "compressor-overheating-162",
         category: "diagnostics",
-        canonical_question: "What causes compressor overheating and what are the consequences?",
+        canonical_question:
+          "What causes compressor overheating and what are the consequences?",
         question_variations: [
           "Why AC compressor overheats",
           "Symptoms of compressor thermal overload",
           "Compressor running hot HVAC",
-          "What damages AC compressor"
+          "What damages AC compressor",
         ],
-        short_answer: "Compressor overheating is caused by low refrigerant charge, airflow issues, high head pressure, dirty coils, or electrical faults. Prolonged overheating leads to winding failure or seizure.",
-        long_answer: "Overheated compressors frequently trip thermal overload protectors, causing intermittent cooling and eventual burnout. Root causes include inadequate cooling of the motor windings, restricted condenser airflow, overcharge, non-condensable gases, or failed capacitor components. Technicians evaluate superheat/subcooling, check condenser fan performance, inspect electrical current draw, and test pressures. Immediate correction prevents irreversible compressor damage.",
+        short_answer:
+          "Compressor overheating is caused by low refrigerant charge, airflow issues, high head pressure, dirty coils, or electrical faults. Prolonged overheating leads to winding failure or seizure.",
+        long_answer:
+          "Overheated compressors frequently trip thermal overload protectors, causing intermittent cooling and eventual burnout. Root causes include inadequate cooling of the motor windings, restricted condenser airflow, overcharge, non-condensable gases, or failed capacitor components. Technicians evaluate superheat/subcooling, check condenser fan performance, inspect electrical current draw, and test pressures. Immediate correction prevents irreversible compressor damage.",
         tags: ["compressor", "diagnostics", "safety"],
-        safety: "Do not continue running an overheating compressor—thermal cycling accelerates winding degradation.",
-        follow_up: ["How to measure compressor discharge temperature?", "Can cleaning the condenser fix overheating?"],
-        source_references: []
+        safety:
+          "Do not continue running an overheating compressor—thermal cycling accelerates winding degradation.",
+        follow_up: [
+          "How to measure compressor discharge temperature?",
+          "Can cleaning the condenser fix overheating?",
+        ],
+        source_references: [],
       },
       {
         id: "duct-static-pressure-163",
         category: "airflow",
-        canonical_question: "Why is external static pressure important in HVAC systems and how is it measured?",
+        canonical_question:
+          "Why is external static pressure important in HVAC systems and how is it measured?",
         question_variations: [
           "What is HVAC static pressure",
           "Why static pressure matters AC",
           "High static pressure symptoms",
-          "How to measure external static pressure"
+          "How to measure external static pressure",
         ],
-        short_answer: "External static pressure reflects resistance to airflow within ducts and filters. Excessive static pressure reduces airflow, efficiency, and equipment life. It is measured using a manometer across return and supply plenums.",
-        long_answer: "HVAC blowers are designed to operate within specified static pressure ranges. High static pressure results from undersized ducts, dirty filters, restrictive coil fins, or closed registers. It reduces delivered CFM, leads to coil freeze-ups, increases motor amperage, and shortens equipment life. Technicians drill test ports upstream and downstream of the air handler to measure pressure using a differential manometer. Corrections include duct resizing, removing restrictions, or adjusting blower programming.",
+        short_answer:
+          "External static pressure reflects resistance to airflow within ducts and filters. Excessive static pressure reduces airflow, efficiency, and equipment life. It is measured using a manometer across return and supply plenums.",
+        long_answer:
+          "HVAC blowers are designed to operate within specified static pressure ranges. High static pressure results from undersized ducts, dirty filters, restrictive coil fins, or closed registers. It reduces delivered CFM, leads to coil freeze-ups, increases motor amperage, and shortens equipment life. Technicians drill test ports upstream and downstream of the air handler to measure pressure using a differential manometer. Corrections include duct resizing, removing restrictions, or adjusting blower programming.",
         tags: ["airflow", "diagnostics", "ductwork"],
         safety: "",
-        follow_up: ["What is maximum ESP for typical residential units?", "How do filter types influence static pressure?"],
-        source_references: []
+        follow_up: [
+          "What is maximum ESP for typical residential units?",
+          "How do filter types influence static pressure?",
+        ],
+        source_references: [],
       },
       {
         id: "ac-odor-sources-164",
         category: "air-quality",
-        canonical_question: "What are common causes of unpleasant odors from AC systems?",
+        canonical_question:
+          "What are common causes of unpleasant odors from AC systems?",
         question_variations: [
           "Why AC smells bad",
           "Musty smell from AC vents",
           "Burning smell AC diagnosis",
-          "Odor from HVAC supply air"
+          "Odor from HVAC supply air",
         ],
-        short_answer: "AC odors typically result from microbial growth, stagnant condensate, dirty filters, electrical overheating, or refrigerant leaks. Identifying the odor type helps pinpoint root causes.",
-        long_answer: "Musty odors often indicate mold growth in coils, drain pans, or ducts. Sour smells suggest standing water in blocked condensate lines. Burning or metallic odors may signal motor overheating or electrical insulation failure. Chemical or \"sweet\" odors sometimes indicate refrigerant leaks. Technicians inspect coils, pans, blower wheels, and electrical components, and verify proper drainage and airflow. Preventative measures include regular cleaning, UV-C installation, and maintaining correct humidity.",
+        short_answer:
+          "AC odors typically result from microbial growth, stagnant condensate, dirty filters, electrical overheating, or refrigerant leaks. Identifying the odor type helps pinpoint root causes.",
+        long_answer:
+          'Musty odors often indicate mold growth in coils, drain pans, or ducts. Sour smells suggest standing water in blocked condensate lines. Burning or metallic odors may signal motor overheating or electrical insulation failure. Chemical or "sweet" odors sometimes indicate refrigerant leaks. Technicians inspect coils, pans, blower wheels, and electrical components, and verify proper drainage and airflow. Preventative measures include regular cleaning, UV-C installation, and maintaining correct humidity.',
         tags: ["iaq", "odor", "diagnostics"],
-        safety: "Immediately shut off the system if burning or electrical odors occur.",
-        follow_up: ["Can duct cleaning remove AC odors?", "What odor indicates a refrigerant leak?"],
-        source_references: []
+        safety:
+          "Immediately shut off the system if burning or electrical odors occur.",
+        follow_up: [
+          "Can duct cleaning remove AC odors?",
+          "What odor indicates a refrigerant leak?",
+        ],
+        source_references: [],
       },
       {
         id: "condensate-pump-failure-165",
         category: "maintenance",
-        canonical_question: "What causes condensate pump failure and how can it be prevented?",
+        canonical_question:
+          "What causes condensate pump failure and how can it be prevented?",
         question_variations: [
           "Condensate pump not working",
           "AC leaking due to pump failure",
           "Why condensate pump stops",
-          "Condensate pump troubleshooting"
+          "Condensate pump troubleshooting",
         ],
-        short_answer: "Condensate pumps fail due to clogs, stuck float switches, motor burnout, or improper installation. Regular cleaning and testing prevent most failures.",
-        long_answer: "Dust, algae, or debris in the reservoir restrict float movement, preventing pump activation. Pump motors fail when overloaded or running dry for extended periods. Incorrect discharge tubing slopes, excessive lift height, or kinks cause pump strain. Technicians test pump operation by manually lifting the float, cleaning the reservoir, and verifying discharge flow. Annual maintenance greatly improves reliability.",
+        short_answer:
+          "Condensate pumps fail due to clogs, stuck float switches, motor burnout, or improper installation. Regular cleaning and testing prevent most failures.",
+        long_answer:
+          "Dust, algae, or debris in the reservoir restrict float movement, preventing pump activation. Pump motors fail when overloaded or running dry for extended periods. Incorrect discharge tubing slopes, excessive lift height, or kinks cause pump strain. Technicians test pump operation by manually lifting the float, cleaning the reservoir, and verifying discharge flow. Annual maintenance greatly improves reliability.",
         tags: ["condensate", "maintenance", "drainage"],
-        safety: "Unattended pump failure can cause water overflow and property damage.",
-        follow_up: ["How often should condensate pumps be serviced?", "What lift capacity should a pump have?"],
-        source_references: []
+        safety:
+          "Unattended pump failure can cause water overflow and property damage.",
+        follow_up: [
+          "How often should condensate pumps be serviced?",
+          "What lift capacity should a pump have?",
+        ],
+        source_references: [],
       },
       {
         id: "oversized-duct-symptoms-166",
         category: "airflow",
-        canonical_question: "What problems arise from oversized supply ducts in HVAC systems?",
+        canonical_question:
+          "What problems arise from oversized supply ducts in HVAC systems?",
         question_variations: [
           "Duct too large problems",
           "Oversized duct airflow issues",
           "Why big ducts reduce AC performance",
-          "Low airflow velocity symptoms"
+          "Low airflow velocity symptoms",
         ],
-        short_answer: "Oversized ducts reduce air velocity, weaken room air throw, harm distribution balance, and lead to temperature stratification.",
-        long_answer: "Airflow requires adequate velocity to mix conditioned air properly within rooms. When ducts are too large, velocity drops below design values, causing weak air throw from registers, poor mixing, and uneven temperatures. Low velocity also increases duct dust settling, reducing IAQ. Solutions include resizing ducts, adjusting blower speed, and using high-throw registers to compensate for reduced velocity.",
+        short_answer:
+          "Oversized ducts reduce air velocity, weaken room air throw, harm distribution balance, and lead to temperature stratification.",
+        long_answer:
+          "Airflow requires adequate velocity to mix conditioned air properly within rooms. When ducts are too large, velocity drops below design values, causing weak air throw from registers, poor mixing, and uneven temperatures. Low velocity also increases duct dust settling, reducing IAQ. Solutions include resizing ducts, adjusting blower speed, and using high-throw registers to compensate for reduced velocity.",
         tags: ["airflow", "ductwork", "installation"],
         safety: "",
-        follow_up: ["What is recommended duct velocity?", "Do high-throw diffusers solve oversized ducts?"],
-        source_references: []
+        follow_up: [
+          "What is recommended duct velocity?",
+          "Do high-throw diffusers solve oversized ducts?",
+        ],
+        source_references: [],
       },
       {
         id: "ac-freezing-low-airflow-167",
         category: "diagnostics",
-        canonical_question: "How does low airflow cause evaporator coil freezing in AC systems?",
+        canonical_question:
+          "How does low airflow cause evaporator coil freezing in AC systems?",
         question_variations: [
           "AC coil freezing due to airflow",
           "Why low airflow freezes AC",
           "Frost on evaporator coil cause",
-          "Airflow-related AC freezing"
+          "Airflow-related AC freezing",
         ],
-        short_answer: "Low airflow causes the evaporator coil to operate below freezing temperature, allowing moisture to freeze on the coil and eventually block airflow entirely.",
-        long_answer: "Restricted airflow lowers heat transfer at the evaporator, decreasing coil temperature below 0°C. Moisture condenses and freezes, forming ice layers that worsen airflow restriction—a feedback loop leading to system shutdown or compressor damage. Causes include dirty filters, duct restrictions, closed vents, malfunctioning blowers, or clogged coils. Restoring proper airflow through cleaning, duct repair, or blower adjustment resolves the issue.",
+        short_answer:
+          "Low airflow causes the evaporator coil to operate below freezing temperature, allowing moisture to freeze on the coil and eventually block airflow entirely.",
+        long_answer:
+          "Restricted airflow lowers heat transfer at the evaporator, decreasing coil temperature below 0°C. Moisture condenses and freezes, forming ice layers that worsen airflow restriction—a feedback loop leading to system shutdown or compressor damage. Causes include dirty filters, duct restrictions, closed vents, malfunctioning blowers, or clogged coils. Restoring proper airflow through cleaning, duct repair, or blower adjustment resolves the issue.",
         tags: ["diagnostics", "airflow", "coil"],
-        safety: "Shut down the system before thawing to avoid liquid floodback into the compressor.",
-        follow_up: ["Can refrigerant undercharge also cause freezing?", "How long does coil thawing take?"],
-        source_references: []
+        safety:
+          "Shut down the system before thawing to avoid liquid floodback into the compressor.",
+        follow_up: [
+          "Can refrigerant undercharge also cause freezing?",
+          "How long does coil thawing take?",
+        ],
+        source_references: [],
       },
       {
         id: "heat-load-increase-168",
         category: "building-interaction",
-        canonical_question: "What building factors increase cooling load and strain an AC system?",
+        canonical_question:
+          "What building factors increase cooling load and strain an AC system?",
         question_variations: [
           "What increases AC cooling load",
           "Why AC struggles on hot days",
           "Sources of heat gain in buildings",
-          "How windows affect AC performance"
+          "How windows affect AC performance",
         ],
-        short_answer: "Poor insulation, air leaks, solar heat gain, internal heat sources, and inadequate shading all increase cooling load and reduce AC performance.",
-        long_answer: "Building envelope weaknesses such as uninsulated walls, attic bypasses, and leaky doors/windows allow heat to infiltrate the conditioned space. Solar radiation through windows significantly raises room temperature; reflective films, blinds, and shading reduce this effect. Internal loads from appliances, electronics, and occupants also add latent and sensible heat. Improving insulation, sealing leaks, and controlling sunlight often enhances AC performance more economically than increasing tonnage.",
+        short_answer:
+          "Poor insulation, air leaks, solar heat gain, internal heat sources, and inadequate shading all increase cooling load and reduce AC performance.",
+        long_answer:
+          "Building envelope weaknesses such as uninsulated walls, attic bypasses, and leaky doors/windows allow heat to infiltrate the conditioned space. Solar radiation through windows significantly raises room temperature; reflective films, blinds, and shading reduce this effect. Internal loads from appliances, electronics, and occupants also add latent and sensible heat. Improving insulation, sealing leaks, and controlling sunlight often enhances AC performance more economically than increasing tonnage.",
         tags: ["building", "efficiency", "sizing"],
         safety: "",
-        follow_up: ["Will window films reduce cooling load?", "Is insulation or AC upgrade more cost-effective?"],
-        source_references: []
+        follow_up: [
+          "Will window films reduce cooling load?",
+          "Is insulation or AC upgrade more cost-effective?",
+        ],
+        source_references: [],
       },
       {
         id: "thermostat-deadband-169",
         category: "controls",
-        canonical_question: "What is thermostat deadband and why is it important for AC efficiency?",
+        canonical_question:
+          "What is thermostat deadband and why is it important for AC efficiency?",
         question_variations: [
           "What is HVAC thermostat deadband",
           "Deadband meaning AC controls",
           "Temperature swing thermostat",
-          "Why thermostats use deadband"
+          "Why thermostats use deadband",
         ],
-        short_answer: "Deadband is the temperature range in which the thermostat allows the system to remain off. It prevents rapid cycling and improves energy efficiency.",
-        long_answer: "A thermostat deadband of 1–2°C avoids running the AC immediately after minor temperature fluctuations. This stabilizes control performance, reduces compressor cycling, and extends system life. Smart thermostats dynamically adjust deadband based on humidity, occupancy, and load profiles. Too narrow a deadband causes short cycling; too wide reduces comfort. Proper deadband settings balance efficiency with stability.",
+        short_answer:
+          "Deadband is the temperature range in which the thermostat allows the system to remain off. It prevents rapid cycling and improves energy efficiency.",
+        long_answer:
+          "A thermostat deadband of 1–2°C avoids running the AC immediately after minor temperature fluctuations. This stabilizes control performance, reduces compressor cycling, and extends system life. Smart thermostats dynamically adjust deadband based on humidity, occupancy, and load profiles. Too narrow a deadband causes short cycling; too wide reduces comfort. Proper deadband settings balance efficiency with stability.",
         tags: ["controls", "thermostat", "efficiency"],
         safety: "",
-        follow_up: ["What is ideal deadband for residential AC?", "Do inverter systems require deadband adjustment?"],
-        source_references: []
+        follow_up: [
+          "What is ideal deadband for residential AC?",
+          "Do inverter systems require deadband adjustment?",
+        ],
+        source_references: [],
       },
       {
         id: "smart-thermostat-limitations-170",
         category: "controls",
-        canonical_question: "What limitations do smart thermostats have when used with older HVAC systems?",
+        canonical_question:
+          "What limitations do smart thermostats have when used with older HVAC systems?",
         question_variations: [
           "Smart thermostat compatibility issues",
           "Why smart thermostat not working with old AC",
           "Limitations of smart thermostats HVAC",
-          "Do I need common wire for smart thermostat?"
+          "Do I need common wire for smart thermostat?",
         ],
-        short_answer: "Older HVAC systems may lack C-wire power, multi-stage compatibility, or modern control capabilities, limiting smart thermostat features or causing malfunction.",
-        long_answer: "Smart thermostats require continuous low-voltage power, often unavailable on older furnaces or air handlers lacking a C-wire. Some systems use proprietary control boards incompatible with standard smart thermostats. Multi-speed or inverter features may not integrate, resulting in reduced functionality or improper staging. Technicians often install add-a-wire kits, update transformers, or upgrade control boards to ensure compatibility.",
+        short_answer:
+          "Older HVAC systems may lack C-wire power, multi-stage compatibility, or modern control capabilities, limiting smart thermostat features or causing malfunction.",
+        long_answer:
+          "Smart thermostats require continuous low-voltage power, often unavailable on older furnaces or air handlers lacking a C-wire. Some systems use proprietary control boards incompatible with standard smart thermostats. Multi-speed or inverter features may not integrate, resulting in reduced functionality or improper staging. Technicians often install add-a-wire kits, update transformers, or upgrade control boards to ensure compatibility.",
         tags: ["controls", "thermostat", "compatibility"],
         safety: "",
-        follow_up: ["Do smart thermostats save energy on old systems?", "How to add a C-wire safely?"],
-        source_references: []
+        follow_up: [
+          "Do smart thermostats save energy on old systems?",
+          "How to add a C-wire safely?",
+        ],
+        source_references: [],
       },
       {
         id: "humidity-high-impact-171",
         category: "diagnostics",
-        canonical_question: "How does high indoor humidity affect AC performance and comfort?",
+        canonical_question:
+          "How does high indoor humidity affect AC performance and comfort?",
         question_variations: [
           "Why my home feels humid even with AC running",
           "AC not removing humidity",
           "High humidity symptom HVAC",
-          "Does humidity reduce AC efficiency"
+          "Does humidity reduce AC efficiency",
         ],
-        short_answer: "High humidity makes the space feel warmer, increases AC runtime, and may indicate insufficient latent cooling capacity, improper airflow, or oversized equipment.",
-        long_answer: "Air conditioners remove both sensible and latent heat, but oversized systems cool the air too quickly to dehumidify properly. Clogged filters, low refrigerant charge, poor airflow, or coil contamination reduce moisture removal. High humidity leads to discomfort, mold risk, and increased energy consumption. Diagnostic steps include measuring wet-bulb return air, verifying airflow CFM per ton, checking evaporator coil condition, and reviewing system sizing and runtime profile.",
+        short_answer:
+          "High humidity makes the space feel warmer, increases AC runtime, and may indicate insufficient latent cooling capacity, improper airflow, or oversized equipment.",
+        long_answer:
+          "Air conditioners remove both sensible and latent heat, but oversized systems cool the air too quickly to dehumidify properly. Clogged filters, low refrigerant charge, poor airflow, or coil contamination reduce moisture removal. High humidity leads to discomfort, mold risk, and increased energy consumption. Diagnostic steps include measuring wet-bulb return air, verifying airflow CFM per ton, checking evaporator coil condition, and reviewing system sizing and runtime profile.",
         tags: ["humidity", "latent-load", "comfort"],
         safety: "",
-        follow_up: ["Is a dehumidifier needed with my AC?", "Can oversized AC reduce humidity removal?"],
-        source_references: []
-      }
+        follow_up: [
+          "Is a dehumidifier needed with my AC?",
+          "Can oversized AC reduce humidity removal?",
+        ],
+        source_references: [],
+      },
     ];
     return newEntries;
   })(),
